@@ -1,0 +1,54 @@
+experiences:
+- place: 'Medical Image Analysis Lab'
+  time: 'Sept 2021 - now'
+  title: 'Research Assistant'
+  subtitle: 'Advisor: Ghassan Hamarneh'
+  category: 'school'
+
+- place: "GIST Computer Vision Lab"
+  time: "Dec 2020 - Aug 2021"
+  title: "Research Intern"
+  subtitle: "Advisor: Jonghyun Choi"
+  category: "work"
+
+- place: "Wells Fargo"
+  time: "Aug 2020 - Aug 2021"
+  title: "Rish Analyst"
+  subtitle: "Home Lending Team"
+  category: "school"
+
+# - place: "Radlearn AI"
+#   time: "Summers 2020"
+#   title: "Data Scientist, Intern"
+#   subtitle: ""
+#   category: "school"
+
+- place: "Preferred Networks"
+  time: "Summer 2019"
+  title: "Research Intern"
+  subtitle: "Advisor(s): Yohei Sugawara, Yuichiro Hirano"
+  category: "work"
+
+- place: "ETS Montreal"
+  time: "Spring 2019"
+  title: "Research Intern"
+  subtitle: "Advisor: Jose Dolz"
+  category: "school"
+
+- place: "Ryelore AI"
+  time: "Fall 2018"
+  title: "Data Scientist, Intern"
+  subtitle: "Farming Risk Assesment"
+  category: "work"
+
+- place: "Antriex Technology"
+  time: "Summers 2018"
+  title: "Data Analyst, Intern"
+  subtitle: "Crypto Assets Team"
+  category: "school"
+
+- place: "Indian Institute of Technology Roorkee"
+  time: "July 2016 - July 2020"
+  title: "B.Tech"
+  subtitle: "Materials Science <br/> First Division"
+  category: "work"
