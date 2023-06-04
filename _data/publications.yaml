@@ -1,14 +1,20 @@
 papers:
+  - title: "DermSynth3D: Synthesis of in-the-wild Annotated Dermatology Images"
+    authors: "<b>Ashish Sinha</b>*, Jeremy Kawahara*, Arezou Pakzad*, Kumar Abhishek, Matthieu Ruthven, Enjie Ghorbel, Anis Kacem, Djamila Aouada, Ghassan Hamarneh"
+    venue: "Submitted. Medical Image Analysis. 2023"
+    paper_pdf: "https://arxiv.org/pdf/2305.12621.pdf"
+    selected: y
+    
   - title: "MEnsA: Mix-up Ensemble Average for Unsupervised Multi Target Domain Adaptation on 3D Point Clouds"
     authors: "<b>Ashish Sinha</b>, Jonghyun Choi"
-    venue: "Submitted"
-    paper_pdf: "#"
-    selected: n
+    venue: "Workshop on Learning with Limited Data, CVPR. 2023"
+    paper_pdf: "https://arxiv.org/pdf/2304.01554.pdf"
+    selected: y
 
   - title: "Deep Learning based Dimple Segmentation for Quantitative Fractography."
     authors: "<b>Ashish Sinha</b>, K.S. Suresh"
     venue: "Industrial Machine Learning Workshop, ICPR. 2020. <b>Spotlight</b>"
-    paper_pdf: "https://arxiv.org/abs/2007.02267"
+    paper_pdf: "https://link.springer.com/chapter/10.1007/978-3-030-68799-1_34"
     selected: y
 
   - title: "Ntire 2020 challenge on image demoireing: Methods and results."
@@ -20,7 +26,7 @@ papers:
   - title: "Multi-scale self-guided attention for medical image segmentation."
     authors: "<b>Ashish Sinha</b>, Jose Dolz"
     venue: "JBHI: Journal of Biomedical and Health Informatics. 2020."
-    paper_pdf: "https://arxiv.org/pdf/1906.02849.pdf"
+    paper_pdf: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9066969"
     selected: y
 
   - title: "GA-GAN: CT reconstruction from Biplanar DRRs using GAN with Guided Attention."
