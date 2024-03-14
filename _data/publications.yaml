@@ -1,4 +1,10 @@
 papers:
+  - title: "Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields"
+    authors: "<b>Ashish Sinha</b> and Ghassan Hamarneh"
+    venue: "In Review. 2024"
+    paper_pdf: "#"
+    selected: y
+    
   - title: "DermSynth3D: Synthesis of in-the-wild Annotated Dermatology Images"
     authors: "<b>Ashish Sinha</b>*, Jeremy Kawahara*, Arezou Pakzad*, Kumar Abhishek, Matthieu Ruthven, Enjie Ghorbel, Anis Kacem, Djamila Aouada, Ghassan Hamarneh"
     venue: "Submitted. Medical Image Analysis. 2023"
