@@ -1,3 +1,4 @@
 .DS_STORE/
+.bundel/
 .jekyll-cache/*
 _site/*

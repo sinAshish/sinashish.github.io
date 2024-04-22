@@ -4,5 +4,7 @@ includes:    ./_includes
 baseurl: ''
 
 collections:
+  blog:
+    output: true
   projects:
     output: true

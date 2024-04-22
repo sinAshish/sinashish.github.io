@@ -17,7 +17,7 @@ title: Personal Webpage
       <br>
 	Briefly, I worked with <a href = "https://ppolon.github.io" target="_blank">Prof. Jonghyun Choi</a> on domain adaptation of point cloud data.
     For my Bachelors' thesis, I worked on Localizing and Classfiying surface defects in surface and Scanning Electron Microscope (SEM) images of metals.
-    During the summers of my junior year, I interned at <a href="https://preferred.jp/en/" target="_blank">Preferred Networks</a> where I worked on 3D GAN-based reconstruction. 
+    During the summers of my junior year, I interned at <a href="https://preferred.jp/en/" target="_blank">Preferred Networks</a> where I worked on 3D GAN-based reconstruction.
     I am also fortunate to have been supervised by <a href="https://josedolz.github.io" target="_blank">Prof. Jose Dolz</a> on biomedical image segmentation.
 </p>
 
@@ -52,6 +52,9 @@ title: Personal Webpage
             {% if paper.paper_pdf %}
               <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
             {% endif %}
+            {% if paper.pdf %}
+              <a class="button" href="{{ paper.pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+            {% endif %}
 
             {% if paper.slides %}
               <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
@@ -82,6 +85,9 @@ title: Personal Webpage
            <div class="paper-buttons">
             {% if paper.paper_pdf %}
               <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+            {% endif %}
+            {% if paper.pdf %}
+              <a class="button" href="{{ paper.pdf }}" target="_blank">Code</a>
             {% endif %}
 
             {% if paper.slides %}
