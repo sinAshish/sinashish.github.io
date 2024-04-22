@@ -5,9 +5,9 @@ papers:
     paper_pdf: "https://arxiv.org/html/2403.08974v1"
     selected: y
     code: "https://github.com/sfu-mial/TreeDiffusion"
-    slides: "./assets/slides/miccai_24_vcr_slides.pdf"
-    poster: "./assets/posters/TreeDiffusion_MiCCAI_Poster.pdf"
-    pdf: "./assets/paper/MICCAI_2024_INR_diffusion.pdf"
+    slides: "/assets/slides/miccai_24_vcr_slides.pdf"
+    poster: "/assets/posters/TreeDiffusion_MiCCAI_Poster.pdf"
+    pdf: "/assets/paper/MICCAI_2024_INR_diffusion.pdf"
 
   - title: "DermSynth3D: Synthesis of in-the-wild Annotated Dermatology Images"
     authors: "<b>Ashish Sinha</b>*, Jeremy Kawahara*, Arezou Pakzad*, Kumar Abhishek, Matthieu Ruthven, Enjie Ghorbel, Anis Kacem, Djamila Aouada, Ghassan Hamarneh"
@@ -15,8 +15,8 @@ papers:
     paper_pdf: "https://www.sciencedirect.com/science/article/pii/S1361841524000707"
     selected: y
     code: "https://github.com/sfu-mial/DermSynth3D"
-    poster: "./assets/posters/ds3d_2024_media.pdf"
-    pdf: "./assets/paper/dermsynth3d_arxiv.pdf"
+    poster: "/assets/posters/ds3d_2024_media.pdf"
+    pdf: "/assets/paper/dermsynth3d_arxiv.pdf"
 
   - title: "MEnsA: Mix-up Ensemble Average for Unsupervised Multi Target Domain Adaptation on 3D Point Clouds"
     authors: "<b>Ashish Sinha</b>, Jonghyun Choi"
@@ -24,15 +24,15 @@ papers:
     paper_pdf: "https://arxiv.org/pdf/2304.01554.pdf"
     selected: y
     code: "https://github.com/sinAshish/MEnsA_mtda"
-    poster: "./assets/posters/CVPRW_2023_MENSA.pdf"
-    pdf: "./assets/paper/CVPRW_2023_MENSA.pdf"
+    poster: "/assets/posters/CVPRW_2023_MENSA.pdf"
+    pdf: "/assets/paper/CVPRW_2023_MENSA.pdf"
 
   - title: "Deep Learning based Dimple Segmentation for Quantitative Fractography."
     authors: "<b>Ashish Sinha</b>, K.S. Suresh"
     venue: "ICPR. Industrial Machine Learning Workshop. 2020. <b>Spotlight</b>"
     paper_pdf: "https://link.springer.com/chapter/10.1007/978-3-030-68799-1_34"
     selected: y
-    pdf: "./assets/paper/ICPR_IML_Workshop_Paper.pdf"
+    pdf: "/assets/paper/ICPR_IML_Workshop_Paper.pdf"
 
   - title: "Ntire 2020 challenge on image demoireing: Methods and results."
     authors: "Yuan et. al., <b>Ashish Sinha</b>"
@@ -44,7 +44,7 @@ papers:
     authors: "<b>Ashish Sinha</b>, Jose Dolz"
     venue: "JBHI: Journal of Biomedical and Health Informatics. 2020."
     paper_pdf: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9066969"
-    pdf: "./assets/paper/msguided_jbhi.pdf"
+    pdf: "/assets/paper/msguided_jbhi.pdf"
     code: "https://github.com/sinAshish/Multi-Scale-Attention"
     selected: y
 
@@ -53,4 +53,4 @@ papers:
     venue: "NeurIPS'19, Workshop on Medical Imaging Meets NeurIPS. 2019."
     paper_pdf: "https://arxiv.org/pdf/1909.12525.pdf"
     selected: y
-    pdf: "./assets/paper/NeurIPS_2019_gagan.pdf"
+    pdf: "/assets/paper/NeurIPS_2019_gagan.pdf"
