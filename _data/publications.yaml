@@ -1,8 +1,8 @@
 papers:
   - title: "Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields"
     authors: "<b>Ashish Sinha</b> and Ghassan Hamarneh"
-    venue: "In Review. 2024"
-    paper_pdf: "https://arxiv.org/html/2403.08974v1"
+    venue: "MICCAI. 2024"
+    paper_pdf: "https://arxiv.org/pdf/2403.08974"
     selected: y
     code: "https://github.com/sfu-mial/TreeDiffusion"
     slides: "/assets/slides/miccai_24_vcr_slides.pdf"
