@@ -65,7 +65,8 @@
     <section class="header">
       <div class="row">
         <div class="three columns">
-          {% assign random_pic = site.profile_pic | sample %}
+<!--           {% assign random_pic = site.profile_pic | sample %} -->
+          {% assign random_pic = site.time | date: "%s%N" | modulo: site.data.main_info.profile_pic %}
 <!--           <a href="{{ site.baseurl }}/"><img class="u-max-full-width" src='{{ site.baseurl }}{{ site.data.main_info.profile_pic }}'></a> -->
           <a href="{{ site.baseurl }}/"><img class="u-max-full-width" src='{{ site.baseurl }}{{ random_pic }}'></a>
         </div>
