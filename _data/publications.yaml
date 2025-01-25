@@ -4,7 +4,7 @@ papers:
     venue: "MICCAI. 2024"
     paper_pdf: "https://arxiv.org/pdf/2403.08974"
     selected: y
-    code: "https://github.com/sfu-mial/TreeDiffusion"
+    code: "https://github.com/sinAshish/TreeDiffusion"
     slides: "/assets/slides/miccai_24_vcr_slides.pdf"
     poster: "/assets/posters/TreeDiffusion_MiCCAI_Poster.pdf"
     pdf: "/assets/paper/MICCAI_2024_INR_diffusion.pdf"
