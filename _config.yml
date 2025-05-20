@@ -8,7 +8,8 @@ source:      .
 destination: ./_site
 includes:    ./_includes
 baseurl: ''
-
+title: "Ashish Sinha"
+description: "Machine Learning Researcher"
 collections:
   blog:
     output: true
