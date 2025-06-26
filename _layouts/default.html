@@ -77,75 +77,49 @@
           <a href="{{ site.baseurl }}"><img class="u-max-full-width" src='{{ site.baseurl }}{{ site.data.main_info.profile_pic }}'></a>
         </div> -->
         <!-- uncomment above for non-randomized version of pics -->
-        <div class="three columns">
-            <a href="{{ site.baseurl }}">
-              <img class="u-max-full-width dp-circular" src='{{ site.baseurl }}{{ site.data.main_info.profile_pics[0] }}' id="profile-pic" alt='My Face' loading='lazy'>
-            </a>
-            <button id="change-pic-btn" style="margin-top:10px;">See the new Ashish</button>
+        <div class="three columns" style="text-align:center;">
+          <a href="{{ site.baseurl }}">
+            <img class="u-max-full-width dp-circular" src='{{ site.baseurl }}{{ site.data.main_info.profile_pics[0] }}' id="profile-pic" alt='My Face' loading='lazy'>
+          </a>
         </div>
-        <script>
-          const pics = [
-            {% for pic in site.data.main_info.profile_pics %}
-              "{{ site.baseurl }}{{ pic }}"{% unless forloop.last %},{% endunless %}
-            {% endfor %}
-          ];
-          // const idx = Math.floor(Math.random() * pics.length);
-          // document.addEventListener("DOMContentLoaded", function() {
-          //   document.getElementById("profile-pic").src = pics[idx];
-          // });
-          function setRandomPic() {
-            const idx = Math.floor(Math.random() * pics.length);
-            document.getElementById("profile-pic").src = pics[idx];
-          }
-          document.addEventListener("DOMContentLoaded", function() {
-            setRandomPic();
-            document.getElementById("change-pic-btn").addEventListener("click", setRandomPic);
-          });
-        </script>
-        <style>
-          .dp-circular {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #eee;
-            display: block;
-            margin: 0 auto;
-          }
-        </style>
         <div class="nine columns main-description">
-            <h1>{{ site.data.main_info.name }}</h1>
-            <p>{{ site.data.main_info.title }}</p>
-            <p>{{ site.data.main_info.email }}</p>
-            <p>
-              <span onclick="window.open('{{ site.data.main_info.twitter }}')" style="cursor: pointer">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </span>
+          <div style="display: flex; align-items: center;">
+            <h1 style="margin-right: 16px;">{{ site.data.main_info.name }}</h1>
+            <div class="side-btn-container">
+              <button id="change-pic-btn">See the new Ashish</button>
+            </div>
+          </div>
+          <p>{{ site.data.main_info.title }}</p>
+          <p>{{ site.data.main_info.email }}</p>
+          <p>
+            <span onclick="window.open('{{ site.data.main_info.twitter }}')" style="cursor: pointer">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </span>
 
-              <span onclick="window.open('{{ site.data.main_info.linkedin }}')" style="cursor: pointer">
-                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              </span>
+            <span onclick="window.open('{{ site.data.main_info.linkedin }}')" style="cursor: pointer">
+              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            </span>
 
-              <span onclick="window.open('{{ site.data.main_info.github }}')" style="cursor: pointer">
-                <i class="fa fa-github" aria-hidden="true"></i>
-              </span>
+            <span onclick="window.open('{{ site.data.main_info.github }}')" style="cursor: pointer">
+              <i class="fa fa-github" aria-hidden="true"></i>
+            </span>
 <!--               <span onclick="window.open('{{ site.data.main_info.facebook }}')" style="cursor: pointer">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </span> -->
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </span> -->
 
-              <span onclick="window.open('{{ site.data.main_info.google_scholar }}')" style="cursor: pointer">
-                <i class="ai ai-google-scholar ai-lg" aria-hidden="true"></i>
-              </span>
+            <span onclick="window.open('{{ site.data.main_info.google_scholar }}')" style="cursor: pointer">
+              <i class="ai ai-google-scholar ai-lg" aria-hidden="true"></i>
+            </span>
 
-              <span onclick="window.open('{{ site.data.main_info.CV }}')" style="cursor: pointer">
-                <i class="ai ai-cv ai-2x" aria-hidden="true" alt='CV'></i>
-              </span>
-              <span onclick="window.open('{{ site.data.main_info.Resume }}')" style="cursor: pointer">
-                <!-- <i class="ai ai-archive ai-ex" aria-hidden="true"></i> -->
+            <span onclick="window.open('{{ site.data.main_info.CV }}')" style="cursor: pointer">
+              <i class="ai ai-cv ai-2x" aria-hidden="true" alt='CV'></i>
+            </span>
+            <span onclick="window.open('{{ site.data.main_info.Resume }}')" style="cursor: pointer">
+              <!-- <i class="ai ai-archive ai-ex" aria-hidden="true"></i> -->
 <!--                 <i class="ai ai-obp ai-2x" aria-hidden="true"></i> -->
-                  <i class="fa fa-file-pdf-o" aria-hidden="true" alt = "resume"></i>
-              </span>
-            </p>
+                <i class="fa fa-file-pdf-o" aria-hidden="true" alt = "resume"></i>
+            </span>
+          </p>
         </div>
       </div>
     </section>
