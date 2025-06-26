@@ -482,19 +482,55 @@
       color: #e0e0e0 !important;
       background: #181a1b !important;
     }
+    /* Change all #FA5050 (red) to skyblue in dark mode */
+    .dark-mode,
+    .dark-mode * {
+      /* Replace any #FA5050 foreground or background with skyblue */
+      color: inherit;
+    }
+    .dark-mode .fa,
+    .dark-mode .ai,
+    .dark-mode .navbar-link,
     .dark-mode a,
-    .dark-mode .navbar-link {
+    .dark-mode .navbar-link:visited,
+    .dark-mode .navbar-link:hover {
+      color: skyblue !important;
       text-decoration: underline;
     }
-    .dark-mode .footer {
-      border-top: 1px solid #333;
-      border-bottom: 1px solid #333;
+    /* If you have custom classes using #FA5050, override them: */
+    .dark-mode .fa,
+    .dark-mode .ai,
+    .dark-mode .highlight,
+    .dark-mode .tag,
+    .dark-mode .some-custom-class {
+      color: skyblue !important;
+      background-color: transparent !important;
+      border-color: skyblue !important;
     }
-    .dark-mode .container {
+    /* Change #222222 to light gray in dark mode */
+    .dark-mode,
+    .dark-mode .container,
+    .dark-mode .footer,
+    .dark-mode .navbar,
+    .dark-mode .header,
+    .dark-mode .main-description,
+    .dark-mode .btn-col button,
+    .dark-mode #dark-mode-toggle {
       background: #181a1b !important;
+      color: #e0e0e0 !important;
+      border-color: #444 !important;
     }
-    .dark-mode .dp-circular {
-      border-color: #444;
+    .dark-mode .light-gray,
+    .dark-mode .text-dark,
+    .dark-mode .text-black,
+    .dark-mode .text-222,
+    .dark-mode .text-222222 {
+      color: #cccccc !important;
+    }
+    /* Specifically override #222222 foreground */
+    .dark-mode * {
+      /* If any element has color: #222222, override it */
+      color: #cccccc !important;
     }
     /* ...existing code... */
   </style>
