@@ -103,16 +103,39 @@
         align-items: flex-start;
         justify-content: center;
         padding-top: 24px;
+        /* Remove left margin for desktop, will override for mobile */
+        margin-left: 0;
       }
       @media (max-width: 900px) {
         .header-row-flex {
           flex-direction: column;
           gap: 0;
         }
+        .profile-col {
+          margin-bottom: 12px;
+        }
+        .info-col {
+          margin-bottom: 8px;
+        }
         .btn-col {
-          align-items: center;
-          padding-top: 16px;
-          margin-bottom: 16px;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: flex-start;
+          padding-top: 8px;
+          margin-left: 0;
+          margin-bottom: 0;
+        }
+      }
+      @media (max-width: 600px) {
+        .dp-circular {
+          width: 120px;
+          height: 120px;
+        }
+        .btn-col {
+          padding-top: 4px;
+        }
+        .header-row-flex {
+          gap: 0;
         }
       }
     </style>
@@ -124,7 +147,7 @@
           </a>
         </div>
         <div class="info-col main-description">
-          <div style="display: flex; align-items: center;">
+          <div style="display: flex; align-items: center; flex-wrap: wrap;">
             <h1 style="margin-right: 16px;">{{ site.data.main_info.name }}</h1>
           </div>
           <p>{{ site.data.main_info.title }}</p>
@@ -139,21 +162,14 @@
             <span onclick="window.open('{{ site.data.main_info.github }}')" style="cursor: pointer">
               <i class="fa fa-github" aria-hidden="true"></i>
             </span>
-<!--               <span onclick="window.open('{{ site.data.main_info.facebook }}')" style="cursor: pointer">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </span> -->
-
             <span onclick="window.open('{{ site.data.main_info.google_scholar }}')" style="cursor: pointer">
               <i class="ai ai-google-scholar ai-lg" aria-hidden="true"></i>
             </span>
-
             <span onclick="window.open('{{ site.data.main_info.CV }}')" style="cursor: pointer">
               <i class="ai ai-cv ai-2x" aria-hidden="true" alt='CV'></i>
             </span>
             <span onclick="window.open('{{ site.data.main_info.Resume }}')" style="cursor: pointer">
-              <!-- <i class="ai ai-archive ai-ex" aria-hidden="true"></i> -->
-<!--                 <i class="ai ai-obp ai-2x" aria-hidden="true"></i> -->
-                <i class="fa fa-file-pdf-o" aria-hidden="true" alt = "resume"></i>
+              <i class="fa fa-file-pdf-o" aria-hidden="true" alt = "resume"></i>
             </span>
           </p>
         </div>
