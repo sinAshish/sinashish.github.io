@@ -70,22 +70,62 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
 
+    <style>
+      .dp-circular {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #eee;
+        display: block;
+        margin: 0 auto;
+      }
+      .header-row-flex {
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .profile-col, .info-col, .btn-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .profile-col {
+        flex: 0 0 180px;
+        align-items: center;
+      }
+      .info-col {
+        flex: 1;
+        min-width: 0;
+      }
+      .btn-col {
+        flex: 0 0 160px;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 24px;
+      }
+      @media (max-width: 900px) {
+        .header-row-flex {
+          flex-direction: column;
+          gap: 0;
+        }
+        .btn-col {
+          align-items: center;
+          padding-top: 16px;
+          margin-bottom: 16px;
+        }
+      }
+    </style>
     <section class="header">
-      <div class="row">
-        <!-- non randomized version of pics -->
-        <!-- <div class="three columns">
-          <a href="{{ site.baseurl }}"><img class="u-max-full-width" src='{{ site.baseurl }}{{ site.data.main_info.profile_pic }}'></a>
-        </div> -->
-        <!-- uncomment above for non-randomized version of pics -->
-        <div class="three columns" style="text-align:center;">
+      <div class="header-row-flex">
+        <div class="profile-col">
           <a href="{{ site.baseurl }}">
             <img class="u-max-full-width dp-circular" src='{{ site.baseurl }}{{ site.data.main_info.profile_pics[0] }}' id="profile-pic" alt='My Face' loading='lazy'>
           </a>
         </div>
-        <div class="nine columns main-description">
+        <div class="info-col main-description">
           <div style="display: flex; align-items: center;">
             <h1 style="margin-right: 16px;">{{ site.data.main_info.name }}</h1>
-
           </div>
           <p>{{ site.data.main_info.title }}</p>
           <p>{{ site.data.main_info.email }}</p>
@@ -93,11 +133,9 @@
             <span onclick="window.open('{{ site.data.main_info.twitter }}')" style="cursor: pointer">
               <i class="fa fa-twitter" aria-hidden="true"></i>
             </span>
-
             <span onclick="window.open('{{ site.data.main_info.linkedin }}')" style="cursor: pointer">
               <i class="fa fa-linkedin-square" aria-hidden="true"></i>
             </span>
-
             <span onclick="window.open('{{ site.data.main_info.github }}')" style="cursor: pointer">
               <i class="fa fa-github" aria-hidden="true"></i>
             </span>
@@ -118,12 +156,27 @@
                 <i class="fa fa-file-pdf-o" aria-hidden="true" alt = "resume"></i>
             </span>
           </p>
-              <div class="side-btn-container">
-              <button id="change-pic-btn">See the new Ashish</button>
-            </div>
+        </div>
+        <div class="btn-col">
+          <button id="change-pic-btn">See the new Ashish</button>
         </div>
       </div>
     </section>
+    <script>
+      const pics = [
+        {% for pic in site.data.main_info.profile_pics %}
+          "{{ site.baseurl }}{{ pic }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ];
+      function setRandomPic() {
+        const idx = Math.floor(Math.random() * pics.length);
+        document.getElementById("profile-pic").src = pics[idx];
+      }
+      document.addEventListener("DOMContentLoaded", function() {
+        setRandomPic();
+        document.getElementById("change-pic-btn").addEventListener("click", setRandomPic);
+      });
+    </script>
 
     <div class="navbar-spacer"></div>
     <nav class="navbar">
