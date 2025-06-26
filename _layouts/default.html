@@ -474,7 +474,6 @@
     .dark-mode h6,
     .dark-mode p,
     .dark-mode li,
-    .dark-mode a,
     .dark-mode .navbar-link,
     .dark-mode .main-description,
     .dark-mode .footer,
@@ -482,24 +481,36 @@
       color: #e0e0e0 !important;
       background: #181a1b !important;
     }
-    /* Change all #FA5050 (red) to skyblue in dark mode */
-    .dark-mode,
-    .dark-mode * {
-      /* Replace any #FA5050 foreground or background with skyblue */
-      color: inherit;
-    }
-    .dark-mode .fa,
-    .dark-mode .ai,
-    .dark-mode .navbar-link,
+    /* All links in dark mode: skyblue, no underline */
     .dark-mode a,
+    .dark-mode .navbar-link,
     .dark-mode .navbar-link:visited,
     .dark-mode .navbar-link:hover {
       color: skyblue !important;
-      text-decoration: underline;
+      text-decoration: none !important;
+      border-bottom: none !important;
     }
-    /* If you have custom classes using #FA5050, override them: */
+    /* FontAwesome, Academicons, and any .fa/.ai icons: skyblue */
     .dark-mode .fa,
-    .dark-mode .ai,
+    .dark-mode .ai {
+      color: skyblue !important;
+    }
+    /* Change #FA5050 and #FF5050 to skyblue in dark mode */
+    .dark-mode [style*="#FA5050"],
+    .dark-mode [style*="#fa5050"],
+    .dark-mode [style*="#FF5050"],
+    .dark-mode [style*="#ff5050"] {
+      color: skyblue !important;
+      border-color: skyblue !important;
+      background-color: transparent !important;
+    }
+    /* Change #CCCCCC to skyblue in dark mode */
+    .dark-mode [style*="#CCCCCC"],
+    .dark-mode [style*="#cccccc"] {
+      color: skyblue !important;
+      border-color: skyblue !important;
+    }
+    /* If you have custom classes using #FA5050, #FF5050, or #CCCCCC, override them: */
     .dark-mode .highlight,
     .dark-mode .tag,
     .dark-mode .some-custom-class {
