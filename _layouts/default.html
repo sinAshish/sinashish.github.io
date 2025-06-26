@@ -63,8 +63,75 @@
   <link rel="icon" type="image/png" href={{ "/libs/icon.png" | prepend: site.baseurl }}>
   <link rel="shortcut icon" type="image/png" href={{ "/libs/icon.png" | prepend: site.baseurl }}>
 
+  <style>
+    /* ...existing styles... */
+    .dark-mode {
+      background: #181a1b !important;
+      color: #e0e0e0 !important;
+    }
+    .dark-mode .container,
+    .dark-mode .footer,
+    .dark-mode .navbar,
+    .dark-mode .header,
+    .dark-mode .main-description {
+      background: #181a1b !important;
+      color: #e0e0e0 !important;
+    }
+    .dark-mode .dp-circular {
+      border-color: #444;
+    }
+    .dark-mode .navbar,
+    .dark-mode .footer {
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+    .dark-mode .navbar-link,
+    .dark-mode .navbar-link:visited {
+      color: #e0e0e0 !important;
+    }
+    .dark-mode .navbar-link:hover {
+      color: #ffd700 !important;
+    }
+    .dark-mode .btn-col button,
+    .dark-mode #dark-mode-toggle {
+      background: #222;
+      color: #e0e0e0;
+      border: 1px solid #444;
+    }
+    .dark-mode #dark-mode-toggle {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #dark-mode-toggle {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 1000;
+      background: #fff;
+      color: #222;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      padding: 8px 18px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.3s, color 0.3s, border 0.3s;
+      outline: none;
+    }
+    #dark-mode-toggle:active {
+      transform: scale(0.97);
+    }
+    @media (max-width: 600px) {
+      #dark-mode-toggle {
+        top: 12px;
+        right: 12px;
+        padding: 6px 12px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
