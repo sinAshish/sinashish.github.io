@@ -428,23 +428,77 @@
   <!-- Place the script here, just before </body> -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Dark mode toggle logic
       const toggleBtn = document.getElementById('dark-mode-toggle');
-      if (!toggleBtn) return; // Defensive: only run if button exists
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      function setDarkMode(on) {
-        document.body.classList.toggle('dark-mode', on);
-        toggleBtn.textContent = on ? '☀️ Light Mode' : '🌙 Dark Mode';
-        localStorage.setItem('darkMode', on ? '1' : '0');
+      if (toggleBtn) {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        function setDarkMode(on) {
+          document.body.classList.toggle('dark-mode', on);
+          toggleBtn.textContent = on ? '☀️ Light Mode' : '🌙 Dark Mode';
+          localStorage.setItem('darkMode', on ? '1' : '0');
+        }
+        const saved = localStorage.getItem('darkMode');
+        setDarkMode(saved === '1' || (saved === null && prefersDark));
+        toggleBtn.addEventListener('click', function() {
+          setDarkMode(!document.body.classList.contains('dark-mode'));
+        });
       }
-      // On load: check localStorage or system preference
-      const saved = localStorage.getItem('darkMode');
-      setDarkMode(saved === '1' || (saved === null && prefersDark));
-      toggleBtn.addEventListener('click', function() {
-        setDarkMode(!document.body.classList.contains('dark-mode'));
-      });
+      // Profile pic randomizer logic
+      const changePicBtn = document.getElementById('change-pic-btn');
+      const profilePic = document.getElementById('profile-pic');
+      if (changePicBtn && profilePic) {
+        const pics = [
+          {% for pic in site.data.main_info.profile_pics %}
+            "{{ site.baseurl }}{{ pic }}"{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ];
+        function setRandomPic() {
+          let idx = Math.floor(Math.random() * pics.length);
+          // Avoid same image as current
+          if (profilePic.src.endsWith(pics[idx])) {
+            idx = (idx + 1) % pics.length;
+          }
+          profilePic.src = pics[idx];
+        }
+        changePicBtn.addEventListener('click', setRandomPic);
+      }
     });
   </script>
-
+  <style>
+    /* ...existing styles... */
+    .dark-mode,
+    .dark-mode h1,
+    .dark-mode h2,
+    .dark-mode h3,
+    .dark-mode h4,
+    .dark-mode h5,
+    .dark-mode h6,
+    .dark-mode p,
+    .dark-mode li,
+    .dark-mode a,
+    .dark-mode .navbar-link,
+    .dark-mode .main-description,
+    .dark-mode .footer,
+    .dark-mode .btn-col button {
+      color: #e0e0e0 !important;
+      background: #181a1b !important;
+    }
+    .dark-mode a,
+    .dark-mode .navbar-link {
+      text-decoration: underline;
+    }
+    .dark-mode .footer {
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+    .dark-mode .container {
+      background: #181a1b !important;
+    }
+    .dark-mode .dp-circular {
+      border-color: #444;
+    }
+    /* ...existing code... */
+  </style>
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
