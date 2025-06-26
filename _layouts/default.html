@@ -452,15 +452,14 @@
             "{{ site.baseurl }}{{ pic }}"{% unless forloop.last %},{% endunless %}
           {% endfor %}
         ];
-        function setRandomPic() {
-          let idx = Math.floor(Math.random() * pics.length);
-          // Avoid same image as current
-          if (profilePic.src.endsWith(pics[idx])) {
-            idx = (idx + 1) % pics.length;
-          }
+        changePicBtn.addEventListener('click', function() {
+          let current = profilePic.src;
+          let idx;
+          do {
+            idx = Math.floor(Math.random() * pics.length);
+          } while (current.includes(pics[idx]) && pics.length > 1);
           profilePic.src = pics[idx];
-        }
-        changePicBtn.addEventListener('click', setRandomPic);
+        });
       }
     });
   </script>
