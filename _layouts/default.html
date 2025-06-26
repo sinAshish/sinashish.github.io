@@ -365,37 +365,6 @@
         </div>
       </div>
     </section>
-    <script>
-      // Dark mode toggle logic with transition and localStorage
-      document.addEventListener('DOMContentLoaded', function() {
-        const toggleBtn = document.getElementById('dark-mode-toggle');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        function setDarkMode(on) {
-          document.body.classList.toggle('dark-mode', on);
-          toggleBtn.textContent = on ? '☀️ Light Mode' : '🌙 Dark Mode';
-          localStorage.setItem('darkMode', on ? '1' : '0');
-        }
-        // On load: check localStorage or system preference
-        const saved = localStorage.getItem('darkMode');
-        setDarkMode(saved === '1' || (saved === null && prefersDark));
-        toggleBtn.addEventListener('click', function() {
-          setDarkMode(!document.body.classList.contains('dark-mode'));
-        });
-
-        // Profile pic randomizer
-        const pics = [
-          {% for pic in site.data.main_info.profile_pics %}
-            "{{ site.baseurl }}{{ pic }}"{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-        ];
-        function setRandomPic() {
-          const idx = Math.floor(Math.random() * pics.length);
-          document.getElementById("profile-pic").src = pics[idx];
-        }
-        setRandomPic();
-        document.getElementById("change-pic-btn").addEventListener("click", setRandomPic);
-      });
-    </script>
 
     <div class="navbar-spacer"></div>
     <nav class="navbar">
@@ -456,8 +425,25 @@
   <!-- Google Analytics -->
   {% include google_analytics.html %}
 
-  
-  
+  <!-- Place the script here, just before </body> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleBtn = document.getElementById('dark-mode-toggle');
+      if (!toggleBtn) return; // Defensive: only run if button exists
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      function setDarkMode(on) {
+        document.body.classList.toggle('dark-mode', on);
+        toggleBtn.textContent = on ? '☀️ Light Mode' : '🌙 Dark Mode';
+        localStorage.setItem('darkMode', on ? '1' : '0');
+      }
+      // On load: check localStorage or system preference
+      const saved = localStorage.getItem('darkMode');
+      setDarkMode(saved === '1' || (saved === null && prefersDark));
+      toggleBtn.addEventListener('click', function() {
+        setDarkMode(!document.body.classList.contains('dark-mode'));
+      });
+    });
+  </script>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
