@@ -608,7 +608,7 @@
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         function setDarkMode(on) {
           document.body.classList.toggle('dark-mode', on);
-          toggleBtn.textContent = on ? '☀️ Light Mode' : '🌙 Dark Mode';
+          toggleBtn.textContent = on ? '☀️' : '🌙';
           localStorage.setItem('darkMode', on ? '1' : '0');
         }
         const saved = localStorage.getItem('darkMode');
@@ -680,6 +680,15 @@
     .dark-mode .text-dark,
     .dark-mode .text-black {
       color: #cccccc !important;
+    }
+    /* all links skyblue no underline */
+    a,
+    .navbar-link,
+    .navbar-link:visited,
+    .navbar-link:hover {
+      color: var(--skyblue) !important;
+      text-decoration: none !important;
+      border-bottom: none !important;
     }
     /* All links: skyblue, no underline */
     .dark-mode a,
