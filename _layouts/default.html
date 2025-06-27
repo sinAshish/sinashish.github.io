@@ -66,6 +66,77 @@
   <style>
     /* ...existing styles... */
     .dark-mode {
+      --skyblue: #4aa9f7;
+    }
+    /* Most text: white or gray in dark mode */
+    .dark-mode,
+    .dark-mode h1,
+    .dark-mode h2,
+    .dark-mode h3,
+    .dark-mode h4,
+    .dark-mode h5,
+    .dark-mode h6,
+    .dark-mode p,
+    .dark-mode li,
+    .dark-mode .main-description,
+    .dark-mode .footer,
+    .dark-mode .btn-col button {
+      color: #f5f5f5 !important;
+      background: #181a1b !important;
+    }
+    .dark-mode .text-gray,
+    .dark-mode .light-gray,
+    .dark-mode .text-dark,
+    .dark-mode .text-black {
+      color: #cccccc !important;
+    }
+    /* All links: skyblue, no underline */
+    .dark-mode a,
+    .dark-mode .navbar-link,
+    .dark-mode .navbar-link:visited,
+    .dark-mode .navbar-link:hover {
+      color: var(--skyblue) !important;
+      text-decoration: none !important;
+      border-bottom: none !important;
+    }
+    /* FontAwesome, Academicons, and any .fa/.ai icons: skyblue */
+    .dark-mode .fa,
+    .dark-mode .ai {
+      color: var(--skyblue) !important;
+    }
+    /* Inline style overrides for #FA5050, #FF5050, #CCCCCC to sky blue or gray */
+    .dark-mode [style*="#FA5050"],
+    .dark-mode [style*="#fa5050"],
+    .dark-mode [style*="#FF5050"],
+    .dark-mode [style*="#ff5050"] {
+      color: var(--skyblue) !important;
+      border-color: var(--skyblue) !important;
+      background-color: transparent !important;
+    }
+    .dark-mode [style*="#CCCCCC"],
+    .dark-mode [style*="#cccccc"] {
+      color: #cccccc !important;
+      border-color: #cccccc !important;
+    }
+    /* Custom classes using sky blue or gray */
+    .dark-mode .highlight,
+    .dark-mode .tag,
+    .dark-mode .some-custom-class {
+      color: var(--skyblue) !important;
+      background-color: transparent !important;
+      border-color: var(--skyblue) !important;
+    }
+    /* Do NOT override text color if background is light (e.g. #fff, #f5f5f5, #fafafa) */
+    .dark-mode [style*="background:#fff"],
+    .dark-mode [style*="background: #fff"],
+    .dark-mode [style*="background:#f5f5f5"],
+    .dark-mode [style*="background: #f5f5f5"],
+    .dark-mode [style*="background:#fafafa"],
+    .dark-mode [style*="background: #fafafa"] {
+      color: inherit !important;
+    }
+    /* Dark mode specific styles */
+    .dark-mode {
       background: #181a1b !important;
       color: #e0e0e0 !important;
     }
@@ -90,7 +161,7 @@
       color: #e0e0e0 !important;
     }
     .dark-mode .navbar-link:hover {
-      color: #ffd700 !important;
+      color: #009dff !important;
     }
     .dark-mode .btn-col button,
     .dark-mode #dark-mode-toggle {
@@ -497,6 +568,10 @@
   </script>
   <style>
     /* ...existing styles... */
+    .dark-mode {
+      --skyblue: #4aa9f7;
+    }
+    /* Most text: white or gray in dark mode */
     .dark-mode,
     .dark-mode h1,
     .dark-mode h2,
@@ -506,147 +581,62 @@
     .dark-mode h6,
     .dark-mode p,
     .dark-mode li,
-    .dark-mode .navbar-link,
     .dark-mode .main-description,
     .dark-mode .footer,
     .dark-mode .btn-col button {
-      color: #e0e0e0 !important;
+      color: #f5f5f5 !important;
       background: #181a1b !important;
     }
-    /* All links in dark mode: skyblue, no underline */
+    .dark-mode .text-gray,
+    .dark-mode .light-gray,
+    .dark-mode .text-dark,
+    .dark-mode .text-black {
+      color: #cccccc !important;
+    }
+    /* All links: skyblue, no underline */
     .dark-mode a,
     .dark-mode .navbar-link,
     .dark-mode .navbar-link:visited,
     .dark-mode .navbar-link:hover {
-      color: skyblue !important;
+      color: var(--skyblue) !important;
       text-decoration: none !important;
       border-bottom: none !important;
     }
     /* FontAwesome, Academicons, and any .fa/.ai icons: skyblue */
     .dark-mode .fa,
     .dark-mode .ai {
-      color: skyblue !important;
+      color: var(--skyblue) !important;
     }
-    /* Change #FA5050 and #FF5050 to skyblue in dark mode */
+    /* Inline style overrides for #FA5050, #FF5050, #CCCCCC to sky blue or gray */
     .dark-mode [style*="#FA5050"],
     .dark-mode [style*="#fa5050"],
     .dark-mode [style*="#FF5050"],
     .dark-mode [style*="#ff5050"] {
-      color: skyblue !important;
-      border-color: skyblue !important;
-      background-color: transparent !important;
-    }
-    /* Change #CCCCCC to skyblue in dark mode */
-    .dark-mode [style*="#CCCCCC"],
-    .dark-mode [style*="#cccccc"] {
-      color: skyblue !important;
-      border-color: skyblue !important;
-    }
-    /* If you have custom classes using #FA5050, #FF5050, or #CCCCCC, override them: */
-    .dark-mode .highlight,
-    .dark-mode .tag,
-    .dark-mode .some-custom-class {
-      color: skyblue !important;
-      background-color: transparent !important;
-      border-color: skyblue !important;
-    }
-    /* Change #222222 to light gray in dark mode */
-    .dark-mode,
-    .dark-mode .container,
-    .dark-mode .footer,
-    .dark-mode .navbar,
-    .dark-mode .header,
-    .dark-mode .main-description,
-    .dark-mode .btn-col button,
-    .dark-mode #dark-mode-toggle {
-      background: #181a1b !important;
-      color: #e0e0e0 !important;
-      border-color: #444 !important;
-    }
-    .dark-mode .light-gray,
-    .dark-mode .text-dark,
-    .dark-mode .text-black,
-    .dark-mode .text-222,
-    .dark-mode .text-222222 {
-      color: #4aa9f7 !important;
-    }
-    /* Specifically override #222222 foreground */
-    .dark-mode * {
-      /* If any element has color: #222222, override it */
-      color: #4aa9f7 !important;
-    }
-    /* Define two shades of sky blue for dark mode */
-    .dark-mode {
-      --skyblue-bold: #4aa9f7;
-      --skyblue-light: #8fd6ff;
-    }
-
-    /* Headings and bold text: bolder sky blue */
-    .dark-mode h1,
-    .dark-mode h2,
-    .dark-mode h3,
-    .dark-mode h4,
-    .dark-mode h5,
-    .dark-mode h6,
-    .dark-mode strong,
-    .dark-mode b,
-    .dark-mode .navbar-link.active,
-    .dark-mode .fa,
-    .dark-mode .ai {
-      color: var(--skyblue-bold) !important;
-    }
-
-    /* Normal text, links, paragraphs: lighter sky blue */
-    .dark-mode,
-    .dark-mode p,
-    .dark-mode li,
-    .dark-mode .navbar-link,
-    .dark-mode .main-description,
-    .dark-mode .footer,
-    .dark-mode .btn-col button,
-    .dark-mode a,
-    .dark-mode .navbar-link:visited,
-    .dark-mode .navbar-link:hover {
-      color: var(--skyblue-light) !important;
-      background: #181a1b !important;
-      text-decoration: none !important;
-      border-bottom: none !important;
-    }
-
-    /* Inline style overrides for #FA5050, #FF5050, #CCCCCC to sky blue shades */
-    .dark-mode [style*="#FA5050"],
-    .dark-mode [style*="#fa5050"],
-    .dark-mode [style*="#FF5050"],
-    .dark-mode [style*="#ff5050"] {
-      color: var(--skyblue-bold) !important;
-      border-color: var(--skyblue-bold) !important;
+      color: var(--skyblue) !important;
+      border-color: var(--skyblue) !important;
       background-color: transparent !important;
     }
     .dark-mode [style*="#CCCCCC"],
     .dark-mode [style*="#cccccc"] {
-      color: var(--skyblue-light) !important;
-      border-color: var(--skyblue-light) !important;
+      color: #cccccc !important;
+      border-color: #cccccc !important;
     }
-
-    /* Custom classes using sky blue shades */
+    /* Custom classes using sky blue or gray */
     .dark-mode .highlight,
     .dark-mode .tag,
     .dark-mode .some-custom-class {
-      color: var(--skyblue-bold) !important;
+      color: var(--skyblue) !important;
       background-color: transparent !important;
-      border-color: var(--skyblue-bold) !important;
+      border-color: var(--skyblue) !important;
     }
-
-    /* Change #222222 to lighter sky blue for all text in dark mode */
-    .dark-mode .light-gray,
-    .dark-mode .text-dark,
-    .dark-mode .text-black,
-    .dark-mode .text-222,
-    .dark-mode .text-222222 {
-      color: var(--skyblue-light) !important;
-    }
-    .dark-mode * {
-      color: var(--skyblue-light) !important;
+    /* Do NOT override text color if background is light (e.g. #fff, #f5f5f5, #fafafa) */
+    .dark-mode [style*="background:#fff"],
+    .dark-mode [style*="background: #fff"],
+    .dark-mode [style*="background:#f5f5f5"],
+    .dark-mode [style*="background: #f5f5f5"],
+    .dark-mode [style*="background:#fafafa"],
+    .dark-mode [style*="background: #fafafa"] {
+      color: inherit !important;
     }
   </style>
 <!-- End Document
