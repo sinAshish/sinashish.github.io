@@ -204,13 +204,27 @@
       background: #fff;
       color: #222;
       border: 1px solid #ccc;
-      border-radius: 24px;
-      padding: 8px 18px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      padding: 0;
       font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       transition: background 0.3s, color 0.3s, border 0.3s;
       outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #dark-mode-icon {
+      font-size: 1.5em;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
     }
     #dark-mode-toggle:active {
       transform: scale(0.97);
@@ -219,8 +233,12 @@
       #dark-mode-toggle {
         top: 12px;
         right: 12px;
-        padding: 6px 12px;
-        font-size: 0.95rem;
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+      #dark-mode-icon {
+        font-size: 1.2em;
       }
     }
     /* Responsive profile-pic improvements */
@@ -374,7 +392,7 @@
   </style>
 </head>
 <body>
-  <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+  <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -722,7 +740,9 @@
     }
     /* .flag class: skyblue in dark mode */
     .dark-mode .flag {
-      color: var(--skyblue) !important;
+      /* color: var(--skyblue) !important; */
+      color: #e6e6e6 !important;
+      background-color: var(--skyblue) !important;
     }
     /* Inline style overrides for #FA5050, #FF5050, #CCCCCC to sky blue or gray */
     .dark-mode [style*="#FA5050"],
