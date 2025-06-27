@@ -201,6 +201,7 @@
     }
     /* Responsive profile-pic improvements */
     .dp-circular {
+      position: relative;
       width: 180px;
       height: 180px;
       object-fit: cover;
@@ -208,7 +209,45 @@
       border: 2px solid #eee;
       display: block;
       margin: 0 auto;
-      transition: width 0.3s, height 0.3s;
+      transition: width 0.3s, height 0.3s, opacity 0.3s;
+      z-index: 1;
+    }
+    .dp-circular.transitioning {
+      /* Slight scale for effect */
+      opacity: 0.7;
+    }
+    .dp-circular-wipe {
+      position: absolute;
+      top: 0; left: 50%;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      border-radius: 50%;
+      overflow: hidden;
+      transform: translateX(-50%);
+      animation: diagonal-wipe 0.7s cubic-bezier(.77,0,.18,1);
+    }
+    @keyframes diagonal-wipe {
+      0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        opacity: 1;
+      }
+      60% {
+        clip-path: polygon(0 0, 100% 0, 0 100%, 0 100%);
+        opacity: 1;
+      }
+      100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        opacity: 0;
+      }
+    }
+    .dp-circular-wipe-diag {
+      background: linear-gradient(120deg, #4aa9f7 0%, #fff 100%);
+      opacity: 0.7;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
     }
     @media (max-width: 900px) {
       .dp-circular {
@@ -319,6 +358,7 @@
 
     <style>
       .dp-circular {
+        position: relative;
         width: 180px;
         height: 180px;
         object-fit: cover;
@@ -326,21 +366,45 @@
         border: 2px solid #eee;
         display: block;
         margin: 0 auto;
-        transition: transform 0.4s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+        transition: width 0.3s, height 0.3s, opacity 0.3s;
+        z-index: 1;
       }
-      .dp-circular.slide-out {
-        transform: translateX(100vw);
-        opacity: 0;
+      .dp-circular.transitioning {
+        /* Slight scale for effect */
+        opacity: 0.7;
       }
-      .dp-circular.slide-in {
-        transform: translateX(-100vw);
-        opacity: 0;
-        /* Start off-screen left */
+      .dp-circular-wipe {
+        position: absolute;
+        top: 0; left: 50%;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+        border-radius: 50%;
+        overflow: hidden;
+        transform: translateX(-50%);
+        animation: diagonal-wipe 0.7s cubic-bezier(.77,0,.18,1);
       }
-      .dp-circular.slide-in-active {
-        transform: translateX(0);
-        opacity: 1;
-        transition: transform 0.4s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+      @keyframes diagonal-wipe {
+        0% {
+          clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+          opacity: 1;
+        }
+        60% {
+          clip-path: polygon(0 0, 100% 0, 0 100%, 0 100%);
+          opacity: 1;
+        }
+        100% {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          opacity: 0;
+        }
+      }
+      .dp-circular-wipe-diag {
+        background: linear-gradient(120deg, #4aa9f7 0%, #fff 100%);
+        opacity: 0.7;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
       }
       .header-row-flex {
         display: flex;
@@ -529,7 +593,7 @@
           setDarkMode(!document.body.classList.contains('dark-mode'));
         });
       }
-      // Profile pic randomizer logic with sliding transition
+      // Profile pic randomizer logic with diagonal wipe transition
       const changePicBtn = document.getElementById('change-pic-btn');
       const profilePic = document.getElementById('profile-pic');
       if (changePicBtn && profilePic) {
@@ -538,6 +602,8 @@
             "{{ site.baseurl }}{{ pic }}"{% unless forloop.last %},{% endunless %}
           {% endfor %}
         ];
+        // Ensure parent is relative for overlay
+        profilePic.parentElement.style.position = 'relative';
         changePicBtn.addEventListener('click', function() {
           let current = profilePic.src;
           let idx;
@@ -545,23 +611,21 @@
             idx = Math.floor(Math.random() * pics.length);
           } while (current.includes(pics[idx]) && pics.length > 1);
 
-          // Slide out
-          profilePic.classList.remove('slide-in', 'slide-in-active');
-          profilePic.classList.add('slide-out');
+          // Add overlay for diagonal wipe
+          let wipe = document.createElement('div');
+          wipe.className = 'dp-circular-wipe';
+          let diag = document.createElement('div');
+          diag.className = 'dp-circular-wipe-diag';
+          wipe.appendChild(diag);
+          profilePic.parentElement.appendChild(wipe);
+          profilePic.classList.add('transitioning');
           setTimeout(function() {
-            // Change src and slide in
             profilePic.src = pics[idx];
-            profilePic.classList.remove('slide-out');
-            profilePic.classList.add('slide-in');
-            // Force reflow to restart animation
-            void profilePic.offsetWidth;
-            profilePic.classList.add('slide-in-active');
-          }, 350);
-
-          // Remove slide-in classes after animation
+          }, 250);
           setTimeout(function() {
-            profilePic.classList.remove('slide-in', 'slide-in-active');
-          }, 900);
+            profilePic.classList.remove('transitioning');
+            if (wipe && wipe.parentElement) wipe.parentElement.removeChild(wipe);
+          }, 700);
         });
       }
     });
