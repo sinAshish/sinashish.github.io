@@ -111,6 +111,10 @@
       border-color: var(--skyblue) !important;
       background: transparent !important;
     }
+    .dark-mode div.button,
+    .dark-mode div.button.active {
+      color: var(--skyblue) !important;
+    }
     /* All heading tags: skyblue in dark mode */
     .dark-mode h1,
     .dark-mode h2,
@@ -389,6 +393,21 @@
       .header {
         margin-bottom: 8px;
       }
+    }
+    .dark-mode .time {
+      color: var(--skyblue) !important;
+    }
+    /* Timeline triangle (direction-l/r) and circle border in dark mode */
+    .dark-mode .direction-l .timeline-panel:after,
+    .dark-mode .direction-r .timeline-panel:after {
+      border-left-color: var(--skyblue) !important;
+      border-right-color: var(--skyblue) !important;
+    }
+    .dark-mode .timeline-badge,
+    .dark-mode .timeline-circle,
+    .dark-mode .timeline-dot {
+      border-color: var(--skyblue) !important;
+      background: var(--skyblue) !important;
     }
   </style>
 </head>
@@ -732,7 +751,7 @@
     }
     /* .flag class: skyblue in dark mode */
     .dark-mode .flag {
-      color: var(--skyblue) !important;
+      color: #e6e6e6 !important;
       background-color: var(--skyblue) !important;
       border-color: var(--skyblue) !important;
     }
