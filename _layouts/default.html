@@ -543,7 +543,79 @@
       /* If any element has color: #222222, override it */
       color: #4aa9f7 !important;
     }
-    /* ...existing code... */
+    /* Define two shades of sky blue for dark mode */
+    .dark-mode {
+      --skyblue-bold: #4aa9f7;
+      --skyblue-light: #8fd6ff;
+    }
+
+    /* Headings and bold text: bolder sky blue */
+    .dark-mode h1,
+    .dark-mode h2,
+    .dark-mode h3,
+    .dark-mode h4,
+    .dark-mode h5,
+    .dark-mode h6,
+    .dark-mode strong,
+    .dark-mode b,
+    .dark-mode .navbar-link.active,
+    .dark-mode .fa,
+    .dark-mode .ai {
+      color: var(--skyblue-bold) !important;
+    }
+
+    /* Normal text, links, paragraphs: lighter sky blue */
+    .dark-mode,
+    .dark-mode p,
+    .dark-mode li,
+    .dark-mode .navbar-link,
+    .dark-mode .main-description,
+    .dark-mode .footer,
+    .dark-mode .btn-col button,
+    .dark-mode a,
+    .dark-mode .navbar-link:visited,
+    .dark-mode .navbar-link:hover {
+      color: var(--skyblue-light) !important;
+      background: #181a1b !important;
+      text-decoration: none !important;
+      border-bottom: none !important;
+    }
+
+    /* Inline style overrides for #FA5050, #FF5050, #CCCCCC to sky blue shades */
+    .dark-mode [style*="#FA5050"],
+    .dark-mode [style*="#fa5050"],
+    .dark-mode [style*="#FF5050"],
+    .dark-mode [style*="#ff5050"] {
+      color: var(--skyblue-bold) !important;
+      border-color: var(--skyblue-bold) !important;
+      background-color: transparent !important;
+    }
+    .dark-mode [style*="#CCCCCC"],
+    .dark-mode [style*="#cccccc"] {
+      color: var(--skyblue-light) !important;
+      border-color: var(--skyblue-light) !important;
+    }
+
+    /* Custom classes using sky blue shades */
+    .dark-mode .highlight,
+    .dark-mode .tag,
+    .dark-mode .some-custom-class {
+      color: var(--skyblue-bold) !important;
+      background-color: transparent !important;
+      border-color: var(--skyblue-bold) !important;
+    }
+
+    /* Change #222222 to lighter sky blue for all text in dark mode */
+    .dark-mode .light-gray,
+    .dark-mode .text-dark,
+    .dark-mode .text-black,
+    .dark-mode .text-222,
+    .dark-mode .text-222222 {
+      color: var(--skyblue-light) !important;
+    }
+    .dark-mode * {
+      color: var(--skyblue-light) !important;
+    }
   </style>
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
