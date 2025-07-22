@@ -1,0 +1,33 @@
+---
+layout: default
+title: Blog
+---
+<div class="docs-section" id="blog">
+  <h2 style="color: var(--skyblue, #4aa9f7);">Blog</h2>
+  <ul class="blog-list">
+    {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url | prepend: site.baseurl }}" style="color: var(--skyblue, #4aa9f7); font-size:1.18em;"><b>{{ post.title }}</b></a>
+        <span class="blog-date" style="color:gray; font-size:0.95em;">{{ post.date | date: "%B %d, %Y" }}</span>
+        <p style="color:inherit;">{{ post.excerpt }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+<style>
+  .blog-list li {
+    margin-bottom: 2.2em;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 1.2em;
+  }
+  .dark-mode #blog h2,
+  .dark-mode .blog-list a {
+    color: var(--skyblue, #4aa9f7) !important;
+  }
+  .dark-mode .blog-list li {
+    border-bottom: 1px solid #333 !important;
+  }
+  .dark-mode .blog-date {
+    color: #cccccc !important;
+  }
+</style>

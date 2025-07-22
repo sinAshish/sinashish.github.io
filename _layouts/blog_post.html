@@ -1,0 +1,40 @@
+---
+layout: default
+title: "Blog Post"
+---
+<div class="docs-section blog-post">
+  <h2>{{ page.title }}</h2>
+  <p style="color:gray; font-size:0.95em;">{{ page.date | date: "%B %d, %Y" }}</p>
+  <div class="blog-content">
+    {{ content }}
+  </div>
+</div>
+<style>
+  .blog-post h2 {
+    color: var(--skyblue, #4aa9f7);
+    margin-bottom: 0.2em;
+  }
+  .blog-content {
+    font-size: 1.13em;
+    line-height: 1.7;
+    color: inherit;
+    background: inherit;
+    padding: 0.5em 0 2em 0;
+  }
+  .blog-list li {
+    margin-bottom: 2.2em;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 1.2em;
+  }
+  .dark-mode .blog-post h2,
+  .dark-mode .blog-list a {
+    color: var(--skyblue, #4aa9f7) !important;
+  }
+  .dark-mode .blog-content {
+    color: #e0e0e0 !important;
+    background: #181a1b !important;
+  }
+  .dark-mode .blog-list li {
+    border-bottom: 1px solid #333 !important;
+  }
+</style>
