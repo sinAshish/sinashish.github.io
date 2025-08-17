@@ -1,7 +1,6 @@
 ---
 layout: default
 title: "Welcome to read my random musings"
-permalink: /blog/
 ---
 
 This is the first post on my blog. I used to write on [Medium](https://medium.com/@ashish_sinha) a while back but haven't written in a while.
