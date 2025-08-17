@@ -1,8 +1,14 @@
-title: "Welcome to My Blog"
-date: 2025-07-22
-layout: blog_post
+---
+layout: default
+title: "Welcome to read my random musings"
+permalink: /blog/
+---
 
-This is the first post on my new blog! You can write posts in Markdown and include LaTeX math using `$...$` for inline and `$$...$$` for display math.
+This is the first post on my blog. I used to write on [Medium](https://medium.com/@ashish_sinha) a while back but haven't written in a while.
+I want to start again, probably here, or on substack.
+
+
+But here is me...just testing some bindings below:
 
 Example:
 

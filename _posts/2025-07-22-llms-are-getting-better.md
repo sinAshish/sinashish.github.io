@@ -1,7 +1,7 @@
 ---
 title: "How LLMs Are Getting Better and Better: Key Drivers of Progress"
 date: 2025-07-22
-layout: blog_post
+layout: default
 ---
 
 Large Language Models (LLMs) have seen remarkable progress in recent years, transforming the landscape of artificial intelligence and natural language processing. In this post, we break down the technical reasons for this rapid improvement, with explanations and visual aids suitable for CS undergraduates and graduate-level researchers.
@@ -9,7 +9,7 @@ Large Language Models (LLMs) have seen remarkable progress in recent years, tran
 ## 1. Scaling Laws and Model Size
 
 One of the most important discoveries in modern deep learning is the existence of **scaling laws**. Kaplan et al. (2020) showed that as you increase the number of model parameters, the amount of training data, and the compute budget, the performance of LLMs improves in a predictable, often log-linear fashion. This means that, up to a point, "bigger is better" for language models.
-![Scaling Laws for Neural Language Models](scaling_laws.png)
+![Scaling Laws for Neural Language Models](./scaling_laws.png)
 <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Scaling_laws_for_neural_language_models.png" alt="Scaling Laws for Neural Language Models" style="max-width:400px; border:1px solid #eee; border-radius:8px; margin:1em 0;" /> -->
 
 *Figure: Example scaling curve from [Kaplan et al., 2020](https://arxiv.org/abs/2001.08361).*
@@ -19,7 +19,7 @@ This insight led to the creation of models like GPT-3, GPT-4, and Gemini, which 
 ## 2. Improved Training Data and Curation
 
 The quality and diversity of training data are crucial. Early LLMs were trained on web scrapes with minimal filtering, but modern models use carefully curated datasets that include books, code, scientific papers, and multilingual content. For example, "The Pile" ([Gao et al., 2020](https://arxiv.org/abs/2101.00027)) is an 800GB dataset designed to be both broad and high-quality.
-![The Pile Datase](pile.png)
+![The Pile Datase](./pile.png)
 <!-- <img src="https://the-eye.eu/public/AI/pile_readme.png" alt="The Pile Dataset" style="max-width:400px; border:1px solid #eee; border-radius:8px; margin:1em 0;" /> -->
 
 *Figure: The Pile dataset is a diverse, high-quality resource for LLM training ([Gao et al., 2020](https://arxiv.org/abs/2101.00027)).*
@@ -39,7 +39,7 @@ Modern LLMs are not just trained to predict the next word. Techniques like **Rei
 The **Transformer** architecture ([Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)) is the backbone of all modern LLMs. However, new ideas like **sparse attention** (which reduces compute by focusing only on relevant parts of the input), **mixture-of-experts** ([Shazeer et al., 2017](https://arxiv.org/abs/1701.06538)), and **retrieval-augmented generation** ([Borgeaud et al., 2022](https://arxiv.org/abs/2112.04426)) have made models faster and more efficient.
 
 <!-- <img src="https://jalammar.github.io/images/t/transformer_architecture.png" alt="Transformer Architecture" style="max-width:400px; border:1px solid #eee; border-radius:8px; margin:1em 0;" /> -->
-![Transformer Architecture](transformers.png)
+![Transformer Architecture](./transformers.png)
 *Figure: The Transformer architecture is foundational for LLMs ([Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)).*
 
 ## 5. Better Evaluation and Safety Practices
@@ -47,7 +47,7 @@ The **Transformer** architecture ([Vaswani et al., 2017](https://arxiv.org/abs/1
 As LLMs become more powerful, evaluating their capabilities and ensuring safety is critical. The community has developed robust benchmarks (e.g., MMLU, BIG-bench) and safety protocols to reduce harmful or biased outputs ([OpenAI, 2023](https://openai.com/research/publications)). This includes adversarial testing, red-teaming, and continuous monitoring.
 
 <!-- <img src="https://ai.googleblog.com/images/2021/05/unnamed-1.png" alt="BIG-bench Benchmark" style="max-width:400px; border:1px solid #eee; border-radius:8px; margin:1em 0;" /> -->
-![Big Bench Extra Hard benchmark](image-1.png)
+![Big Bench Extra Hard benchmark](./image-1.png)
 
 *Figure: BIG-bench is a collaborative benchmark for evaluating LLMs ([BIG-bench Extra Hard, Google AI](https://arxiv.org/pdf/2502.19187)).*
 
