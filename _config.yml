@@ -7,7 +7,7 @@ url: "https://sinashish.in"
 source:      .
 destination: ./_site
 includes:    ./_includes
-baseurl: ''
+baseurl: 'old'
 title: "Ashish Sinha"
 description: "Machine Learning Researcher"
 collections:
