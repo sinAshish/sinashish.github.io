@@ -1,0 +1,1 @@
+$((function(){$("ul.tab-nav li .button").click((function(){var t=$(this).attr("data-ref");return $("li .active.button",$(this).parent().parent()).removeClass("active"),$(this).addClass("active"),$(".tab-pane.active",$(t).parent()).removeClass("active"),$(t).addClass("active"),!1}))}));
