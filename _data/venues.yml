@@ -1,0 +1,39 @@
+"MICCAI":
+  url: https://conferences.miccai.org/2025/en/
+  color: "#00369f"
+
+"MedIA":
+  url: https://www.sciencedirect.com/journal/medical-image-analysis
+  color: "#DE5E26"
+
+"CVPR":
+  url: https://cvpr.thecvf.com/
+  color: "#009f36"
+
+"NeurIPS":
+  url: https://neurips.cc/
+  color: "#6DA638"
+
+"CoRL":
+  url: https://www.corl.org/
+  color: "#369683"
+
+"ICCV":
+  url: https://www.iccv.org/
+  color: "#703696"
+
+"ECCV":
+  url: https://www.eccv.org/
+  color: "#963696"
+
+"ICPR":
+  url: https://icpr2024.org/
+  color: "#D175AC"
+
+"JBHI":
+  url: https://www.embs.org/jbhi/
+  color: "#30693C"
+
+"arXiv":
+  url: https://arxiv.org
+  color: "#A80F27"

@@ -1,0 +1,16 @@
+github_users:
+  - sinashish
+  - frankzhangdong
+  - kabhishe
+  - ppolon
+  - josedolz
+  - binbin-xu
+
+repo_description_lines_max: 2
+
+github_repos:
+  - sinashish/Tree-Diffusion
+  - sinashish/DermSynth3D
+  - sinashish/Multi-Scale-Attention
+  - sinashish/NALU-Keras
+
