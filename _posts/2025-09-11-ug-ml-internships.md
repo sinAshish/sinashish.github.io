@@ -10,14 +10,20 @@ related_posts: false
 ---
 
 > I wrote this post back in 2019 to share my experience with my peers and juniors at IIT Roorkee. This post might apply for students from under-priviledges countries like India where the university students do not get exposure to cutting-edge research easily.
+>
 >  I am reposting it here (verbatim) for anyone who might find it useful, and also to motivate myself to write more on my blog. So, this serves as the first post on this blog :D.  I will try to update it with more recent information as and when I get time.
+>
 > Original post: [Medium Post](https://blog.goodaudience.com/getting-a-ml-research-internship-cca6250605f1)
 
-```
-This post is about my search for a Research Internship in Machine Learning/Deep Learning as a pre-final year Materials Science student at Indian Institute of Technology Roorkee. This story is about how many places I got rejected from and finally landed up as a Research Intern at Preferred Networks, the company which made a world record by training Image-Net in 17 minutes. This post shall also serve as a guide on how to apply for foreign research internships. If you’re intersted in my Interview experience, skip to bottom of the post.
+```markdown
+This post is about my search for a Research Internship in Machine Learning/Deep Learning as a pre-final year Materials Science student at Indian Institute of Technology Roorkee.
+
+ This story is about how many places I got rejected from and finally landed up as a Research Intern at Preferred Networks, the company which made a world record by training Image-Net in 17 minutes.
+
+  This post shall also serve as a guide on how to apply for foreign research internships. If you’re intersted in my Interview experience, skip to bottom of the post.
 ```
 
-**Disclaimer: I neither was nor am some hot shot in ML Research. The views presented are a glimpse of my own experience.**
+**<span color='red'>Disclaimer: I neither was nor am some hot shot in ML Research. The views presented are a glimpse of my own experience.</span>**
 
 
 A turning point in my life came when I did my sophomore year internship in Data Science at a startup. After working for 2 months there and interacting with other people in the industry, one thing got very clear, that I was not going to work on the Data Analysis stuff and petty predictive modeling. It just didn’t click for me. I was more interested in computer vision and language modeling. I had tried a mundane job of 9 to 5, so I thought of giving research a try, though the lab timings would also around 9 to 5 still there would be freedom of work and a lot less work pressure. Hence, I made up my mind of doing a Ph.D. in ML and becoming a researcher.
@@ -32,7 +38,7 @@ There are two ways of applying:
 
 Both the ways mentioned above are a tough nutshell to crack and thus, equally depressing.
 
-Let’s say that you are applying through a research program(I’ll attach the link of various research programs one can apply to), then you must have a high CGPA of above 8.5 and you should also have a couple of projects(research) with a Professor listed in your CV. A research program like [Globalink MITACS Program](https://www.mitacs.ca/our-programs/globalink-research-award/) for Canadian Universities takes into consideration the research projects done earlier and also the amount of time spent on doing research, apart from your CGPA which should more than 7.5 to be eligible(not selection), to effectively map you with a Project and Professor of your choice. [DAAD-Wise for Germany](https://www.daad.de/en/studying-in-germany/scholarships/daad-scholarships/) requires a CGPA of above $9.3$ or sometimes even $9.5$.
+Let’s say that you are applying through a research program(I’ll attach the link of various research programs one can apply to), then you must have a high CGPA of above 8.5 and you should also have a couple of projects(research) with a Professor listed in your CV. A research program like [Globalink MITACS Program](https://www.mitacs.ca/our-programs/globalink-research-award/) for Canadian Universities takes into consideration the research projects done earlier and also the amount of time spent on doing research, apart from your CGPA which should more than 7.5 to be eligible(not selection), to effectively map you with a Project and Professor of your choice. [DAAD-Wise for Germany](https://www.daad.de/en/studying-in-germany/scholarships/daad-scholarships/) requires a CGPA of above 9.3 or sometimes even 9.5.
 
 > In my case, I don’t have a high CGPA, so 1 requirement straight away gone, and neither had I done any projects with a Professor. I had taken part only in a couple of [Kaggle](https://kaggle.com) challenges and listed them as a self-motivated project in my CV(you can do so). Thus, sadly research program was not an option for me!
 
@@ -61,5 +67,7 @@ Cheers and Good Luck!
 Edit 1: 
 
 After I wrote this blog on medium, I got a lot of messages from students asking for help in getting internships. I am really happy that this blog has helped so many people. 
+
 Later, ARP club at IIT Roorkee shared a variant of this blog after my graduation. You can check it out [here](https://arp-iitr.medium.com/prot%C3%A9g%C3%A9-mentorship-data-science-e29c975b9b0f).
+
 Watch Out! The official news body of IIT Roorkee has also shared my internship experience on their [website](https://watchout.iitr.ac.in/2019/10/research-diary-ml).
