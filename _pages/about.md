@@ -41,4 +41,4 @@ Apart from research, I enjoy [reading](https://goodreads.com/sinashish), watchin
 
 <a href='https://clustrmaps.com/site/1b0br'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=80&t=tt&d=mduT2IGnektWfs1JJJMK-k3dJmSoFOIuA6NPz9pOX9I'/></a>
 
-<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=80&t=tt&d=mduT2IGnektWfs1JJJMK-k3dJmSoFOIuA6NPz9pOX9I'></script>
+<!-- <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=80&t=tt&d=mduT2IGnektWfs1JJJMK-k3dJmSoFOIuA6NPz9pOX9I'></script> -->
