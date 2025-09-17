@@ -39,4 +39,4 @@ I hold an MSc ([thesis](https://summit.sfu.ca/item/38512)) in Computer Science f
 
 Apart from research, I enjoy [reading](https://goodreads.com/sinashish), watching [movies/anime](https://letterboxd.com/sinashish/), [running](https://www.strava.com/athletes/98067428), eating/cooking, [travelling/photography](https://instagram.com/_a.sinha_), and playing [ultimate](https://vul.ca). I do everything in moderation, except for watching movies and reading.
 
-<a href="https://mapmyvisitors.com/web/1bze3"  title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=y6-s0DCVphikyz-OKVVuIUNtGebYnqFisn6dcKIJDsY&cl=ffffff" /></a>
+<!-- <a href="https://mapmyvisitors.com/web/1bze3"  title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=y6-s0DCVphikyz-OKVVuIUNtGebYnqFisn6dcKIJDsY&cl=ffffff" /></a> -->
