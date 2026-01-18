@@ -28,7 +28,7 @@ latest_posts:
 
 I am currently an ML Resident at [AMII](https://www.amii.ca) in the Advanced Technology team.
 
-My research interests lie at the intersection of computer vision and machine learning, with applications in healthcare and scientific discovery. I am particularly interested in leveraging representation learning, generative modeling, and geometric deep learning to develop robust and interpretable AI systems dedicated to transforming healthcare, particularly in precision medicine and drug discovery.
+My research interests lie at the intersection of computer vision and machine learning, with applications in healthcare and scientific discovery. I am particularly interested in developing novel algorithms and leveraging recent advances in representation learning, generative modeling, and geometric deep learning to develop robust and interpretable AI systems dedicated to transforming healthcare, particularly in precision medicine and drug discovery.
 
 I hold an MSc ([thesis](https://summit.sfu.ca/item/38512)) in Computer Science from [Simon Fraser University](https://sfu.ca), where I worked with [Prof. Ghassan Hamarneh](https://www.medicalimageanalysis.com/about/ghassans-bio), and a Bachelor’s in Materials Science from [IIT Roorkee](https://www.iitr.ac.in/). 
 
