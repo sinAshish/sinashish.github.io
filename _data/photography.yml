@@ -1,0 +1,20 @@
+- filename: sample1.jpg
+  title: "Moraine Lake"
+  location: "Banff National Park, Canada"
+  date: "2023-07-15"
+  tags: ["nature", "travel", "hiking"]
+  caption: "The stunning turquoise waters of Moraine Lake."
+
+- filename: sample2.jpg
+  title: "Downtown Toronto"
+  location: "Toronto, Canada"
+  date: "2023-09-10"
+  tags: ["city", "architecture"]
+  caption: "CN Tower and the skyline."
+
+- filename: sample3.jpg
+  title: "Cherry Blossoms"
+  location: "High Park, Toronto"
+  date: "2024-05-02"
+  tags: ["nature", "spring"]
+  caption: "Spring bloom in the city."

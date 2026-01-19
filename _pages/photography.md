@@ -1,0 +1,125 @@
+---
+layout: page
+title: photography
+permalink: /photography/
+description: A collection of moments captured from various places I've visited.
+nav: true
+nav_order: 3
+---
+
+<div class="row mb-4">
+    <div class="col-12 text-center">
+        <div id="filter-buttons">
+            <button class="btn btn-sm btn-outline-primary active" onclick="filterSelection('all')">All</button>
+            {% assign tags = "" | split: "," %}
+            {% for photo in site.data.photography %}
+                {% for tag in photo.tags %}
+                    {% unless tags contains tag %}
+                        {% assign tags = tags | push: tag %}
+                    {% endunless %}
+                {% endfor %}
+            {% endfor %}
+            {% for tag in tags %}
+                <button class="btn btn-sm btn-outline-primary" onclick="filterSelection('{{ tag }}')">{{ tag | capitalize }}</button>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="row grid">
+    {% for photo in site.data.photography %}
+    <div class="col-sm-6 col-md-4 col-lg-4 mb-4 grid-item {{ photo.tags | join: ' ' }}">
+        <div class="card h-100 hoverable">
+            <div class="card-img-top-wrapper">
+                <img src="{{ '/assets/img/photography/' | append: photo.filename | relative_url }}" 
+                     class="card-img-top img-fluid z-depth-1 rounded zoomable" 
+                     alt="{{ photo.title }}"
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text={{ photo.title | url_encode }}';">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ photo.title }}</h5>
+                <p class="card-text text-muted small">
+                    <i class="fa-solid fa-location-dot"></i> {{ photo.location }}<br>
+                    <i class="fa-solid fa-calendar"></i> {{ photo.date | date: "%B %d, %Y" }}
+                </p>
+                <p class="card-text">{{ photo.caption }}</p>
+                <div class="tags">
+                    {% for tag in photo.tags %}
+                        <span class="badge badge-light text-dark border">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .card-img-top-wrapper {
+        height: 250px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0f0f0;
+    }
+    .card-img-top {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        cursor: zoom-in;
+    }
+    #filter-buttons button {
+        margin: 2px;
+        text-transform: capitalize;
+    }
+    .badge {
+        font-weight: normal;
+    }
+</style>
+
+<script>
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("grid-item");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "d-none");
+    if (x[i].className.indexOf(c) == -1) w3AddClass(x[i], "d-none");
+  }
+  
+  // Add active class to the current button (highlight it)
+  var btnContainer = document.getElementById("filter-buttons");
+  var btns = btnContainer.getElementsByClassName("btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove("active");
+    if (btns[i].textContent.toLowerCase() === (c === "" ? "all" : c)) {
+        btns[i].classList.add("active");
+    }
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Initialize with all showing
+// filterSelection("all")
+</script>
