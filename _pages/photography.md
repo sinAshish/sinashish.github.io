@@ -39,15 +39,16 @@ nav_order: 3
             <div class="card-body">
                 <h5 class="card-title">{{ photo.title }}</h5>
                 <p class="card-text text-muted small">
-                    <i class="fa-solid fa-location-dot"></i> {{ photo.location }}<br>
+                    <i class="fa-solid fa-location-dot"></i> {{ photo.location }}
+                    &nbsp; &middot; &nbsp;
                     <i class="fa-solid fa-calendar"></i> {{ photo.date | date: "%B %d, %Y" }}
+                    <br>
+                    {% for tag in photo.tags %}
+                        <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
+                        {% unless forloop.last %} &nbsp; {% endunless %}
+                    {% endfor %}
                 </p>
                 <p class="card-text">{{ photo.caption }}</p>
-                <div class="tags">
-                    {% for tag in photo.tags %}
-                        <span class="badge badge-light text-dark border">{{ tag }}</span>
-                    {% endfor %}
-                </div>
             </div>
         </div>
     </div>
