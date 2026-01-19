@@ -28,7 +28,7 @@ nav_order: 3
 
 <div class="row grid">
     {% for photo in site.data.photography %}
-    <div class="col-sm-6 col-md-4 col-lg-4 mb-4 grid-item {{ photo.tags | join: ' ' }}">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 grid-item {{ photo.tags | join: ' ' }}">
         <div class="card h-100 hoverable">
             <div class="card-img-top-wrapper">
                 <img src="{{ '/assets/img/photography/' | append: photo.filename | relative_url }}" 
