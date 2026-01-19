@@ -11,19 +11,29 @@ images:
 
 <div class="row mb-4">
     <div class="col-12 text-center">
-        <div id="filter-buttons">
-            <button class="btn btn-sm btn-outline-primary active" onclick="filterSelection('all')">All</button>
-            {% assign tags = "" | split: "," %}
-            {% for photo in site.data.photography %}
-                {% for tag in photo.tags %}
-                    {% unless tags contains tag %}
-                        {% assign tags = tags | push: tag %}
+        <div class="tag-category-list">
+            <ul class="p-0 m-0" id="filter-buttons">
+                <li>
+                    <i class="fa-solid fa-hashtag fa-sm"></i> <span onclick="filterSelection('all')" style="cursor: pointer; border-bottom: 1px solid transparent;">All</span>
+                </li>
+                <p>&bull;</p>
+                {% assign tags = "" | split: "," %}
+                {% for photo in site.data.photography %}
+                    {% for tag in photo.tags %}
+                        {% unless tags contains tag %}
+                            {% assign tags = tags | push: tag %}
+                        {% endunless %}
+                    {% endfor %}
+                {% endfor %}
+                {% for tag in tags %}
+                    <li>
+                        <i class="fa-solid fa-hashtag fa-sm"></i> <span onclick="filterSelection('{{ tag }}')" style="cursor: pointer; border-bottom: 1px solid transparent;">{{ tag }}</span>
+                    </li>
+                    {% unless forloop.last %}
+                        <p>&bull;</p>
                     {% endunless %}
                 {% endfor %}
-            {% endfor %}
-            {% for tag in tags %}
-                <button class="btn btn-sm btn-outline-primary" onclick="filterSelection('{{ tag }}')">{{ tag | capitalize }}</button>
-            {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
@@ -50,9 +60,12 @@ images:
 </div>
 
 <style>
-    #filter-buttons button {
-        margin: 2px;
-        text-transform: capitalize;
+    #filter-buttons span {
+        transition: all 0.2s ease-in-out;
+    }
+    #filter-buttons span.active {
+        border-bottom: 1px solid var(--global-text-color) !important;
+        font-weight: bold;
     }
 </style>
 
@@ -67,14 +80,26 @@ function filterSelection(c) {
   }
   
   var btnContainer = document.getElementById("filter-buttons");
-  var btns = btnContainer.getElementsByClassName("btn");
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].classList.remove("active");
-    if (btns[i].textContent.toLowerCase() === (c === "" ? "all" : c)) {
-        btns[i].classList.add("active");
+  // Select all spans that are direct children of li
+  var spans = btnContainer.querySelectorAll("li span");
+  for (var i = 0; i < spans.length; i++) {
+    spans[i].classList.remove("active");
+    // Check if text matches. Handle "All" specifically.
+    var text = spans[i].textContent.trim();
+    if (c === "" && text === "All") {
+        spans[i].classList.add("active");
+    } else if (text === c) {
+        spans[i].classList.add("active");
     }
   }
 }
+// Set 'All' as active initially
+document.addEventListener("DOMContentLoaded", function() {
+    var allSpan = document.querySelector("#filter-buttons li span");
+    if(allSpan && allSpan.textContent.trim() === "All") {
+        allSpan.classList.add("active");
+    }
+});
 
 function w3AddClass(element, name) {
   var i, arr1, arr2;
