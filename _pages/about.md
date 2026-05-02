@@ -6,7 +6,7 @@ permalink: /
 
 profile:
   align: right
-  image: cvpr-headshot.png
+  image: profile_pics/cvpr-headshot.webp
   image_circular: true # crops the image to make it circular
   more_info: >
     <p>CV/ML Researcher</p>
