@@ -289,6 +289,8 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
+    cursor: pointer !important;
+    pointer-events: auto !important;
 
     &:hover {
       color: var(--global-hover-color);
@@ -944,6 +946,7 @@ progress {
   left: 0;
   top: 56px;
   z-index: 10;
+  pointer-events: none;
 
   /* Dimensions */
   width: 100%;
@@ -984,6 +987,7 @@ progress::-moz-progress-bar {
   left: 0;
   height: 5px;
   display: block;
+  pointer-events: none;
 }
 
 .progress-bar {
