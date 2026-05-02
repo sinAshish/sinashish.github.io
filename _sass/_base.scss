@@ -291,6 +291,8 @@ ul.task-list input[type="checkbox"] {
     color: var(--global-text-color);
     cursor: pointer !important;
     pointer-events: auto !important;
+    position: relative;
+    z-index: 9999;
 
     &:hover {
       color: var(--global-hover-color);
@@ -1088,7 +1090,7 @@ nav[data-toggle="toc"] {
     }
   }
 
-  .nav-link.active {
+  #toc-sidebar .nav-link.active {
     color: var(--global-theme-color);
     border-left-color: var(--global-theme-color);
     font-size: 0.75rem;
