@@ -3,8 +3,7 @@ layout: page
 title: photography
 permalink: /photography/
 description: A collection of moments captured from various places I've visited.
-nav: true
-nav_order: 3
+nav: false
 images:
   lightbox2: true
 ---
