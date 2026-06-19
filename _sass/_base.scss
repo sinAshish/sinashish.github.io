@@ -275,8 +275,8 @@ ul.task-list input[type="checkbox"] {
   color: var(--global-text-color);
 
   &:hover {
-    color: var(--global-hover-color);
-    background-color: var(--global-bg-color);
+    color: var(--global-theme-color);
+    background-color: var(--global-card-bg-color);
   }
 }
 
@@ -391,7 +391,7 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
-#light-toggle,
+#theme-toggle,
 #search-toggle {
   padding: 0;
   border: 0;
@@ -401,6 +401,11 @@ ul.task-list input[type="checkbox"] {
   &:hover {
     color: var(--global-hover-color);
   }
+}
+
+.dropdown-header {
+  color: var(--global-text-color-light);
+  font-weight: bold;
 }
 
 // Social (bottom)
