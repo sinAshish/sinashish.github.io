@@ -1,15 +1,13 @@
 // Has to be in the head tag, otherwise a flicker effect will occur.
 
-// Toggle through light, dark, and system theme settings.
-let toggleThemeSetting = () => {
-  let themeSetting = determineThemeSetting();
-  if (themeSetting == "system") {
-    setThemeSetting("light");
-  } else if (themeSetting == "light") {
-    setThemeSetting("dark");
-  } else {
-    setThemeSetting("system");
-  }
+const LIGHT_THEMES = ['light', 'catppuccin-latte', 'tokyo-day'];
+const DARK_THEMES = ['dark', 'catppuccin-mocha', 'monokai', 'nord', 'tokyo-night'];
+
+// Determine if a specific theme is essentially light or dark
+const getBaseTheme = (themeName) => {
+  if (LIGHT_THEMES.includes(themeName)) return 'light';
+  if (DARK_THEMES.includes(themeName)) return 'dark';
+  return 'light'; // fallback
 };
 
 // Change the theme setting and apply the theme.
@@ -23,44 +21,29 @@ let setThemeSetting = (themeSetting) => {
 
 // Apply the computed dark or light theme to the website.
 let applyTheme = () => {
-  let theme = determineComputedTheme();
+  let specificTheme = determineComputedTheme();
+  let baseTheme = getBaseTheme(specificTheme); // 'light' or 'dark'
 
   transTheme();
-  setHighlight(theme);
-  setGiscusTheme(theme);
-  setSearchTheme(theme);
+  
+  // Apply specific theme to the HTML tag for CSS variables
+  document.documentElement.setAttribute("data-theme", specificTheme);
+  
+  // Third party tools only know 'light' or 'dark' base themes
+  setHighlight(baseTheme);
+  setGiscusTheme(baseTheme);
+  setSearchTheme(baseTheme);
 
-  // if mermaid is not defined, do nothing
-  if (typeof mermaid !== "undefined") {
-    setMermaidTheme(theme);
-  }
-
-  // if diff2html is not defined, do nothing
-  if (typeof Diff2HtmlUI !== "undefined") {
-    setDiff2htmlTheme(theme);
-  }
-
-  // if echarts is not defined, do nothing
-  if (typeof echarts !== "undefined") {
-    setEchartsTheme(theme);
-  }
-
-  // if Plotly is not defined, do nothing
-  if (typeof Plotly !== "undefined") {
-    setPlotlyTheme(theme);
-  }
-
-  // if vegaEmbed is not defined, do nothing
-  if (typeof vegaEmbed !== "undefined") {
-    setVegaLiteTheme(theme);
-  }
-
-  document.documentElement.setAttribute("data-theme", theme);
+  if (typeof mermaid !== "undefined") setMermaidTheme(baseTheme);
+  if (typeof Diff2HtmlUI !== "undefined") setDiff2htmlTheme(baseTheme);
+  if (typeof echarts !== "undefined") setEchartsTheme(baseTheme);
+  if (typeof Plotly !== "undefined") setPlotlyTheme(baseTheme);
+  if (typeof vegaEmbed !== "undefined") setVegaLiteTheme(baseTheme);
 
   // Add class to tables.
   let tables = document.getElementsByTagName("table");
   for (let i = 0; i < tables.length; i++) {
-    if (theme == "dark") {
+    if (baseTheme == "dark") {
       tables[i].classList.add("table-dark");
     } else {
       tables[i].classList.remove("table-dark");
@@ -71,7 +54,7 @@ let applyTheme = () => {
   let jupyterNotebooks = document.getElementsByClassName("jupyter-notebook-iframe-container");
   for (let i = 0; i < jupyterNotebooks.length; i++) {
     let bodyElement = jupyterNotebooks[i].getElementsByTagName("iframe")[0].contentWindow.document.body;
-    if (theme == "dark") {
+    if (baseTheme == "dark") {
       bodyElement.setAttribute("data-jp-theme-light", "false");
       bodyElement.setAttribute("data-jp-theme-name", "JupyterLab Dark");
     } else {
@@ -83,7 +66,7 @@ let applyTheme = () => {
   // Updates the background of medium-zoom overlay.
   if (typeof medium_zoom !== "undefined") {
     medium_zoom.update({
-      background: getComputedStyle(document.documentElement).getPropertyValue("--global-bg-color") + "ee", // + 'ee' for trasparency.
+      background: getComputedStyle(document.documentElement).getPropertyValue("--global-bg-color") + "ee",
     });
   }
 };
@@ -251,38 +234,44 @@ let transTheme = () => {
   }, 500);
 };
 
-// Determine the expected state of the theme toggle, which can be "dark", "light", or
-// "system". Default is "system".
+// Determine the expected state of the theme toggle.
 let determineThemeSetting = () => {
   let themeSetting = localStorage.getItem("theme");
-  if (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") {
+  if (!LIGHT_THEMES.includes(themeSetting) && !DARK_THEMES.includes(themeSetting) && themeSetting !== "system") {
     themeSetting = "system";
   }
   return themeSetting;
 };
 
-// Determine the computed theme, which can be "dark" or "light". If the theme setting is
-// "system", the computed theme is determined based on the user's system preference.
+// Determine the actual specific theme to apply
 let determineComputedTheme = () => {
   let themeSetting = determineThemeSetting();
-  if (themeSetting == "system") {
+  if (themeSetting === "system") {
     const userPref = window.matchMedia;
     if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
-      return "dark";
+      return "dark"; // Default dark when system is dark
     } else {
-      return "light";
+      return "light"; // Default light when system is light
     }
   } else {
-    return themeSetting;
+    return themeSetting; // E.g., 'nord', 'catppuccin-latte'
   }
 };
 
 let initTheme = () => {
   let themeSetting = determineThemeSetting();
-
   setThemeSetting(themeSetting);
 
-  // Add event listener to the system theme preference change.
+  document.addEventListener("DOMContentLoaded", function () {
+    const themeSelectors = document.querySelectorAll('.theme-select');
+    themeSelectors.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const selectedTheme = e.target.getAttribute('data-theme-value');
+        setThemeSetting(selectedTheme);
+      });
+    });
+  });
+
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
     applyTheme();
   });
