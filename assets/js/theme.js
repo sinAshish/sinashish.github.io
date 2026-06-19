@@ -283,6 +283,7 @@ let initTheme = () => {
   setThemeSetting(themeSetting);
 
   // Add event listener to the theme toggle button.
+  /*
   document.addEventListener("DOMContentLoaded", function () {
     const mode_toggle = document.getElementById("light-toggle");
 
@@ -290,6 +291,7 @@ let initTheme = () => {
       toggleThemeSetting();
     });
   });
+  */
 
   // Add event listener to the system theme preference change.
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
