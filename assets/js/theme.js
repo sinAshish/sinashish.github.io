@@ -249,9 +249,9 @@ let determineComputedTheme = () => {
   if (themeSetting === "system") {
     const userPref = window.matchMedia;
     if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
-      return "dark"; // Default dark when system is dark
+      return "catppuccin-mocha"; // Default dark when system is dark
     } else {
-      return "light"; // Default light when system is light
+      return "catppuccin-latte"; // Default light when system is light
     }
   } else {
     return themeSetting; // E.g., 'nord', 'catppuccin-latte'
@@ -266,8 +266,27 @@ let initTheme = () => {
     const themeSelectors = document.querySelectorAll('.theme-select');
     themeSelectors.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const selectedTheme = e.target.getAttribute('data-theme-value');
+        const selectedTheme = e.currentTarget.getAttribute('data-theme-value');
         setThemeSetting(selectedTheme);
+      });
+      
+      btn.addEventListener('mouseenter', (e) => {
+        const previewTheme = e.currentTarget.getAttribute('data-theme-value');
+        if (previewTheme === 'system') {
+          const userPref = window.matchMedia;
+          if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
+            document.documentElement.setAttribute("data-theme", "catppuccin-mocha");
+          } else {
+            document.documentElement.setAttribute("data-theme", "catppuccin-latte");
+          }
+        } else {
+          document.documentElement.setAttribute("data-theme", previewTheme);
+        }
+      });
+      
+      btn.addEventListener('mouseleave', (e) => {
+        // Restore actual selected theme on mouse leave
+        applyTheme();
       });
     });
   });
