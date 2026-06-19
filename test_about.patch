@@ -1,0 +1,16 @@
+--- _layouts/about.liquid
++++ _layouts/about.liquid
+@@ -73,8 +73,11 @@
+       </div>
+     {% endif %}
+ 
+-    <div style="text-align: center; margin-top: 20px;">
+-      <script type='text/javascript' id='clustrmaps' src='//clustrmaps.com/map_v2.js?cl=ffffff&w=80&t=tt&d=mduT2IGnektWfs1JJJMK-k3dJmSoFOIuA6NPz9pOX9I'></script>
++    <div class="map-container" style="text-align: center; margin-top: 20px;">
++      <div id="map" style="display: inline-block;">
++        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=mduT2IGnektWfs1JJJMK-k3dJmSoFOIuA6NPz9pOX9I&cl=ffffff&w=a"></script>
++      </div>
++      <a href="https://mapmyvisitors.com/web/1bze3" title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=y6-s0DCVphikyz-OKVVuIUNtGebYnqFisn6dcKIJDsY&cl=ffffff" /></a>
+     </div>
+ 
+     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
