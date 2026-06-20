@@ -291,6 +291,7 @@ DEPENDENCIES
   css_parser
   feedjira
   httparty
+  i18n (~> 1.14)
   jekyll
   jekyll-archives-v2
   jekyll-email-protect
