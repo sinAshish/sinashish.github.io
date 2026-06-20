@@ -61,6 +61,8 @@ GEM
     forwardable (1.4.0)
     forwardable-extended (2.6.0)
     gemoji (4.1.0)
+    google-protobuf (3.23.4)
+    google-protobuf (3.23.4-aarch64-linux)
     google-protobuf (3.23.4-arm64-darwin)
     google-protobuf (3.23.4-x86_64-darwin)
     google-protobuf (3.23.4-x86_64-linux)
@@ -154,10 +156,16 @@ GEM
     matrix (0.4.3)
     mercenary (0.4.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     minitest (5.25.4)
     multi_xml (0.6.0)
     namae (1.2.0)
       racc (~> 1.7)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.10-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.10-x86_64-darwin)
@@ -202,6 +210,8 @@ GEM
     zeitwerk (2.6.18)
 
 PLATFORMS
+  aarch64-linux
+  arm-linux
   arm64-darwin-25
   x86_64-darwin
   x86_64-linux
