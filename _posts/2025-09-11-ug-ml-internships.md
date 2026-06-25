@@ -20,7 +20,7 @@ related_posts: false
 ```markdown
 This post is about my search for a Research Internship in Machine Learning/Deep Learning as a pre-final year Materials Science student at Indian Institute of Technology Roorkee.
 
- This story is about how many places I got rejected from and finally landed up as a Research Intern at Preferred Networks, the company which made a world record by training Image-Net in 17 minutes.
+ This story is about how many places I got rejected from and finally landed up as a Research Intern at Preferred Networks, the company which made a world record by training ImageNet in 15 minutes.
 
   This post shall also serve as a guide on how to apply for foreign research internships. If you’re intersted in my Interview experience, skip to bottom of the post.
 ```
@@ -57,7 +57,7 @@ If the Prof. that you sent a mail doesn’t reply for a week, send a reminder, i
 
 ## The Reality of Rejections
 
-> In my case, I followed the steps which I have already discussed above. Luckily I got replies to around 50% of the emails that I sent, some saying that they don’t have funds to fund my stay or that they would be on leave during my proposed internship duration or that they are going to retire in a couple of months or that I am not from Computer Science major 😒. I even had an interview canceled just 5 minutes before the scheduled skype interview only because I was not from Computer Science and had no CS courses in my transcripts. Amidst these rejections, I applied for the Preferred Networks Internship Program also. But after a couple of days, I got a positive reply from a Professor at Max Planck Institute Germany to work on computer vision related project in Materials Science. And my search for a foreign internship came to an end after sending around 300 emails.
+> In my case, I followed the steps which I have already discussed above. Luckily I got replies to around 50% of the emails that I sent, some saying that they don’t have funds to fund my stay or that they would be on leave during my proposed internship duration or that they are going to retire in a couple of months or that I am not from Computer Science major 😒. I even had an interview canceled just 5 minutes before the scheduled skype interview only because I was not from Computer Science and had no CS courses in my transcripts. Amidst these rejections, I applied for the Preferred Networks Internship Program. I had first heard about them when they made waves by training on ImageNet in just 15 minutes—a huge deal at the time—which made the prospect of joining them incredibly exciting! But after a couple of days, I got a positive reply from a Professor at Max Planck Institute Germany to work on computer vision related project in Materials Science. And my search for a foreign internship came to an end after sending around 300 emails.
 
 ## The Interview Process
 
