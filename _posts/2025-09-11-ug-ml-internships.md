@@ -5,6 +5,8 @@ date: 2025-07-04 08:57:00-0400
 description: How to apply for and get an ML Research Internship as an Indian undergrad
 tags: experience internships
 categories: experience
+toc:
+  sidebar: left
 giscus_comments: false
 related_posts: false
 ---
