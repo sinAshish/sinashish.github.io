@@ -17,7 +17,30 @@ layout: default
   <article>
     {% if page.profile %}
       <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
+        {% if page.profile.images %}
+          {% if page.profile.image_circular %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+          {% else %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+          {% endif %}
+          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
+      30vw, 95vw"{% endcapture %}
+          <script>
+            var randomProfileImageIndex = Math.floor(Math.random() * {{ page.profile.images.size }});
+          </script>
+          {% for img in page.profile.images %}
+            {% assign profile_image_path = img | prepend: 'assets/img/' %}
+            <div class="profile-image-container" id="profile-image-{{ forloop.index0 }}" style="display: none;">
+              {%
+                include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=img
+                cache_bust=true
+              %}
+            </div>
+          {% endfor %}
+          <script>
+            document.getElementById('profile-image-' + randomProfileImageIndex).style.display = 'block';
+          </script>
+        {% elsif page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
           {% if page.profile.image_circular %}
             {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
