@@ -11,3 +11,94 @@
   date: "2024-02-01"
   tags: ["city", "urban", "architecture"]
   caption: "Urban exploration in the heart of Toronto."
+
+- filename: frisbee_1.webp
+  title: "Ultimate Frisbee Summer League Winners"
+  location: "Vancouver, Canada"
+  date: "2026-08-13"
+  tags: ["sports", "ultimate", "frisbee", "vancouver"]
+  caption: "Winning Vancouver's ultimate frisbee summer league."
+
+- filename: frisbee_2.webp
+  title: "Ultimate Frisbee Team Photo"
+  location: "Vancouver, Canada"
+  date: "2026-08-13"
+  tags: ["sports", "ultimate", "frisbee", "vancouver", "team"]
+  caption: "Team photo after the finals."
+
+- filename: IMG_1113.webp
+  title: "Mountain and Beach View"
+  location: "Vancouver, Canada"
+  date: "2026-09-06"
+  tags: ["vancouver", "mountains", "beaches", "scenery"]
+  caption: "Beautiful scenery of the mountains and the beach."
+
+- filename: IMG_0398.webp
+  title: "Harvard Campus"
+  location: "Cambridge, MA"
+  date: "2026-09-06"
+  tags: ["city", "harvard", "university"]
+  caption: "Walking around the Harvard campus."
+
+- filename: frisbee_3.webp
+  title: "Ultimate Frisbee Action 1"
+  location: "Vancouver, Canada"
+  date: "2026-06-18"
+  tags: ["sports", "ultimate", "frisbee"]
+  caption: "Ultimate frisbee action."
+
+- filename: frisbee_4.webp
+  title: "Ultimate Frisbee Action 2"
+  location: "Vancouver, Canada"
+  date: "2026-06-18"
+  tags: ["sports", "ultimate", "frisbee"]
+  caption: "Ultimate frisbee action."
+
+- filename: frisbee_5.webp
+  title: "Ultimate Frisbee Action 3"
+  location: "Vancouver, Canada"
+  date: "2026-06-18"
+  tags: ["sports", "ultimate", "frisbee"]
+  caption: "Ultimate frisbee action."
+
+- filename: frisbee_6.webp
+  title: "Ultimate Frisbee Action 4"
+  location: "Vancouver, Canada"
+  date: "2026-06-18"
+  tags: ["sports", "ultimate", "frisbee"]
+  caption: "Ultimate frisbee action."
+
+- filename: frisbee_7.webp
+  title: "Ultimate Frisbee Action 5"
+  location: "Vancouver, Canada"
+  date: "2026-06-18"
+  tags: ["sports", "ultimate", "frisbee"]
+  caption: "Ultimate frisbee action."
+
+- filename: frisbee_8.webp
+  title: "Ultimate Frisbee Action 6"
+  location: "Vancouver, Canada"
+  date: "2026-06-19"
+  tags: ["sports", "ultimate", "frisbee"]
+  caption: "Ultimate frisbee action."
+
+- filename: frisbee_9.webp
+  title: "Ultimate Frisbee Action 7"
+  location: "Vancouver, Canada"
+  date: "2026-06-19"
+  tags: ["sports", "ultimate", "frisbee"]
+  caption: "Ultimate frisbee action."
+
+- filename: frisbee_10.webp
+  title: "Ultimate Frisbee Action 8"
+  location: "Vancouver, Canada"
+  date: "2026-08-08"
+  tags: ["sports", "ultimate", "frisbee"]
+  caption: "Ultimate frisbee action."
+
+- filename: sunset_1.webp
+  title: "Sunset at the Beach"
+  location: "Vancouver, Canada"
+  date: "2026-07-22"
+  tags: ["beach", "beaches", "sunset", "vancouver"]
+  caption: "Beautiful sunset view at the beach in Vancouver."

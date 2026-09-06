@@ -16,14 +16,7 @@ images:
                     <i class="fa-solid fa-hashtag fa-sm"></i> <span onclick="filterSelection('all')" style="cursor: pointer; border-bottom: 1px solid transparent;">All</span>
                 </li>
                 <p>&bull;</p>
-                {% assign tags = "" | split: "," %}
-                {% for photo in site.data.photography %}
-                    {% for tag in photo.tags %}
-                        {% unless tags contains tag %}
-                            {% assign tags = tags | push: tag %}
-                        {% endunless %}
-                    {% endfor %}
-                {% endfor %}
+                {% assign tags = "mountains, beaches, sports, random" | split: ", " %}
                 {% for tag in tags %}
                     <li>
                         <i class="fa-solid fa-hashtag fa-sm"></i> <span onclick="filterSelection('{{ tag }}')" style="cursor: pointer; border-bottom: 1px solid transparent;">{{ tag }}</span>
@@ -38,8 +31,10 @@ images:
 </div>
 
 <div class="row grid">
+    <!-- grid-sizer for masonry to calculate column width accurately -->
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3 grid-sizer" style="height: 0; padding: 0; margin: 0; visibility: hidden;"></div>
     {% for photo in site.data.photography %}
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 grid-item {{ photo.tags | join: ' ' }}">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4 grid-item {{ photo.tags | join: ' ' }}">
         <a href="{{ '/assets/img/photography/' | append: photo.filename | relative_url }}"
            data-lightbox="photography"
            data-title="
@@ -78,6 +73,10 @@ function filterSelection(c) {
     if (x[i].className.indexOf(c) == -1) w3AddClass(x[i], "d-none");
   }
   
+  if (typeof $ !== 'undefined' && $('.grid').length) {
+    $('.grid').masonry('layout');
+  }
+  
   var btnContainer = document.getElementById("filter-buttons");
   // Select all spans that are direct children of li
   var spans = btnContainer.querySelectorAll("li span");
@@ -92,11 +91,13 @@ function filterSelection(c) {
     }
   }
 }
-// Set 'All' as active initially
+// Parse hash on load
 document.addEventListener("DOMContentLoaded", function() {
-    var allSpan = document.querySelector("#filter-buttons li span");
-    if(allSpan && allSpan.textContent.trim() === "All") {
-        allSpan.classList.add("active");
+    var hash = window.location.hash.substring(1);
+    if (hash) {
+        filterSelection(hash);
+    } else {
+        filterSelection("all");
     }
 });
 
