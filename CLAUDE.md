@@ -24,3 +24,6 @@
 - **Frustrations:** Ensure precise adherence to the developer's configuration requests; double-check that your actions don't break existing desired functionality.
 - **Learning:** Support the developer's independent investigation by providing exactly what is asked; try providing direct answers rather than guided tutorials.
 <!-- GSD:profile-end -->
+
+## Custom Memory / Project Directives
+- **Design Mockups:** Whenever we are making design changes to the website, suggest the mockups using the lavish skill.
