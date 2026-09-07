@@ -24903,3 +24903,548 @@ Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-
 [33m           Warning: Empty `slug` generated for ''.[0m
                     ...done in 7.1059 seconds.
                     
+      Regenerating: 1 file(s) changed at 2026-09-06 17:46:33
+                    jekyll-serve.log
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/bibsearch.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/chartjs-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/common.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/copy_code.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/diff2html-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/overrides.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/template.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/transforms.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/echarts-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/highlight-search-term.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/jupyter_new_tab.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/leaflet-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/masonry.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mathjax-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mermaid-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/newsletter.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/no_defer.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/plotly-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/progress-bar.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/pseudocode-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/search-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/shortcut-key.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/theme.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/tooltips-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/typograms.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/vega-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/venobox-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/wechat.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/zoom.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/custom/my_js.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/external/skeleton_tabs/skeleton-tabs.js
+       Imagemagick: Searching files in /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/img/
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-1400.webp
+       Imagemagick: Generated 0 file(s)
+       Jekyll Feed: Generating feed for posts
+         AutoPages: Disabled/Not configured in site.config.
+        Pagination: Complete, processed 1 pagination page(s)
+[33m           Warning: Empty `slug` generated for ''.[0m
+                    ...done in 7.819323 seconds.
+                    
+      Regenerating: 6 file(s) changed at 2026-09-06 17:46:41
+                    jekyll-serve.log
+                    gr.html
+                    scrape_goodreads.mjs
+                    scrape_goodreads_puppeteer.mjs
+                    gr_screenshot.png
+                    gr_debug.html
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/bibsearch.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/chartjs-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/common.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/copy_code.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/diff2html-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/overrides.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/template.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/transforms.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/echarts-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/highlight-search-term.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/jupyter_new_tab.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/leaflet-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/masonry.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mathjax-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mermaid-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/newsletter.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/no_defer.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/plotly-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/progress-bar.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/pseudocode-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/search-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/shortcut-key.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/theme.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/tooltips-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/typograms.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/vega-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/venobox-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/wechat.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/zoom.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/custom/my_js.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/external/skeleton_tabs/skeleton-tabs.js
+       Imagemagick: Searching files in /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/img/
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-1400.webp
+       Imagemagick: Generated 0 file(s)
+       Jekyll Feed: Generating feed for posts
+         AutoPages: Disabled/Not configured in site.config.
+        Pagination: Complete, processed 1 pagination page(s)
+[33m           Warning: Empty `slug` generated for ''.[0m
+                    ...done in 6.926835 seconds.
+                    
+      Regenerating: 1 file(s) changed at 2026-09-06 17:46:48
+                    jekyll-serve.log
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/bibsearch.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/chartjs-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/common.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/copy_code.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/diff2html-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/overrides.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/template.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/transforms.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/echarts-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/highlight-search-term.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/jupyter_new_tab.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/leaflet-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/masonry.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mathjax-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mermaid-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/newsletter.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/no_defer.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/plotly-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/progress-bar.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/pseudocode-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/search-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/shortcut-key.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/theme.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/tooltips-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/typograms.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/vega-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/venobox-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/wechat.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/zoom.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/custom/my_js.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/external/skeleton_tabs/skeleton-tabs.js
+       Imagemagick: Searching files in /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/img/
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-1400.webp
+       Imagemagick: Generated 0 file(s)
+       Jekyll Feed: Generating feed for posts
+         AutoPages: Disabled/Not configured in site.config.
+        Pagination: Complete, processed 1 pagination page(s)
+[33m           Warning: Empty `slug` generated for ''.[0m
+                    ...done in 7.882701 seconds.
+                    
+      Regenerating: 1 file(s) changed at 2026-09-06 17:46:56
+                    jekyll-serve.log
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/bibsearch.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/chartjs-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/common.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/copy_code.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/diff2html-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/overrides.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/template.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/transforms.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/echarts-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/highlight-search-term.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/jupyter_new_tab.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/leaflet-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/masonry.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mathjax-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mermaid-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/newsletter.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/no_defer.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/plotly-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/progress-bar.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/pseudocode-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/search-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/shortcut-key.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/theme.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/tooltips-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/typograms.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/vega-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/venobox-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/wechat.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/zoom.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/custom/my_js.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/external/skeleton_tabs/skeleton-tabs.js
+       Imagemagick: Searching files in /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/img/
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-1400.webp
+       Imagemagick: Generated 0 file(s)
+       Jekyll Feed: Generating feed for posts
+         AutoPages: Disabled/Not configured in site.config.
+        Pagination: Complete, processed 1 pagination page(s)
+[33m           Warning: Empty `slug` generated for ''.[0m
+                    ...done in 6.800462 seconds.
+                    
+      Regenerating: 2 file(s) changed at 2026-09-06 17:54:27
+                    jekyll-serve.log
+                    update_reading_from_csv.py
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/bibsearch.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/chartjs-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/common.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/copy_code.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/diff2html-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/overrides.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/template.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/transforms.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/echarts-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/highlight-search-term.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/jupyter_new_tab.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/leaflet-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/masonry.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mathjax-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mermaid-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/newsletter.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/no_defer.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/plotly-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/progress-bar.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/pseudocode-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/search-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/shortcut-key.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/theme.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/tooltips-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/typograms.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/vega-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/venobox-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/wechat.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/zoom.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/custom/my_js.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/external/skeleton_tabs/skeleton-tabs.js
+       Imagemagick: Searching files in /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/img/
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-1400.webp
+       Imagemagick: Generated 0 file(s)
+       Jekyll Feed: Generating feed for posts
+         AutoPages: Disabled/Not configured in site.config.
+        Pagination: Complete, processed 1 pagination page(s)
+[33m           Warning: Empty `slug` generated for ''.[0m
+                    ...done in 7.346409 seconds.
+                    
+      Regenerating: 1 file(s) changed at 2026-09-06 17:54:35
+                    _pages/reading.md
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/bibsearch.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/chartjs-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/common.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/copy_code.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/diff2html-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/overrides.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/template.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/transforms.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/echarts-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/highlight-search-term.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/jupyter_new_tab.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/leaflet-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/masonry.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mathjax-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mermaid-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/newsletter.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/no_defer.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/plotly-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/progress-bar.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/pseudocode-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/search-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/shortcut-key.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/theme.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/tooltips-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/typograms.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/vega-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/venobox-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/wechat.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/zoom.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/custom/my_js.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/external/skeleton_tabs/skeleton-tabs.js
+       Imagemagick: Searching files in /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/img/
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-1400.webp
+       Imagemagick: Generated 0 file(s)
+       Jekyll Feed: Generating feed for posts
+         AutoPages: Disabled/Not configured in site.config.
+        Pagination: Complete, processed 1 pagination page(s)
+[33m           Warning: Empty `slug` generated for ''.[0m
+                    ...done in 6.553197 seconds.
+                    
+      Regenerating: 1 file(s) changed at 2026-09-06 17:54:43
+                    _data/reading.yml
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/bibsearch.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/chartjs-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/common.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/copy_code.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/diff2html-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/overrides.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/template.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/distillpub/transforms.v2.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/echarts-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/highlight-search-term.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/jupyter_new_tab.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/leaflet-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/masonry.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mathjax-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/mermaid-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/newsletter.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/no_defer.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/plotly-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/progress-bar.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/pseudocode-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/search-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/shortcut-key.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/theme.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/tooltips-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/typograms.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/vega-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/venobox-setup.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/wechat.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/js/zoom.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/custom/my_js.js
+Terser: Minifying /Users/ashish.sinha/Documents/project/sinashish.github.io/old-site/libs/external/skeleton_tabs/skeleton-tabs.js
+       Imagemagick: Searching files in /Users/ashish.sinha/Documents/project/sinashish.github.io/assets/img/
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/book_covers/the_godfather-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/posts/selection-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dimple-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msa-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/msc-thesis-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/trind-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/demoire-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/dermsynth3d-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/gagan-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/ethical-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/unpose-1400.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-480.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-800.webp
+       Imagemagick: Adding static file /Users/ashish.sinha/Documents/project/sinashish.github.io/_site/assets/img/publication_preview/mensa-1400.webp
+       Imagemagick: Generated 0 file(s)
+       Jekyll Feed: Generating feed for posts
+         AutoPages: Disabled/Not configured in site.config.
+        Pagination: Complete, processed 1 pagination page(s)
+[33m           Warning: Empty `slug` generated for ''.[0m
+                    ...done in 6.397266 seconds.
+                    
