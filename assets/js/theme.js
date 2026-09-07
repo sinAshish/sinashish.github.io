@@ -238,7 +238,7 @@ let transTheme = () => {
 let determineThemeSetting = () => {
   let themeSetting = localStorage.getItem("theme");
   if (!LIGHT_THEMES.includes(themeSetting) && !DARK_THEMES.includes(themeSetting) && themeSetting !== "system") {
-    themeSetting = "catppuccin-latte";
+    themeSetting = "system";
   }
   return themeSetting;
 };
