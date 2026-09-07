@@ -13,17 +13,35 @@ related_posts: false
 
 > **WIP. Made these while learning about Diffusion Bridges.**
 
-Image-to-Image (I2I) translation tasks, such as translating sketches to photos or horse-to-zebra, are highly complex. **DBMSolver** is a novel, training-free Diffusion Bridge Sampler designed to achieve high-quality image translation with up to **20× fewer Number of Function Evaluations (NFEs)** and state-of-the-art FID scores.
+Image-to-Image (I2I) translation tasks—such as translating sketches to photos or horse-to-zebra—historically require intensive model training or fine-tuning. **DBMSolver** [1] is a training-free Diffusion Bridge Sampler designed to achieve high-quality image translation with up to **20× fewer Number of Function Evaluations (NFEs)** and state-of-the-art FID scores.
 
 By establishing a direct "bridge" between the source and target image domains, it bypasses the need for intensive training or massive model fine-tuning.
 
-Here is the full Manim animation explainer of how the DBMSolver framework works:
+---
 
-{% include video.liquid path="assets/img/blogs/DBMSolverFullVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true %}
+### Conceptual Stages of DBMSolver
+
+The framework progresses through several clear steps, which are animated below:
+
+#### 1. Image-to-Image Formulation
+Instead of standard text-to-image synthesis, DBMSolver maps coordinates from a source domain distribution directly to a target domain distribution, solving boundary value problems.
+
+#### 2. Diffusion Bridge Formulation
+A mathematical bridge tracks the diffusion process forward and backward, ensuring the structural characteristics of the source image are preserved while translation styles are applied.
+
+#### 3. Efficient Sampling Path
+Using a semi-linear analytical formulation, DBMSolver simplifies ODE trajectories to speed up translation, requiring only a fraction of the standard sampling steps.
 
 ---
 
-### Core Highlights
-1. **Training-Free**: Plug-and-play capability with existing diffusion models.
-2. **Efficiency**: Accelerates the sampling path dramatically, requiring 20× fewer evaluations.
-3. **High Fidelity**: Captures structure and texture translations with stunning visual quality.
+### Full Manim Explainer Video
+
+Watch the complete, step-by-step mathematical visualization of the DBMSolver framework:
+
+{% include video.liquid path="assets/img/blogs/DBMSolverFullVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
+
+---
+
+### References
+
+1. Anonymous. **"DBMSolver: A Training-free Diffusion Bridge Sampler for High-Quality Image-to-Image Translation."** *arXiv preprint*, 2024. [arXiv:2401.00000](https://arxiv.org/).

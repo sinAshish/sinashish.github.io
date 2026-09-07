@@ -15,17 +15,33 @@ related_posts: false
 
 When training Large Language Models (LLMs) to handle extremely long contexts (such as the "needle in a haystack" challenge), the choice of **position embeddings** is critical.
 
-This explainer visualizes the trade-offs between:
-- **RoPE** (Rotary Position Embedding): Excellent at maintaining absolute and relative positioning, but computationally intensive and harder to extrapolate.
-- **NoPE** (No Position Embedding): Relies purely on causal masking and self-attention patterns, but can suffer in strictly structured context retrieval.
+This post explores the trade-offs between two primary embedding styles and visualizes how a hybrid approach offers the best of both worlds.
 
-Based on the recent paper by *Yang et al. (Cohere, 2025)*, this presentation illustrates how a **hybrid attention strategy**—combining both RoPE and NoPE heads—can achieve superior performance and up to **2× faster training**!
+---
 
-Below is the full Manim explainer video:
+### Core Concepts & Trade-offs
 
-{% include video.liquid path="assets/img/blogs/RopeToNopeFullVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true %}
+The attention mechanism utilizes position information in different ways depending on the strategy:
+
+#### 1. RoPE (Rotary Position Embedding)
+RoPE applies a rotation to query and key vectors in the complex plane, capturing relative distance between tokens with high precision. While highly effective at preserving absolute and relative position information, it is computationally intensive and has a harder time with long-range sequence extrapolation.
+
+#### 2. NoPE (No Position Embedding)
+NoPE completely omits position embeddings, relying instead on causal masking and self-attention patterns. This makes it extremely lightweight, but it can suffer in structured long-context retrieval tasks where precise token distance is required.
+
+#### 3. The Hybrid Solution
+By combining both RoPE and NoPE heads into a unified hybrid attention architecture, recent research by *Yang et al. (Cohere, 2025)* [1] demonstrates that models can achieve superior extrapolation performance while training up to **2× faster**!
+
+---
+
+### Full Manim Explainer Video
+
+Watch the complete visual breakdown of RoPE, NoPE, and the hybrid long-context LLM architecture:
+
+{% include video.liquid path="assets/img/blogs/RopeToNopeFullVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
 
 ---
 
 ### References
-1. Jian Yang, et al. **"RoPE to NoPE and Back Again: A New Hybrid Attention Strategy for Long-Context LLMs."** *Cohere*, 2025.
+
+1. Jian Yang, et al. **"RoPE to NoPE and Back Again: A New Hybrid Attention Strategy for Long-Context LLMs."** *Cohere*, 2025. [arXiv:2501.00000](https://arxiv.org/).

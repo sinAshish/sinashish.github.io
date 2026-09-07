@@ -25,7 +25,7 @@ Below are some custom Manim visualizations I made to understand this mechanism b
 
 This animation shows the core mechanism where key sampling points are dynamically selected around reference points across different scales of the feature maps, and attention is computed over them.
 
-{% include video.liquid path="assets/img/blogs/DeformableAttentionScene.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true %}
+{% include video.liquid path="assets/img/blogs/DeformableAttentionScene.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
 
 ---
 
@@ -33,7 +33,7 @@ This animation shows the core mechanism where key sampling points are dynamicall
 
 In this detailed visualization, we look closer at how the sampling offsets and attention weights are dynamically predicted from the query feature, showing exactly how the model decides where and what to focus on.
 
-{% include video.liquid path="assets/img/blogs/DeformableAttentionDetailed.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true %}
+{% include video.liquid path="assets/img/blogs/DeformableAttentionDetailed.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
 
 ---
 
