@@ -19,7 +19,7 @@ profile:
     <div style="text-align: center;">
       <p style="display: block;">CV/ML Researcher</p>
       <p style="display: block;">Berkeley/SF</p>
-      <p style="display: block; font-size: 0.85rem; margin-top: 5px;"><i>Refresh to render Ashish in new scenes</i></p>
+      <p style="display: block; font-size: 0.85rem; margin-top: 5px;"><i>Refresh to render Ashish in new envs</i></p>
     </div>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
@@ -96,4 +96,4 @@ Previously, I was an ML Resident at [AMII](https://www.amii.ca), an ML Researche
 
 If you are interested in my work, have opportunities, or would like to collaborate, please feel free to [reach out](mailto:ashishsinha108@gmail.com).
 
-**Offline:** 📚 [Reading](https://goodreads.com/sinashish) · 🎬 [Movies](https://letterboxd.com/sinashish/) · 🏃 [Running](https://www.strava.com/athletes/98067428) · 📷 [Photography](https://instagram.com/_a.sinha_) · 🥏 [Ultimate](/photography/#ultimate)
+**Offline:** 📚 [Reading](/reading/) · 🎬 [Movies](https://letterboxd.com/sinashish/) · 🏃 [Running](https://www.strava.com/athletes/98067428) · 📷 [Photography](https://instagram.com/_a.sinha_) · 🥏 [Ultimate](/photography/#ultimate)

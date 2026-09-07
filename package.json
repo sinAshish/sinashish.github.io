@@ -2,5 +2,9 @@
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "1.4.0",
     "prettier": "3.1.1"
+  },
+  "dependencies": {
+    "apify-client": "^2.25.0",
+    "puppeteer": "^25.10.0"
   }
 }
