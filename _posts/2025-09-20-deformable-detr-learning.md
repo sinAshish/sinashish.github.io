@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Visualizing Deformable DETR Attention
-date: 2026-09-07 16:30:00-0400
+date: 2025-09-20 16:30:00-0400
 description: Visualizations of multi-scale deformable attention mechanism in DETR.
 tags: computer-vision deep-learning transformers
 categories: research

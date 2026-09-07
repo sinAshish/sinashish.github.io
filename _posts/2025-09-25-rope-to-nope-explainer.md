@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "RoPE to NoPE and Back Again: Hybrid Attention for Long-Context LLMs"
-date: 2026-09-07 16:50:00-0400
+date: 2025-09-25 16:50:00-0400
 description: A Manim-based explainer of RoPE (Rotary Position Embedding) vs NoPE (No Position Embedding) in long-context LLMs.
 tags: transformers natural-language-processing llm
 categories: research

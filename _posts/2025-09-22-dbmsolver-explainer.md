@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Visualizing DBMSolver: Training-Free Diffusion Bridge Sampler"
-date: 2026-09-07 16:40:00-0400
+date: 2025-09-22 16:40:00-0400
 description: A Manim-based explainer of DBMSolver, a training-free diffusion bridge sampler for image-to-image translation.
 tags: computer-vision deep-learning diffusion-models
 categories: research
