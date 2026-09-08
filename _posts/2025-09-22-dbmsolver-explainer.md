@@ -13,30 +13,30 @@ related_posts: false
 
 > **WIP. Made these while learning about Diffusion Bridges.**
 
-Image-to-Image (I2I) translation tasks—such as translating sketches to photos or horse-to-zebra—historically require intensive model training or fine-tuning. **DBMSolver** [1] is a training-free Diffusion Bridge Sampler designed to achieve high-quality image translation with up to **20× fewer Number of Function Evaluations (NFEs)** and state-of-the-art FID scores.
+Image-to-Image (I2I) translation tasks—translating a sketch to a photo, or performing style transfers—traditionally require training custom generative networks. **DBMSolver** [1] is a training-free Diffusion Bridge Sampler designed to achieve high-quality image translation with up to **20× fewer Number of Function Evaluations (NFEs)**.
 
-By establishing a direct "bridge" between the source and target image domains, it bypasses the need for intensive training or massive model fine-tuning.
-
----
-
-### Conceptual Stages of DBMSolver
-
-The framework progresses through several clear steps, which are animated below:
-
-#### 1. Image-to-Image Formulation
-Instead of standard text-to-image synthesis, DBMSolver maps coordinates from a source domain distribution directly to a target domain distribution, solving boundary value problems.
-
-#### 2. Diffusion Bridge Formulation
-A mathematical bridge tracks the diffusion process forward and backward, ensuring the structural characteristics of the source image are preserved while translation styles are applied.
-
-#### 3. Efficient Sampling Path
-Using a semi-linear analytical formulation, DBMSolver simplifies ODE trajectories to speed up translation, requiring only a fraction of the standard sampling steps.
+By establishing an analytical "diffusion bridge" between the source and target image domains, it leverages pre-trained diffusion models without requiring task-specific training.
 
 ---
 
-### Full Manim Explainer Video
+### The Diffusion Bridge Formulation
 
-Watch the complete, step-by-step mathematical visualization of the DBMSolver framework:
+In standard diffusion models (like DDPM), the forward process slowly degrades a target image into pure Gaussian noise. In a **Diffusion Bridge Model (DBM)**, the forward process is a stochastic transition that connects a source image $x_0 \sim p_{\text{source}}$ directly to a target image $x_1 \sim p_{\text{target}}$:
+
+$$dx_t = f(t)x_t dt + g(t)dw_t, \quad t \in [0, 1]$$
+
+This formulation creates a boundary value problem where the boundary conditions are set on both ends of the trajectories ($t=0$ and $t=1$). 
+
+---
+
+### How DBMSolver Accelerates Sampling
+
+Traditional bridge sampling requires solving expensive stochastic differential equations (SDEs) over hundreds of steps. DBMSolver simplifies this into a **semi-linear analytical formulation**:
+
+1.  **Linear Integration**: It analytically integrates the linear part of the SDE (or the corresponding probability flow ODE), meaning the solver does not accumulate integration errors for the deterministic linear drift.
+2.  **Score Matching**: The remaining non-linear part is approximated using a pre-trained score network, which only needs to be evaluated at a small set of discrete steps.
+
+The video below demonstrates how these trajectories smoothly and efficiently morph features from the source domain to the target domain, maintaining global structures while shifting textures:
 
 {% include video.liquid path="assets/img/blogs/DBMSolverFullVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
 
@@ -44,4 +44,4 @@ Watch the complete, step-by-step mathematical visualization of the DBMSolver fra
 
 ### References
 
-1. Anonymous. **"DBMSolver: A Training-free Diffusion Bridge Sampler for High-Quality Image-to-Image Translation."** *arXiv preprint*, 2024. [arXiv:2401.00000](https://arxiv.org/).
+1. Anonymous. **"DBMSolver: A Training-free Diffusion Bridge Sampler for High-Quality Image-to-Image Translation."** *Preprint*, 2024. [arXiv:2401.00000](https://arxiv.org/).

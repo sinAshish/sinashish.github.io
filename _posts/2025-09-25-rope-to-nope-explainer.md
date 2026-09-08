@@ -13,30 +13,41 @@ related_posts: false
 
 > **WIP. Made these while learning about long-context attention mechanisms in LLMs.**
 
-When training Large Language Models (LLMs) to handle extremely long contexts (such as the "needle in a haystack" challenge), the choice of **position embeddings** is critical.
+When scaling Large Language Models (LLMs) to handle extremely long contexts (such as the "needle in a haystack" retrieval task), the choice of **position embeddings** is critical.
 
 This post explores the trade-offs between two primary embedding styles and visualizes how a hybrid approach offers the best of both worlds.
 
 ---
 
-### Core Concepts & Trade-offs
+### 1. RoPE (Rotary Position Embedding)
 
-The attention mechanism utilizes position information in different ways depending on the strategy:
+RoPE encodes relative position by multiplying query and key representations by a complex rotation matrix. For a 2-dimensional vector chunk, the rotation matrix $R_{\Theta, m}^d$ at token position $m$ is defined as:
 
-#### 1. RoPE (Rotary Position Embedding)
-RoPE applies a rotation to query and key vectors in the complex plane, capturing relative distance between tokens with high precision. While highly effective at preserving absolute and relative position information, it is computationally intensive and has a harder time with long-range sequence extrapolation.
+$$R_{\Theta, m}^d = \text{diag}\left( R(\theta_1 m), R(\theta_2 m), \dots, R(\theta_{d/2} m) \right)$$
 
-#### 2. NoPE (No Position Embedding)
-NoPE completely omits position embeddings, relying instead on causal masking and self-attention patterns. This makes it extremely lightweight, but it can suffer in structured long-context retrieval tasks where precise token distance is required.
+Where $R(\theta_i m)$ is a 2D rotation matrix:
 
-#### 3. The Hybrid Solution
-By combining both RoPE and NoPE heads into a unified hybrid attention architecture, recent research by *Yang et al. (Cohere, 2025)* [1] demonstrates that models can achieve superior extrapolation performance while training up to **2× faster**!
+$$R(\theta_i m) = \begin{pmatrix} \cos(m\theta_i) & -\sin(m\theta_i) \\ \sin(m\theta_i) & \cos(m\theta_i) \end{pmatrix}$$
+
+By rotating vectors proportionally to their position $m$, the inner product of queries and keys naturally depends only on their relative distance. While highly precise for short-range constraints, RoPE requires heavy mathematical projections and has a hard time extrapolating to extremely long sequences.
 
 ---
 
-### Full Manim Explainer Video
+### 2. NoPE (No Position Embedding)
 
-Watch the complete visual breakdown of RoPE, NoPE, and the hybrid long-context LLM architecture:
+NoPE completely omits position projections, relying entirely on causal masking and attention layers to implicitly infer position. This is computationally lightweight and speeds up training, but often struggles with strictly structured context retrieval where token distance is critical.
+
+---
+
+### 3. The Hybrid Attention Solution
+
+Recent work by *Yang et al. (Cohere, 2025)* [1] proposes a unified **hybrid attention strategy**:
+*   A fraction of the attention heads are configured with **RoPE** to handle local relative positioning.
+*   The remaining attention heads are kept as **NoPE** to allow fast training and unconstrained global attention.
+
+This hybrid model trains **up to 2× faster** while preserving absolute structured retrieval performance.
+
+The full Manim visualization below maps these relative coordinate rotations and illustrates how information propagates across sequences in long-context LLMs:
 
 {% include video.liquid path="assets/img/blogs/RopeToNopeFullVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
 

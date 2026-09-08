@@ -13,27 +13,38 @@ related_posts: false
 
 > **WIP. Made these while learning about DETR at Amii.**
 
-Deformable DETR [2] is an incredible advancement in end-to-end object detection. By utilizing **deformable attention**, it overcomes the slow convergence and multi-scale resolution challenges of the original DETR [1] model.
+Standard self-attention in transformers suffers from quadratic computational complexity $O(H^2W^2)$ relative to the spatial resolution of the feature map. In object detection architectures like DETR [1], this makes high-resolution or multi-scale feature maps prohibitively expensive to compute. 
 
-Instead of attending to all spatial locations across the image (which is computationally expensive, especially at higher resolutions), Deformable DETR only attends to a small set of key sampling points around a reference point.
+**Deformable DETR** [2] resolves this bottleneck using **deformable attention**, which scales linearly with image size by restricting attention computations to a small, learned set of key sampling points around a reference point.
 
 Below are some custom Manim visualizations I made to understand this mechanism better.
 
 ---
 
-### Deformable Attention Overview
+### 1. Deformable Attention Overview
 
-This animation shows the core mechanism where key sampling points are dynamically selected around reference points across different scales of the feature maps, and attention is computed over them.
+This animation illustrates how standard global self-attention (connecting every pixel to every other pixel) is replaced by sparse, localized attention. The model dynamically predicts a coordinate reference point $p_q$ and a sparse set of $K$ sampling locations across different feature scales:
 
 {% include video.liquid path="assets/img/blogs/DeformableAttentionScene.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
 
 ---
 
-### Detailed Deformable Attention Weights
+### 2. Multi-Scale Deformable Attention ($MSDeformAttn$)
 
-In this detailed visualization, we look closer at how the sampling offsets and attention weights are dynamically predicted from the query feature, showing exactly how the model decides where and what to focus on.
+Mathematically, given input feature maps $\{x^l\}_{l=1}^L$, let $q$ be a query element with feature $z_q$ and reference point $p_q$. The multi-scale deformable attention is formulated as:
+
+$$\text{MSDeformAttn}(z_q, p_q, \{x^l\}_{l=1}^L) = \sum_{m=1}^M W_m \left[ \sum_{l=1}^L \sum_{k=1}^K A_{mlqk} \cdot W'_m x^l(p_q + \Delta p_{mlqk}) \right]$$
+
+Where:
+*   $M$ represents the number of attention heads.
+*   $L$ is the number of feature map scales.
+*   $K$ is the number of sampled keys per scale (typically small, e.g., $K=4$).
+*   $\Delta p_{mlqk}$ represents the predicted **sampling offset**, shown in the animation below as the yellow arrows shifting from the uniform reference points.
+*   $A_{mlqk}$ is the **attention weight**, visualized below by the changing sizes of the red sampling dots.
 
 {% include video.liquid path="assets/img/blogs/DeformableAttentionDetailed.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true loop=true muted=true %}
+
+Since the predicted offset $p_q + \Delta p_{mlqk}$ is continuous, sub-pixel feature representations are sampled using **bilinear interpolation** $x^l(\cdot)$ over the nearest grid coordinates, ensuring the entire operation remains fully differentiable.
 
 ---
 
@@ -44,4 +55,4 @@ In this detailed visualization, we look closer at how the sampling offsets and a
 
 ---
 
-*These visualizations are a work-in-progress. More updates on the implementation and mathematical formulation to come!*
+*These visualizations are a work-in-progress. More updates on implementation to come!*
