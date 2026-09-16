@@ -4,6 +4,18 @@
   rating: 5
   title: Die with Zero
   year: '2026'
+- author: Maggie O'Farrell
+  book_id: '43890641'
+  has_cover: false
+  rating: 4
+  title: Hamnet
+  year: '2026'
+- author: Matt Haig
+  book_id: '16130537'
+  has_cover: false
+  rating: 5
+  title: The Humans
+  year: '2026'
 - author: Richard C. Hall
   book_id: '2931295'
   has_cover: false
