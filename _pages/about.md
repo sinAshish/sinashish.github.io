@@ -7,13 +7,13 @@ permalink: /
 profile:
   align: right
   images: 
-    - profile_pics/cvpr-headshot.webp
-    - profile_pics/ashish-iitr-main.webp
-    - profile_pics/ashish-iitr-candle.webp
-    - profile_pics/ashish-iitr-stairs.webp
-    - profile_pics/chatgpt-dating.webp
-    - profile_pics/chatgpt-sfu-degree.webp
     - profile_pics/sf-headshot.webp
+    - profile_pics/ashish-iitr-main.webp
+    - profile_pics/ashish-iitr-stairs.webp
+    # - profile_pics/ashish-iitr-candle.webp
+    # - profile_pics/cvpr-headshot.webp
+    # - profile_pics/chatgpt-dating.webp
+    # - profile_pics/chatgpt-sfu-degree.webp
   image_circular: true # crops the image to make it circular
   more_info: >
     <div style="text-align: center;">
@@ -92,7 +92,9 @@ My research interests lie at the intersection of computer vision and machine lea
 
 I hold an MSc ([thesis](https://summit.sfu.ca/item/38512)) in Computer Science from [Simon Fraser University](https://sfu.ca), where I worked with [Prof. Ghassan Hamarneh](https://www.medicalimageanalysis.com/about/ghassans-bio), and a Bachelor’s in Materials Science from [IIT Roorkee](https://www.iitr.ac.in/). 
 
-Previously, I was an ML Resident at [AMII](https://www.amii.ca), an ML Researcher at [Huawei’s Noah’s Ark Lab](https://dev3.noahlab.com.hk), a Risk Analyst at [Wells Fargo](https://wellsfargo.com/), a Research Engineer at [Preferred Networks](https://preferred.jp/en/), and an intern with [Prof. Jonghyun Choi](https://ppolon.github.io) and [Prof. Jose Dolz](https://josedolz.github.io).
+Previously, I've worked FT as a Research Engineer/Researcher at [Amii](https://www.amii.ca), [Huawei’s Noah’s Ark Lab](https://dev3.noahlab.com.hk), [Wells Fargo](https://wellsfargo.com/), [Preferred Networks](https://preferred.jp/en/), and interned with [Prof. Jonghyun Choi](https://ppolon.github.io) and [Prof. Jose Dolz](https://josedolz.github.io).
+
+<!-- Previously, I was an ML Resident at [AMII](https://www.amii.ca), an ML Researcher at [Huawei’s Noah’s Ark Lab](https://dev3.noahlab.com.hk), a Risk Analyst at [Wells Fargo](https://wellsfargo.com/), a Research Engineer at [Preferred Networks](https://preferred.jp/en/), and an intern with [Prof. Jonghyun Choi](https://ppolon.github.io) and [Prof. Jose Dolz](https://josedolz.github.io). -->
 
 If you are interested in my work, have opportunities, or would like to collaborate, please feel free to [reach out](mailto:ashishsinha108@gmail.com).
 

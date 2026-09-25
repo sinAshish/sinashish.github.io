@@ -5,7 +5,7 @@ title: cv
 nav: true
 nav_order: 5
 cv_pdf: Ashish_Sinha_CV.pdf # you can also use external links here
-description: My academic CV. 
+description: My academic CV
 toc:
   sidebar: left
 ---

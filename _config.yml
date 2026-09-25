@@ -9,10 +9,11 @@ last_name: Sinha
 contact_note: >
   The best way to reach me is via email.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  A Jt-PhD Student in the Computational Precision Health at UC Berkeley & UCSF. His current focus is on multi-modal LLMs for healthcare, such as generation and longitudinal tracking. 
+  In the past life; he was a materials engineer by education, but life happened, and he became a computer vision and ML researcher.
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-keywords: ashish, sinha, researcher, computer-vision, machine-learning, iit, iit-roorkee, medical-imaging, ai, sfu, academic-website, portfolio-website # add your own keywords or leave empty
+  Initially made by Me with <3. Now, maintained by LLMs.
+keywords: ashish, sinha, AI, ai, health, agents, healthcare, LLMs, VLMS, robotics, Berkeley, ucsf, ucb, cal, researcher, computer-vision, machine-learning, iit, iit-roorkee, medical-imaging, ai, sfu, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: favicon.webp # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
