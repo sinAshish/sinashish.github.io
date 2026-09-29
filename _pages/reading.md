@@ -15,7 +15,7 @@ nav_order: 1
   </div>
   <div class="col-auto">
     <button class="btn btn-sm btn-outline-primary" id="toggle-view-btn" onclick="toggleView()" style="border-radius: 4px; font-weight: 500;">
-      <i class="fa-solid fa-list mr-1"></i> List View
+      <i class="fa-solid fa-grip mr-1"></i> Grid View
     </button>
   </div>
 </div>
@@ -35,7 +35,7 @@ nav_order: 1
       <h3 class="border-bottom pb-2 mb-4">{{ target_year }}</h3>
       
       <!-- Grid View -->
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-6 g-4 grid-view-container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-6 g-4 grid-view-container d-none">
         {% for book in site.data.reading %}
           {% if book.year == target_year %}
             <div class="col mb-4">
@@ -69,7 +69,7 @@ nav_order: 1
       </div>
 
       <!-- List View -->
-      <div class="list-view-container d-none">
+      <div class="list-view-container">
         <ul class="list-group" style="background: transparent;">
           {% assign idx = 0 %}
           {% for book in site.data.reading %}
