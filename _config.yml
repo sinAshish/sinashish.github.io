@@ -142,6 +142,8 @@ kramdown:
 # Includes & excludes
 include: ["_pages", "_scripts"]
 exclude:
+  - AGENTS.md
+  - CLAUDE.md
   - bin/
   - CONTRIBUTING.md
   - CUSTOMIZE.md

@@ -1,4 +1,5 @@
 ---
+published: false
 layout: post
 title: Visualizing Deformable DETR Attention
 date: 2025-09-20 16:30:00-0400
