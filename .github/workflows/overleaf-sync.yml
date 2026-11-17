@@ -1,0 +1,73 @@
+name: Sync CV from Overleaf
+
+on:
+  schedule:
+    - cron: "0 13 * * *" # daily, 6am PT
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: overleaf-sync
+  cancel-in-progress: false
+
+env:
+  CV_PROJECT: 5c9fafa87e0aad52fa7fa760
+  CV_PDF: assets/pdf/Ashish_Sinha_CV.pdf
+  SHA_FILE: assets/pdf/.cv-overleaf-sha
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone CV from Overleaf
+        id: clone
+        env:
+          OVERLEAF_TOKEN: ${{ secrets.OVERLEAF_TOKEN }}
+        run: |
+          [ -n "$OVERLEAF_TOKEN" ] || { echo "::error::OVERLEAF_TOKEN secret is not set"; exit 1; }
+          git clone -q "https://git:${OVERLEAF_TOKEN}@git.overleaf.com/${CV_PROJECT}" ol-cv \
+            || { echo "::error::Overleaf clone failed: token expired or revoked? Regenerate at overleaf.com/user/settings"; exit 1; }
+          sha=$(git -C ol-cv rev-parse HEAD)
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          if [ "$(cat "$SHA_FILE" 2>/dev/null)" = "$sha" ]; then
+            echo "CV unchanged on Overleaf ($sha)"; echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          cd ol-cv
+          main=main.tex
+          [ -f "$main" ] || main=$(grep -l '\\documentclass' *.tex | head -1)
+          [ -n "$main" ] || { echo "::error::No root .tex file found"; exit 1; }
+          echo "main=$main" >> "$GITHUB_OUTPUT"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Compile CV (XeLaTeX)
+        if: steps.clone.outputs.changed == 'true'
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: ol-cv
+          root_file: ${{ steps.clone.outputs.main }}
+          latexmk_use_xelatex: true
+
+      - name: Update site CV and redeploy
+        if: steps.clone.outputs.changed == 'true'
+        env:
+          MAIN: ${{ steps.clone.outputs.main }}
+          SHA: ${{ steps.clone.outputs.sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp "ol-cv/${MAIN%.tex}.pdf" "$CV_PDF"
+          echo "$SHA" > "$SHA_FILE"
+          today=$(TZ=America/Los_Angeles date '+%B %-d, %Y')
+          sed -i -E "s/(Last updated: )[^\"]*/\1${today}/" _pages/cv.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$CV_PDF" "$SHA_FILE" _pages/cv.md
+          git diff --cached --quiet && { echo "Nothing to commit"; exit 0; }
+          git commit -m "Sync CV from Overleaf (${SHA:0:7})"
+          git push
+          # Pushes made with GITHUB_TOKEN don't trigger other workflows; dispatch the deploy explicitly.
+          gh workflow run deploy.yml --ref "${GITHUB_REF_NAME}"
