@@ -22,3 +22,6 @@ vendor
 .gemini/
 .superpowers/
 docs/superpowers/
+
+# Overleaf CV/resume clones (git.overleaf.com)
+_overleaf/
