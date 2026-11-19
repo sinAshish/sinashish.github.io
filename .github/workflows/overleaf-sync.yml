@@ -38,9 +38,8 @@ jobs:
             echo "CV unchanged on Overleaf ($sha)"; echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           cd ol-cv
-          main=main.tex
-          [ -f "$main" ] || main=$(grep -l '\\documentclass' *.tex | head -1)
-          [ -n "$main" ] || { echo "::error::No root .tex file found"; exit 1; }
+          main=cv-phd.tex # Overleaf project has several roots; this one is the current CV
+          [ -f "$main" ] || { echo "::error::$main not found in Overleaf project"; exit 1; }
           echo "main=$main" >> "$GITHUB_OUTPUT"
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
