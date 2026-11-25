@@ -1,0 +1,775 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Hessian Tube Prior</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column on the left, a live specimen on the right that stays in view while you scroll
+   through a section. Left-aligned throughout. Colour appears only where the score has a sign. */
+:root {
+  --bg: #eef1f1;          /* film */
+  --surface: #e2e7e8;
+  --ink: #12181c;
+  --ink-2: #3c4850;
+  --rule: #c3cccf;
+  --pos: #b86a00;         /* score > 0: bulge */
+  --neg: #00786b;         /* score < 0: pinch / neck */
+  --zero: #6d7a80;        /* score ~ 0: tube */
+  --vessel-hi: #fbfdfd;
+  --vessel-lo: #5b6a72;
+  --f-head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Literata", Georgia, "Times New Roman", serif;
+  --f-data: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --measure: 62ch;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0e10; --surface: #151a1d; --ink: #e9ecea; --ink-2: #a9b4b8; --rule: #2a3236;
+    --pos: #f0a52c; --neg: #3fcdb9; --zero: #8b979c; --vessel-hi: #f4f6f4; --vessel-lo: #3a464c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b0e10; --surface: #151a1d; --ink: #e9ecea; --ink-2: #a9b4b8; --rule: #2a3236;
+  --pos: #f0a52c; --neg: #3fcdb9; --zero: #8b979c; --vessel-hi: #f4f6f4; --vessel-lo: #3a464c; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.65 var(--f-body); margin: 0;
+  padding-block: 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1180px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--f-head); font-weight: 650; letter-spacing: -0.015em; line-height: 1.08; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.6rem, 7.2vw, 5.6rem); font-weight: 750; letter-spacing: -0.035em; }
+h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); }
+p { margin: 0 0 1em; max-width: var(--measure); }
+a { color: inherit; }
+.topbar { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 18px; font-family: var(--f-head); font-size: .95rem; color: var(--ink-2); }
+.topbar button { font: inherit; color: inherit; background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 4px 14px; cursor: pointer; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: center; padding-block: 28px 64px; }
+.hero .lede { font-size: 1.25rem; line-height: 1.5; margin-top: 1.4rem; color: var(--ink-2); }
+.hero .lede strong { color: var(--ink); font-weight: 600; }
+.specimen { background: var(--surface); border-radius: 6px; padding: 14px 14px 16px; }
+.specimen canvas { display: block; width: 100%; height: auto; }
+.controls { display: grid; gap: 10px; margin-top: 12px; font-family: var(--f-head); font-size: .95rem; }
+.controls label { display: grid; grid-template-columns: 9.5em 1fr 4.2em; gap: 10px; align-items: center; }
+.controls output { font-family: var(--f-data); font-size: .85rem; color: var(--ink-2); text-align: right; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+button.chip { font: 500 .9rem var(--f-head); color: var(--ink); background: transparent; border: 1px solid var(--rule); border-radius: 4px; padding: 6px 12px; cursor: pointer; }
+button.chip[aria-pressed="true"], button.chip.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+input[type=range] { width: 100%; accent-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--pos); outline-offset: 2px; }
+.readout { font-family: var(--f-data); font-size: .82rem; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 8px; }
+.readout b { color: var(--ink); font-weight: 500; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font: .85rem var(--f-head); color: var(--ink-2); margin-top: 8px; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+section.part { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); padding-block: clamp(44px, 8vw, 96px); border-top: 1px solid var(--rule); align-items: start; }
+section.part > .text > h2 { margin-bottom: 1.1rem; }
+section.part > .figure { position: sticky; top: 20px; }
+.eq { margin: 1.2rem 0 1.4rem; padding: 14px 16px; background: var(--surface); border-radius: 6px; overflow-x: auto; }
+.eq math { font-size: 1.28rem; }
+.eq .name { display: block; font: 500 .85rem var(--f-head); color: var(--ink-2); margin-bottom: 6px; }
+dl.terms { margin: 0 0 1.4rem; display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; max-width: var(--measure); font-size: .98rem; }
+dl.terms dt { font-family: var(--f-data); font-size: .9rem; color: var(--ink); padding-top: 1px; }
+dl.terms dd { margin: 0; color: var(--ink-2); }
+.pos { color: var(--pos); } .neg { color: var(--neg); }
+svg text { font-family: var(--f-head); fill: var(--ink-2); font-size: 12px; }
+svg .mono { font-family: var(--f-data); }
+.bars { display: grid; gap: 12px; font-family: var(--f-head); }
+.bar { display: grid; grid-template-columns: 11em 1fr 5em; gap: 10px; align-items: center; font-size: .92rem; }
+.bar .track { height: 14px; background: var(--rule); border-radius: 2px; position: relative; overflow: hidden; }
+.bar .fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--ink); transition: width .2s; }
+.bar .val { font-family: var(--f-data); font-size: .82rem; text-align: right; }
+table.eig { width: 100%; border-collapse: collapse; font-family: var(--f-data); font-size: .88rem; margin-top: 12px; }
+table.eig th, table.eig td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+table.eig th:first-child, table.eig td:first-child { text-align: left; font-family: var(--f-head); }
+table.eig th { font: 500 .8rem var(--f-head); color: var(--ink-2); }
+table.eig tr.hl td { color: var(--ink); background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 36px; margin-top: 2rem; }
+.fact b { display: block; font: 700 2.4rem/1 var(--f-head); letter-spacing: -0.03em; margin-bottom: 6px; }
+.fact span { color: var(--ink-2); font-size: .98rem; display: block; max-width: 30ch; }
+.fact small { display: block; margin-top: 6px; font: .78rem var(--f-data); color: var(--ink-2); }
+.note { font-size: .88rem; color: var(--ink-2); max-width: var(--measure); }
+footer { border-top: 1px solid var(--rule); padding-block: 36px 60px; color: var(--ink-2); font-size: .92rem; }
+
+.lab { padding: 16px; }
+.labgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px 28px; font-family: var(--f-head); font-size: .95rem; margin-bottom: 12px; align-items: center; }
+.labgrid label:not(.chk) { display: grid; grid-template-columns: 11em 1fr 4.4em; gap: 10px; align-items: center; }
+.labgrid output { font-family: var(--f-data); font-size: .85rem; color: var(--ink-2); text-align: right; }
+.lbl { color: var(--ink); margin-right: 6px; }
+.chk { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+.stage { position: relative; }
+.stage canvas { display: block; width: 100%; height: auto; border-radius: 4px; touch-action: pan-y; }
+#labLabels { position: absolute; inset: 0; pointer-events: none; font-family: var(--f-head); }
+#labLabels .g { position: absolute; left: 10px; font-weight: 650; font-size: 1rem; color: var(--ink); }
+#labLabels .r { position: absolute; left: 10px; font-size: .8rem; color: var(--ink-2); line-height: 1.35; }
+#labLabels .r b { font-family: var(--f-data); font-weight: 500; color: var(--ink); }
+@media (max-width: 860px) {
+  .hero, section.part { grid-template-columns: minmax(0, 1fr); }
+  section.part > .figure { position: static; }
+  .controls label { grid-template-columns: 7.5em 1fr 3.6em; }
+  .labgrid label:not(.chk) { grid-template-columns: 8.5em 1fr 3.8em; }
+  .bar { grid-template-columns: 8em 1fr 4.4em; }
+}
+@media (prefers-reduced-motion: reduce) { .bar .fill { transition: none; } }
+</style>
+
+<div class="wrap">
+  <div class="topbar"><span>Hessian Tube Priors on Neural SDFs for Sparse Vessel Reconstruction</span><button id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button></div>
+
+  <header style="padding-block: 28px 8px">
+    <h1 style="max-width: 16ch">Turn the prior up. Watch the vessel straighten.</h1>
+    <p class="lede" style="max-width: 62ch; font-size: 1.2rem; color: var(--ink-2); margin-top: 1.2rem">Both columns start from the same guess between the annotated slices. The right column adds the Hessian tube prior. Change a weight and the surface is re-optimized in your browser with the paper's energy terms.</p>
+    <div class="specimen lab" style="margin-top: 22px">
+      <div class="labgrid">
+        <label><span>Prior weight λ<sub>tube</sub></span> <input id="lam" type="range" min="-2" max="1.5" step="0.02" value="0" aria-label="Tube prior weight"><output id="lamO"></output></label>
+        <label><span>Gate length σ<sub>g</sub> (voxels)</span> <input id="sg" type="range" min="0.5" max="6" step="0.1" value="1" aria-label="Gate length"><output id="sgO"></output></label>
+        <label><span>Neck weight w<sub>sad</sub></span> <input id="wsad" type="range" min="0.25" max="1" step="0.05" value="1" aria-label="Neck weight"><output id="wsadO"></output></label>
+        <div class="row" role="group" aria-label="Slice spacing"><span class="lbl">Slice spacing k</span><span id="kBtns" class="row"></span></div>
+        <div class="row"><label class="chk"><input id="gateOff" type="checkbox"> Gate off (g = 1 everywhere)</label><button class="chip" id="seedBtn" type="button">New starting guess</button></div>
+      </div>
+      <div class="stage" id="labStage"><canvas id="labCv" role="img" aria-label="Thick and thin vessel reconstructions without and with the tube prior, drawn as 3D tubes"></canvas><div id="labLabels"></div></div><p class="note" style="margin-top:6px">Drag the picture sideways to turn the vessels.</p>
+      <div class="readout" id="labRead"></div>
+      <div class="legend"><span><i class="sw" style="background:var(--pos)"></i>s &gt; 0 bulge</span><span><i class="sw" style="background:var(--neg)"></i>s &lt; 0 pinch</span><span><i class="sw" style="background:var(--zero)"></i>s ≈ 0 tube</span><span>dashed outline: true vessel</span><span>vertical lines: annotated slices</span></div>
+      <svg id="sweepSvg" viewBox="0 0 520 210" width="100%" role="img" aria-label="Dice against prior weight" style="margin-top:14px; max-width:640px"></svg>
+      <p class="note">Toy model, not the paper's data. Each vessel is a radius profile along its axis. The loss is the network's own guess, a data term on the slices, and the paper's tube energy gated by distance from a slice. The starting guess is exaggerated so the effect is visible. The score is capped softly at ±6 for numerical stability. The gate matters most with dense slices, so try k = 2 with a large λ. λ is in toy units, so it does not compare to the paper's 0.0483.</p>
+    </div>
+  </header>
+
+  <section class="part" style="grid-template-columns:minmax(0,1fr)">
+    <div class="text" style="max-width:none">
+      <h2>What the paper measured</h2>
+      <p style="max-width:70ch">The paper's ablation adds one term at a time to the loss. Pick a row. These are the paper's numbers: sparse Dice at k = 4, Dice with full labels (k = 1), and how often two parallel vessels merge.</p>
+      <div class="row" id="ablBtns" role="group" aria-label="Loss configuration" style="margin: 14px 0"></div>
+      <svg id="ablSvg" viewBox="0 0 900 300" width="100%" role="img" aria-label="Ablation results"></svg>
+      <p class="note" id="ablNote" style="margin-top:8px"></p>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="text">
+      <h2>Sparse slices leave gaps</h2>
+      <p>In the paper's main setting, one slice in four is annotated. On the annotated slices the contour is known. Between them, many different 3D surfaces fit the same labels.</p>
+      <p>A neural signed distance function picks one of them by whatever bias it has. In practice that means bumps, necks, and thin bridges between vessels that run close together.</p>
+      <p>A prior has to say what the space between the slices should look like. For vessels the answer is short: a tube.</p>
+    </div>
+    <div class="figure">
+      <div class="specimen">
+        <div class="stage"><canvas id="gapCv" role="img" aria-label="Vessel with annotated slice rings"></canvas></div><p class="note" id="gapCap" style="margin-top:8px"></p>
+        <div class="controls"><label>Slices skipped, k <input id="kk" type="range" min="1" max="16" step="1" value="4" aria-label="Slice spacing k"><output id="kkO"></output></label></div>
+        <div class="readout"><span>main setting <b>k = 4</b></span><span>hardest case in the paper <b>k = 16</b></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="text">
+      <h2>Penalizing curvature punishes thin vessels</h2>
+      <p>The usual way to ask for a smooth surface is to penalize mean curvature, H. On a tube of radius r, H is 1/(2r). Halve the radius and H doubles, so the squared penalty grows four times.</p>
+      <p>A small vessel is the cheapest thing to delete. The network learns to shrink thin vessels away, and in the clinic those are often the ones that matter.</p>
+      <div class="eq"><span class="name">Mean curvature of a tube</span><math display="block"><mi>H</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>r</mi></mrow></mfrac><mo>,</mo><mspace width="1.2em"/><msup><mi>H</mi><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mrow><mn>4</mn><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac></math></div>
+      <p>Move the radius slider. The grey bar is the curvature penalty. The score you will meet below stays at zero.</p>
+    </div>
+    <div class="figure">
+      <div class="specimen">
+        <div class="stage"><canvas id="tubeCv" role="img" aria-label="Tube of adjustable radius"></canvas></div>
+        <div class="controls"><label>Radius r <input id="r1" type="range" min="0.25" max="2" step="0.01" value="1" aria-label="Tube radius"><output id="r1O"></output></label></div>
+        <div class="bars" style="margin-top:14px">
+          <div class="bar"><span>penalty on H²</span><div class="track"><div class="fill" id="b1" style="background:var(--zero)"></div></div><span class="val" id="b1v"></span></div>
+          <div class="bar"><span>tube score s</span><div class="track"><div class="fill" id="b2" style="background:var(--neg)"></div></div><span class="val" id="b2v">0.00</span></div>
+        </div>
+        <p class="note" style="margin-top:10px">Penalty is shown relative to r = 1. The bar is capped at 8×.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="text">
+      <h2>A distance function hides a zero in its Hessian</h2>
+      <p>The surface is stored as a signed distance function f. It is positive outside, negative inside, and zero on the surface. Its gradient is the surface normal n.</p>
+      <p>The Hessian of f is the matrix of second derivatives. It holds the bending. The obvious score is its determinant, which is the textbook Gaussian curvature.</p>
+      <p>That score is always zero. A distance function grows at slope one along its own normal, so its second derivative in that direction is zero. One eigenvalue is zero, so the determinant is zero. On a tube, on a ball, on a sheet.</p>
+      <div class="eq"><span class="name">The 3D Hessian on a surface</span><math display="block"><mi>det</mi><mo>(</mo><msup><mo>∇</mo><mn>2</mn></msup><mi>f</mi><mo>)</mo><mo>=</mo><msub><mi>λ</mi><mn>1</mn></msub><msub><mi>λ</mi><mn>2</mn></msub><mo>·</mo><mn>0</mn><mo>=</mo><mn>0</mn></math></div>
+      <p>Pick a shape and a radius. Two eigenvalues change. The third never does.</p>
+    </div>
+    <div class="figure">
+      <div class="specimen">
+        <div class="row" id="shapeBtns" role="group" aria-label="Surface shape"></div>
+        <div class="controls" style="margin-top:10px"><label>Radius r <input id="r2" type="range" min="0.4" max="2" step="0.01" value="1" aria-label="Radius"><output id="r2O"></output></label></div>
+        <table class="eig" aria-label="Eigenvalues for the selected shape">
+          <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
+          <tbody id="eigBody"></tbody>
+        </table>
+        <p class="note" style="margin-top:10px" id="eigNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="text">
+      <h2>Project out the normal</h2>
+      <p>The fix is to ignore the normal direction. Project the Hessian onto the tangent plane with P, then divide by the gradient length. The result is the shape operator S. It has two eigenvalues, the principal curvatures.</p>
+      <div class="eq"><span class="name">Shape operator</span><math display="block"><mi>S</mi><mo>=</mo><mfrac><mrow><mi>P</mi><mspace width=".15em"/><msup><mo>∇</mo><mn>2</mn></msup><mi>f</mi><mspace width=".15em"/><mi>P</mi></mrow><mrow><mo>‖</mo><mo>∇</mo><mi>f</mi><mo>‖</mo></mrow></mfrac><mo>,</mo><mspace width="1.2em"/><mi>P</mi><mo>=</mo><mi>I</mi><mo>−</mo><mi>n</mi><msup><mi>n</mi><mi>T</mi></msup></math></div>
+      <dl class="terms">
+        <dt>P</dt><dd>keeps only directions that lie along the surface</dd>
+        <dt>κ₁, κ₂</dt><dd>the two principal curvatures, how fast the surface bends in its sharpest and flattest directions</dd>
+        <dt>K = κ₁κ₂</dt><dd>Gaussian curvature, the product</dd>
+        <dt>H = (κ₁+κ₂)/2</dt><dd>mean curvature, the average</dd>
+      </dl>
+      <p>On a tube, the surface follows a circle around it, so κ₁ is 1/r. Along the tube it is straight, so κ₂ is 0. Their product K is zero at any radius, which is what we wanted.</p>
+      <p>But K is also zero on a flat sheet. And a sheet is what you get when two nearby vessels fuse.</p>
+    </div>
+    <div class="figure">
+      <div class="specimen">
+        <svg id="arcSvg" viewBox="0 0 520 300" width="100%" role="img" aria-label="The two principal curvature arcs"></svg>
+        <p class="note">The left arc is the bend around the vessel (κ₁ = 1/r). The right arc is the bend along it (κ₂). Drag t in the next section to change it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="text">
+      <h2>Divide by the mean curvature</h2>
+      <p>So the score divides K by the square of H. A tube scores zero. A blob, which bends equally both ways, scores one. A neck, which bends in opposite directions, scores below zero.</p>
+      <div class="eq"><span class="name">Tube score</span><math display="block"><mi>s</mi><mo>=</mo><mfrac><mi>K</mi><mrow><msup><mi>H</mi><mn>2</mn></msup><mo>+</mo><mi>ε</mi></mrow></mfrac><mo>≈</mo><mfrac><mrow><mn>4</mn><mi>t</mi></mrow><mrow><msup><mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi>t</mi><mo>)</mo></mrow><mn>2</mn></msup></mrow></mfrac><mo>,</mo><mspace width="1.2em"/><mi>t</mi><mo>=</mo><mfrac><msub><mi>κ</mi><mn>2</mn></msub><msub><mi>κ</mi><mn>1</mn></msub></mfrac></math></div>
+      <dl class="terms">
+        <dt>t</dt><dd>the ratio of the two curvatures. This is the shape of the bend, with the size divided out.</dd>
+        <dt>ε</dt><dd>a small constant that keeps the ratio finite on flat patches. It is scaled with the estimated curvature, so the score stays radius-free.</dd>
+        <dt>s = 0</dt><dd>tube: t = 0</dd>
+        <dt>s = 1</dt><dd>blob: t = 1</dd>
+        <dt>s &lt; 0</dt><dd>neck or branch point: t &lt; 0. The loss treats this side more gently, because real vessels branch.</dd>
+      </dl>
+      <p>Because K and H² both scale as 1/r², the radius cancels. Slide t, then change the radius. The score does not move.</p>
+    </div>
+    <div class="figure">
+      <div class="specimen">
+        <svg id="scoreSvg" viewBox="0 0 520 300" width="100%" role="img" aria-label="Tube score as a function of curvature ratio t"></svg>
+        <div class="row" style="margin-top:8px"><button class="chip" data-t="0" type="button">Tube</button><button class="chip" data-t="1" type="button">Blob</button><button class="chip" data-t="-0.3" type="button">Neck</button></div>
+        <div class="controls" style="margin-top:10px">
+          <label>Ratio t <input id="tt" type="range" min="-0.33" max="1" step="0.005" value="0" aria-label="Curvature ratio t"><output id="ttO"></output></label>
+          <label>Radius r <input id="r3" type="range" min="0.4" max="2" step="0.01" value="1" aria-label="Radius"><output id="r3O"></output></label>
+        </div>
+        <div class="readout" id="scoreRead"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="text">
+      <h2>Sheets and floaters need their own terms</h2>
+      <p>Because a sheet scores zero too, the loss adds a second term. It charges any surface that is flatter than the widest vessel in the data. Tubes and necks are untouched.</p>
+      <div class="eq"><span class="name">Per-point tube energy</span><math display="block"><msub><mi>e</mi><mi>tube</mi></msub><mo>=</mo><mi>w</mi><mo>(</mo><mi>s</mi><mo>)</mo><mspace width=".2em"/><msub><mi>Huber</mi><mi>δ</mi></msub><mo>(</mo><mi>s</mi><mo>)</mo><mo>+</mo><msub><mi>λ</mi><mi>sh</mi></msub><mspace width=".2em"/><msup><mrow><mi>ReLU</mi><mo>(</mo><mn>1</mn><mo>−</mo><mn>2</mn><msub><mi>r</mi><mi>big</mi></msub><mo>|</mo><mi>H</mi><mo>|</mo><mo>)</mo></mrow><mn>2</mn></msup></math></div>
+      <dl class="terms">
+        <dt>Huber(s)</dt><dd>pulls the score toward zero without letting outliers dominate</dd>
+        <dt>w(s)</dt><dd>weights the neck side (s &lt; 0) more softly, so branch points stay sharp</dd>
+        <dt>ReLU(…)²</dt><dd>zero for any surface with |H| ≥ 1/(2 r_big). A flat sheet has H = 0 and pays the full cost.</dd>
+      </dl>
+      <p>A separate term acts away from the surface. It removes floaters, stray blobs of surface in empty space, and it is the only place the prior touches the background.</p>
+      <p class="note">The Eikonal term keeps f a distance function. It does not by itself make the surface smooth or connected.</p>
+    </div>
+    <div class="figure">
+      <div class="specimen">
+        <div class="stage"><canvas id="sheetCv" role="img" aria-label="Two parallel vessels and a bridging sheet"></canvas></div>
+        <div class="controls"><label>Bridge between vessels <input id="web" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="Bridge amount"><output id="webO"></output></label></div>
+        <div class="readout" id="sheetRead"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="text">
+      <h2>Switch it off where the labels already speak</h2>
+      <p>On an annotated slice the answer is known. A prior there can only fight the labels. So the loss is gated by distance from the nearest annotated slice.</p>
+      <div class="eq"><span class="name">Gate</span><math display="block"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mi>exp</mi><mo>(</mo><mo>−</mo><msup><mrow><mo>(</mo><mfrac><msub><mi>d</mi><mi>obs</mi></msub><msub><mi>σ</mi><mi>g</mi></msub></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>)</mo></math></div>
+      <div class="eq"><span class="name">Gated loss</span><math display="block"><msub><mi>ℒ</mi><mi>tube</mi></msub><mo>=</mo><msub><mi>𝔼</mi><mrow><mi>x</mi><mo>∈</mo><mi>shell</mi></mrow></msub><mo>[</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mspace width=".2em"/><msub><mi>e</mi><mi>tube</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>]</mo></math></div>
+      <dl class="terms">
+        <dt>d<sub>obs</sub></dt><dd>distance from the point to the nearest annotated slice, not to a contour</dd>
+        <dt>σ<sub>g</sub></dt><dd>how fast the gate opens. One σ<sub>g</sub> out, g = 0.63. Two out, g = 0.98.</dd>
+      </dl>
+      <p>The paper uses σ<sub>g</sub> of one voxel. A small σ<sub>g</sub> lets the prior reach the labels. A large σ<sub>g</sub> keeps it from turning fully on even mid-gap.</p>
+      <p>Removing the gate costs accuracy even with full labels: Dice drops from 0.977 to 0.923 at k = 1.</p>
+    </div>
+    <div class="figure">
+      <div class="specimen">
+        <svg id="gateSvg" viewBox="0 0 520 330" width="100%" role="img" aria-label="Gate g over slice positions"></svg>
+        <div class="controls"><label><span>Gate width σ<sub>g</sub></span> <input id="sgG" type="range" min="0.2" max="2.5" step="0.01" value="1" aria-label="Gate width sigma g"><output id="sgGO"></output></label></div>
+        <div class="readout" id="gateRead"></div>
+        <p class="note" style="margin-top:8px">Drag in the figure to move the probe. Teal intensity on the vessel is the prior strength g. Slices are every 4 units.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" style="grid-template-columns:minmax(0,1fr)">
+    <div class="text">
+      <h2>What it buys</h2>
+      <p style="max-width:70ch">Five synthetic families and seven clinical datasets, with one slice in four annotated unless noted. Every figure below is a result from the paper.</p>
+      <div class="facts">
+        <div class="fact"><b>7 of 7</b><span>clinical datasets with the highest Dice, and the highest or tied-highest clDice on all seven.</span><small>main results table</small></div>
+        <div class="fact"><b>6%</b><span>false merges on parallel vessels. Baselines merge 31 to 100% of them. Ablation: 71% without the prior, 8% with it.</span><small>parallel-vessel test, ablation table</small></div>
+        <div class="fact"><b>11–36%</b><span>more annotated slices are needed to match k = 4 performance without the prior.</span><small>annotation-budget comparison</small></div>
+        <div class="fact"><b>0.001</b><span>the most Dice the prior costs under dense supervision. It stays out of the way when labels are plentiful.</span><small>dense supervision, Dice</small></div>
+        <div class="fact"><b>0.42 vox</b><span>absolute radius error, against 0.45 for NSH and 0.47 for VesselSDF. Signed bias is −11%, a separate quantity.</span><small>surface quality, supplement</small></div>
+      </div>
+      <p class="note" style="margin-top:2rem;max-width:70ch">Vessel generation in the paper is downstream evidence that the reconstructions are useful. It is not a separate measure of reconstruction accuracy.</p>
+    </div>
+  </section>
+
+  <section class="part" style="grid-template-columns:minmax(0,1fr)">
+    <div class="text">
+      <h2>Where it stops</h2>
+      <p>The prior is local. It scores each point from its own curvature, so it cannot enforce connectivity across wide gaps such as k = 16. A learned global prior may help there. Local attributes such as tortuosity may need extra guidance.</p>
+    </div>
+  </section>
+
+  <footer>All figures on this page are toy profiles drawn to show the maths. They are not reconstructions from the paper's data.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var NS = "http://www.w3.org/2000/svg";
+  var TAU = Math.PI * 2;
+  function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function mix(a, b, t) { var A = hex(a), B = hex(b); return "rgb(" + [0, 1, 2].map(function (i) { return Math.round(A[i] + (B[i] - A[i]) * t); }).join(",") + ")"; }
+  function hex(c) { c = c.trim(); if (c[0] === "#") { if (c.length === 4) c = "#" + c[1] + c[1] + c[2] + c[2] + c[3] + c[3]; return [parseInt(c.substr(1, 2), 16), parseInt(c.substr(3, 2), 16), parseInt(c.substr(5, 2), 16)]; } var m = c.match(/\d+/g) || [128, 128, 128]; return [+m[0], +m[1], +m[2]]; }
+  function f2(x) { return (x >= 0 ? "" : "−") + Math.abs(x).toFixed(2); }
+  function sOf(k1, k2) { var d = (k1 + k2) * (k1 + k2); return d < 1e-12 ? 0 : 4 * k1 * k2 / d; }
+  function sEps(k1, k2) { var H = (k1 + k2) / 2; return k1 * k2 / (H * H + 0.25); } /* K / (H^2 + eps), eps = 0.25 / r0^2 */
+
+  /* theme toggle: system -> light -> dark */
+  var themeBtn = $("themeBtn");
+  themeBtn.addEventListener("click", function () {
+    var cur = document.documentElement.getAttribute("data-theme");
+    var dark = cur ? cur === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+    redrawAll();
+  });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { redrawAll(); });
+  window.addEventListener("resize", function () { clearTimeout(window.__rz); window.__rz = setTimeout(function () { redrawAll(); }, 150); });
+
+/*LABCORE*/
+var LAB = { n: 65, dz: 1, re: 1, rb: 6, ce: 0.01, dl: 0.5, lsh: 0.3, wd: 3, wn: 1, iters: 500, amp: 0.2 };
+function mulberry(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function labTruth(kind, z) { return kind === "thick" ? (2.6 - 0.4 * z / 64) + 0.6 * Math.exp(-0.5 * Math.pow((z - 32) / 1.5, 2)) : 1.2 - 0.2 * z / 64; }
+function labInitial(kind, k, seed) {
+  var r = mulberry(seed * 7919 + (kind === "thick" ? 1 : 2)), p1 = r() * 6.283, p2 = r() * 6.283, out = [];
+  for (var i = 0; i < LAB.n; i++) {
+    var z = i, T = labTruth(kind, z);
+    if (z % k === 0) { out.push(T); continue; }
+    var z0 = Math.floor(z / k) * k, z1 = Math.min(z0 + k, 64), u = (z - z0) / k;
+    var base = (1 - u) * labTruth(kind, z0) + u * labTruth(kind, z1);
+    var rm = kind === "thick" ? 2.6 : 1.2, w = 0.6 * Math.sin(6.283 * z / (3.5 * rm) + p1) + 0.4 * Math.sin(6.283 * z / (2.2 * rm) + p2);
+    out.push(base + LAB.amp * T * w * Math.sin(Math.PI * u));
+  }
+  return out;
+}
+function labPoint(a, b, c, wsad) {
+  var dz = LAB.dz, r1 = (c - a) / (2 * dz), r2 = (c - 2 * b + a) / (dz * dz), q = 1 + r1 * r1;
+  var k1 = 1 / (b * Math.sqrt(q)), k2 = -r2 / Math.pow(q, 1.5), H = 0.5 * (k1 + k2), K = k1 * k2, aH = Math.abs(H);
+  var rl = aH > 1e-9 ? 1 / (2 * aH) : 1e9; rl = Math.min(Math.max(rl, LAB.re / 2), LAB.rb);
+  var eps = LAB.ce / (rl * rl), s0 = K / (H * H + eps), s = 6 * Math.tanh(s0 / 6), as = Math.abs(s);
+  var hub = as <= LAB.dl ? 0.5 * s * s : LAB.dl * (as - LAB.dl / 2);
+  if (s < 0) hub *= wsad;
+  var sh = LAB.lsh * Math.pow(Math.max(0, 1 - 2 * LAB.rb * aH), 2);
+  return [s, hub + sh];
+}
+function labGate(i, k, sg) { if (!(sg > 0)) return 1; var d = Math.min(i % k, k - (i % k)); return 1 - Math.exp(-Math.pow(d / sg, 2)); }
+function labSolve(kind, k, seed, lam, sg, wsad) {
+  var n = LAB.n, r0 = labInitial(kind, k, seed), rho = r0.slice(), T = [], g = [], m = new Array(n).fill(0), v = new Array(n).fill(0), h = 1e-3, b1 = .9, b2 = .999;
+  for (var i = 0; i < n; i++) { T.push(labTruth(kind, i)); g.push(labGate(i, k, sg)); }
+  if (lam <= 0) return rho;
+  for (var it = 1; it <= LAB.iters; it++) {
+    var lr = 0.02 * (0.04 + 0.96 * 0.5 * (1 + Math.cos(Math.PI * it / LAB.iters)));
+    for (var j = 0; j < n; j++) {
+      var gr = 2 * LAB.wn * (rho[j] - r0[j]) + ((j % k === 0) ? 2 * LAB.wd * (rho[j] - T[j]) : 0);
+      for (var i2 = Math.max(1, j - 1); i2 <= Math.min(n - 2, j + 1); i2++) {
+        if (g[i2] === 0) continue;
+        var o = rho[j]; rho[j] = o + h; var ep = labPoint(rho[i2 - 1], rho[i2], rho[i2 + 1], wsad)[1];
+        rho[j] = o - h; var em = labPoint(rho[i2 - 1], rho[i2], rho[i2 + 1], wsad)[1]; rho[j] = o;
+        gr += lam * g[i2] * (ep - em) / (2 * h);
+      }
+      m[j] = b1 * m[j] + (1 - b1) * gr; v[j] = b2 * v[j] + (1 - b2) * gr * gr;
+      rho[j] -= lr * (m[j] / (1 - Math.pow(b1, it))) / (Math.sqrt(v[j] / (1 - Math.pow(b2, it))) + 1e-8);
+      if (rho[j] < 0.2) rho[j] = 0.2;
+    }
+  }
+  return rho;
+}
+function labDice(kind, rho) { var a = 0, b = 0, c = 0; for (var i = 0; i < rho.length; i++) { var t = labTruth(kind, i); a += Math.min(rho[i], t); b += rho[i]; c += t; } return 2 * a / (b + c); }
+function labErr(kind, rho) { var e = 0; for (var i = 0; i < rho.length; i++) e += Math.abs(rho[i] - labTruth(kind, i)); return e / rho.length; }
+function labScores(rho, wsad) { var s = [0]; for (var i = 1; i < rho.length - 1; i++) s.push(labPoint(rho[i - 1], rho[i], rho[i + 1], wsad)[0]); s.push(0); return s; }
+/*ENDCORE*/
+
+  /* ---------- 3D stage helpers (Three.js) ---------- */
+  var HAVE3D = typeof THREE !== "undefined";
+  function mkStage(canvas) {
+    var r = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+    r.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    var sc = new THREE.Scene();
+    sc.add(new THREE.HemisphereLight(0xffffff, 0x39434a, 0.85));
+    var d = new THREE.DirectionalLight(0xffffff, 0.8); d.position.set(-260, 340, 420); sc.add(d);
+    return { r: r, sc: sc, cam: null, w: 0, h: 0 };
+  }
+  function stageSize(st, w, h) {
+    st.r.setSize(w, h, false); st.w = w; st.h = h;
+    st.cam = new THREE.OrthographicCamera(0, w, h, 0, -3000, 3000); st.cam.position.z = 800;
+    st.r.setClearColor(new THREE.Color(css("--surface")), 1);
+  }
+  function stageClear(st) {
+    for (var i = st.sc.children.length - 1; i >= 0; i--) {
+      var c = st.sc.children[i]; if (c.isLight) continue; st.sc.remove(c);
+      c.traverse(function (o) { if (o.geometry) o.geometry.dispose(); if (o.material) o.material.dispose(); });
+    }
+  }
+  function cubic(arr, x) {
+    var n = arr.length, i = Math.floor(x), t = x - i, p0 = arr[Math.max(0, i - 1)], p1 = arr[Math.min(n - 1, i)], p2 = arr[Math.min(n - 1, i + 1)], p3 = arr[Math.min(n - 1, i + 2)];
+    return 0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t + (-p0 + 3 * p1 - 3 * p2 + p3) * t * t * t);
+  }
+  function upsample(arr, f) { var out = [], n = (arr.length - 1) * f + 1; for (var i = 0; i < n; i++) out.push(cubic(arr, i / f)); return out; }
+  function blur(arr, passes) { var a = arr.slice(); for (var p = 0; p < passes; p++) { var b = a.slice(); for (var i = 1; i < a.length - 1; i++) b[i] = (a[i - 1] + 2 * a[i] + a[i + 1]) / 4; a = b; } return a; }
+  function latheMesh(R, L, colors, o) {
+    o = o || {}; var N = R.length, pts = [], i, j, SEG = 56;
+    for (i = 0; i < N; i++) pts.push(new THREE.Vector2(Math.max(R[i], 0.05), -L / 2 + L * i / (N - 1)));
+    var g = new THREE.LatheGeometry(pts, SEG);
+    if (colors) {
+      var a = new Float32Array((SEG + 1) * N * 3);
+      for (i = 0; i <= SEG; i++) for (j = 0; j < N; j++) { var c = colors[j], q = (i * N + j) * 3; a[q] = c.r; a[q + 1] = c.g; a[q + 2] = c.b; }
+      g.setAttribute("color", new THREE.BufferAttribute(a, 3));
+    }
+    var op = o.opacity === undefined ? 1 : o.opacity;
+    var mat = new THREE.MeshStandardMaterial({ color: colors ? 0xffffff : new THREE.Color(o.color || "#999999"), vertexColors: !!colors, roughness: 0.46, metalness: 0.04, side: THREE.DoubleSide, transparent: op < 1, opacity: op, depthWrite: op >= 1 });
+    var m = new THREE.Mesh(g, mat); m.rotation.z = -Math.PI / 2; return m;
+  }
+  function ringMesh(R, x, tube, color) {
+    var m = new THREE.Mesh(new THREE.TorusGeometry(R, tube, 8, 80), new THREE.MeshBasicMaterial({ color: new THREE.Color(color) }));
+    m.rotation.y = Math.PI / 2; m.position.x = x; return m;
+  }
+  function scoreTint(sv, base) {
+    var t = Math.min(1, Math.abs(sv) / 1.4); t = Math.pow(t, 0.85);
+    var c = new THREE.Color(base); return c.lerp(new THREE.Color(sv >= 0 ? css("--pos") : css("--neg")), t * 0.92);
+  }
+  function neutralBase() { return new THREE.Color(css("--zero")).lerp(new THREE.Color(css("--vessel-hi")), 0.55); }
+
+  /* ---------- lab UI ---------- */
+  var labK = 4, labSeed = 1, sweepTimer = 0;
+  function scoreColor(sv) { var t = Math.min(1, Math.abs(sv) * 1.1); return mix(css("--zero"), sv >= 0 ? css("--pos") : css("--neg"), t); }
+  function labState() {
+    var lam = Math.pow(10, +$("lam").value), off = $("gateOff").checked, sg = off ? 0 : +$("sg").value, w = +$("wsad").value;
+    return { lam: lam, sg: sg, w: w, off: off };
+  }
+  function labRun(st) {
+    var out = {};
+    ["thick", "thin"].forEach(function (kd) {
+      var r0 = labInitial(kd, labK, labSeed), r1 = labSolve(kd, labK, labSeed, st.lam, st.sg, st.w);
+      out[kd] = { r0: r0, r1: r1, d0: labDice(kd, r0), d1: labDice(kd, r1), e0: labErr(kd, r0), e1: labErr(kd, r1) };
+    });
+    return out;
+  }
+  var labSt = null, labGroups = [], labYaw = 0.5;
+  function drawLab() {
+    var st = labState();
+    $("lamO").textContent = st.lam.toFixed(st.lam < 0.1 ? 3 : 2); $("sgO").textContent = st.off ? "off" : (+$("sg").value).toFixed(1); $("wsadO").textContent = st.w.toFixed(2);
+    $("sg").disabled = st.off;
+    var res = labRun(st), a = res.thick, b = res.thin;
+    var d0 = (a.d0 + b.d0) / 2, d1 = (a.d1 + b.d1) / 2, e0 = (a.e0 + b.e0) / 2, e1 = (a.e1 + b.e1) / 2;
+    $("labRead").innerHTML = "<span>mean Dice <b>" + d0.toFixed(3) + "</b> to <b>" + d1.toFixed(3) + "</b> (" + (d1 - d0 >= 0 ? "+" : "−") + Math.abs(d1 - d0).toFixed(3) + ")</span><span>mean radius error <b>" + e0.toFixed(2) + "</b> to <b>" + e1.toFixed(2) + "</b> vox</span><span>k = " + labK + ", slices annotated: " + Math.floor(64 / labK + 1) + "</span>";
+    clearTimeout(sweepTimer); sweepTimer = setTimeout(function () { drawSweep(st); }, 180);
+    if (!HAVE3D) { $("labStage").innerHTML = "<p class='note'>3D view needs WebGL.</p>"; return; }
+    var cv = $("labCv"); if (!labSt) labSt = mkStage(cv);
+    var W = Math.max(320, cv.parentNode.clientWidth), narrow = W < 640;
+    var rowH = narrow ? [96, 96, 64, 64] : [138, 138, 88, 88], gapY = 14, H = rowH.reduce(function (p, c) { return p + c; }, 0) + gapY * 3 + 20;
+    stageSize(labSt, W, H); stageClear(labSt); labGroups = [];
+    var x0 = narrow ? 8 : 170, Wv = W - x0 - 14, sx = Wv / 64, base = neutralBase(), ink = css("--ink");
+    var rows = [["thick", "r0", "No prior"], ["thick", "r1", "With the prior"], ["thin", "r0", "No prior"], ["thin", "r1", "With the prior"]];
+    var ytop = 10, lab = "";
+    rows.forEach(function (rw, idx) {
+      var kd = rw[0], rho = res[kd][rw[1]], cyp = ytop + rowH[idx] / 2, grp = new THREE.Group();
+      var sc = blur(labScores(rho, st.w), 3), F = 4, Rr = upsample(rho, F).map(function (v) { return v * sx; });
+      var ss = upsample(sc, F), cols = ss.map(function (v) { return scoreTint(v, base); });
+      grp.add(latheMesh(Rr, 64 * sx, cols));
+      var T = []; for (var i = 0; i <= 64 * F; i++) T.push(labTruth(kd, i / F) * sx);
+      grp.add(latheMesh(T.map(function (v) { return v + 0.6; }), 64 * sx, null, { color: ink, opacity: 0.1 }));
+      [-1, 1].forEach(function (sgn) { var pts = []; for (var q = 0; q <= 64 * F; q += 2) pts.push(new THREE.Vector3(-32 * sx + (q / F) * sx, sgn * T[q] , 0)); var ln = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: new THREE.Color(ink), transparent: true, opacity: 0.55 })); grp.add(ln); });
+      for (var z = 0; z <= 64; z += labK) grp.add(ringMesh(labTruth(kd, z) * sx + 1.5, -32 * sx + z * sx, 1.2, ink));
+      grp.position.set(x0 + Wv / 2, H - cyp, 0); grp.rotation.y = labYaw; labSt.sc.add(grp); labGroups.push(grp);
+      var m = res[kd]; var dd = rw[1] === "r0" ? m.d0 : m.d1, ee = rw[1] === "r0" ? m.e0 : m.e1;
+      if (!narrow) {
+        if (rw[1] === "r0") lab += '<div class="g" style="top:' + (cyp - 38) + 'px">' + (kd === "thick" ? "Thick vessel" : "Thin vessel") + '</div>';
+        lab += '<div class="r" style="top:' + (cyp - (rw[1] === "r0" ? 14 : 14)) + 'px">' + rw[2] + '<br>Dice <b>' + dd.toFixed(3) + '</b><br>error <b>' + ee.toFixed(2) + '</b> vox</div>';
+      }
+      ytop += rowH[idx] + gapY;
+    });
+    $("labLabels").innerHTML = lab;
+    labSt.r.render(labSt.sc, labSt.cam);
+  }
+  (function () {
+    var cv = $("labCv"), down = false, lx = 0;
+    cv.addEventListener("pointerdown", function (e) { down = true; lx = e.clientX; cv.setPointerCapture(e.pointerId); });
+    cv.addEventListener("pointermove", function (e) { if (!down || !labSt) return; labYaw = Math.max(0.05, Math.min(1.25, labYaw + (e.clientX - lx) * 0.006)); lx = e.clientX; labGroups.forEach(function (g) { g.rotation.y = labYaw; }); labSt.r.render(labSt.sc, labSt.cam); });
+    cv.addEventListener("pointerup", function () { down = false; });
+  })();
+  function drawSweep(st) {
+    var svg = $("sweepSvg"); svg.innerHTML = "";
+    var N = 16, pts = { on: [], off: [] }, base = (labDice("thick", labInitial("thick", labK, labSeed)) + labDice("thin", labInitial("thin", labK, labSeed))) / 2, lo = 1, i;
+    for (i = 0; i < N; i++) {
+      var lg = -2 + 3.5 * i / (N - 1), lam = Math.pow(10, lg);
+      ["on", "off"].forEach(function (key) {
+        var sg = key === "on" ? (st.off ? 1 : st.sg) : 0;
+        var d = (labDice("thick", labSolve("thick", labK, labSeed, lam, sg, st.w)) + labDice("thin", labSolve("thin", labK, labSeed, lam, sg, st.w))) / 2;
+        pts[key].push([lg, d]); lo = Math.min(lo, d);
+      });
+    }
+    lo = Math.min(lo, base); lo = Math.floor((lo - 0.005) * 100) / 100; var hi = 1.0;
+    var W = 520, Hh = 210, ml = 46, mr = 12, mt = 28, mb = 40;
+    var X = function (lg) { return ml + (lg + 2) / 3.5 * (W - ml - mr); }, Y = function (d) { return Hh - mb - (d - lo) / (hi - lo) * (Hh - mt - mb); };
+    el("line", { x1: ml, x2: W - mr, y1: Y(base), y2: Y(base), stroke: css("--zero"), "stroke-width": 1.5, "stroke-dasharray": "5 4" }, svg);
+    var bt = el("text", { x: ml + 12, y: Hh - mb - 48, "font-size": 12 }, svg); bt.textContent = "dashed grey: no prior, " + base.toFixed(3);
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (f) { var d = lo + f * (hi - lo); el("line", { x1: ml, x2: W - mr, y1: Y(d), y2: Y(d), stroke: css("--rule"), "stroke-width": 0.6 }, svg); var t = el("text", { x: ml - 6, y: Y(d) + 4, "text-anchor": "end", "font-size": 11 }, svg); t.textContent = d.toFixed(3); });
+    [-2, -1, 0, 1].forEach(function (lg) { var t = el("text", { x: X(lg), y: Hh - mb + 16, "text-anchor": "middle", "font-size": 11 }, svg); t.textContent = Math.pow(10, lg); });
+    var xl = el("text", { x: (ml + W - mr) / 2, y: Hh - 6, "text-anchor": "middle", "font-size": 12 }, svg); xl.textContent = "prior weight λ (log scale, toy units)";
+    var yl = el("text", { x: ml, y: 12, "font-size": 12 }, svg); yl.textContent = "mean Dice";
+    function line(arr, col, dash) { el("polyline", { points: arr.map(function (p) { return X(p[0]) + "," + Y(p[1]); }).join(" "), fill: "none", stroke: col, "stroke-width": 3, "stroke-dasharray": dash || "" }, svg); }
+    line(pts.off, css("--pos"), "6 4"); line(pts.on, css("--ink"));
+    var lg0 = Math.log10(st.lam), cur = (labDice("thick", labSolve("thick", labK, labSeed, st.lam, st.sg, st.w)) + labDice("thin", labSolve("thin", labK, labSeed, st.lam, st.sg, st.w))) / 2;
+    el("line", { x1: X(lg0), x2: X(lg0), y1: mt, y2: Hh - mb, stroke: css("--neg"), "stroke-width": 1.5 }, svg);
+    el("circle", { cx: X(lg0), cy: Y(cur), r: 6, fill: css("--neg"), stroke: css("--bg"), "stroke-width": 2 }, svg);
+    var l1 = el("text", { x: ml + 12, y: Hh - mb - 30, "font-size": 12 }, svg); l1.style.fill = css("--ink"); l1.textContent = "gated (current σ_g)";
+    var l2 = el("text", { x: ml + 12, y: Hh - mb - 12, "font-size": 12 }, svg); l2.style.fill = css("--pos"); l2.textContent = "no gate (g = 1)";
+  }
+  ["lam", "sg", "wsad"].forEach(function (id) { $(id).addEventListener("input", drawLab); });
+  $("gateOff").addEventListener("change", drawLab);
+  $("seedBtn").addEventListener("click", function () { labSeed++; drawLab(); });
+  [2, 4, 8, 16].forEach(function (k) { var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = k; b.dataset.k = k; b.addEventListener("click", function () { labK = k; Array.prototype.forEach.call($("kBtns").children, function (x) { x.setAttribute("aria-pressed", +x.dataset.k === k ? "true" : "false"); }); drawLab(); }); b.setAttribute("aria-pressed", k === 4 ? "true" : "false"); $("kBtns").appendChild(b); });
+
+  /* ---------- paper ablation (exact table values) ---------- */
+  var ABL = [
+    { n: "No prior", sub: "data + Eikonal", d: [0.777, 0.739, 0.914, 0.923], k1: 0.977, m: 71, note: "The baseline. Parallel vessels merge in 71% of tests." },
+    { n: "VesselSDF term only", sub: "no tube prior", d: [0.781, 0.742, 0.914, 0.924], k1: 0.978, m: 81, note: "The off-surface term alone barely moves Dice and does not stop merging." },
+    { n: "+ Tube prior", sub: "fixed ε", d: [0.799, 0.761, 0.918, 0.939], k1: 0.976, m: 8, note: "The tube score alone cuts false merges from 71% to 8% and lifts every sparse Dice." },
+    { n: "+ Adaptive ε", sub: "no smoothing", d: [0.806, 0.767, 0.920, 0.946], k1: 0.978, m: 8, note: "Scaling ε with local radius helps all four datasets." },
+    { n: "+ Smoothing, no gate", sub: "g ≡ 1", d: [0.819, 0.788, 0.926, 0.961], k1: 0.923, m: 8, note: "Best sparse Dice on CoW CTA and IntrA, but Dice with full labels drops from 0.977 to 0.923." },
+    { n: "Full method", sub: "with the gate", d: [0.822, 0.787, 0.929, 0.958], k1: 0.977, m: 8, note: "The gate restores full-label Dice to 0.977 and keeps the sparse gains." }
+  ];
+  var ablI = 5, DSN = ["CoW MRA", "CoW CTA", "Airway", "IntrA"];
+  ABL.forEach(function (r, i) { var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = r.n; b.title = r.sub; b.addEventListener("click", function () { ablI = i; drawAbl(); }); $("ablBtns").appendChild(b); });
+  function drawAbl() {
+    Array.prototype.forEach.call($("ablBtns").children, function (b, i) { b.setAttribute("aria-pressed", i === ablI ? "true" : "false"); });
+    var svg = $("ablSvg"); svg.innerHTML = ""; var r = ABL[ablI], b0 = ABL[0];
+    var lo = 0.70, hi = 1.0, x0 = 120, x1 = 560;
+    var X = function (d) { return x0 + (d - lo) / (hi - lo) * (x1 - x0); };
+    var t0 = el("text", { x: x0, y: 14, "font-size": 12 }, svg); t0.textContent = "Sparse Dice, k = 4 (axis starts at 0.70)";
+    DSN.forEach(function (n, i) {
+      var y = 36 + i * 40;
+      var lab = el("text", { x: x0 - 10, y: y + 15, "text-anchor": "end", "font-size": 13 }, svg); lab.textContent = n;
+      el("rect", { x: x0, y: y, width: x1 - x0, height: 22, fill: css("--rule"), opacity: 0.5, rx: 2 }, svg);
+      el("rect", { x: x0, y: y, width: Math.max(0, X(r.d[i]) - x0), height: 22, fill: css("--ink"), rx: 2 }, svg);
+      el("line", { x1: X(b0.d[i]), x2: X(b0.d[i]), y1: y - 3, y2: y + 25, stroke: css("--pos"), "stroke-width": 2.5 }, svg);
+      var v = el("text", { x: X(r.d[i]) + 8, y: y + 16, "font-size": 12, class: "mono" }, svg); v.textContent = r.d[i].toFixed(3);
+      v.setAttribute("x", Math.min(X(r.d[i]) + 8, x1 + 8));
+      var dl = r.d[i] - b0.d[i], dt = el("text", { x: x1 + 70, y: y + 16, "font-size": 12, class: "mono" }, svg); dt.textContent = (dl >= 0 ? "+" : "−") + Math.abs(dl).toFixed(3) + " vs no prior";
+    });
+    var lg = el("text", { x: x0, y: 214, "font-size": 11 }, svg); lg.textContent = "amber tick: no-prior value";
+    /* right column: k=1 and merge */
+    var cx0 = 700;
+    var h1 = el("text", { x: cx0, y: 14, "font-size": 12 }, svg); h1.textContent = "";
+    var k1t = el("text", { x: 110, y: 246, "font-size": 12 }, svg); k1t.textContent = "Dice with full labels (k = 1)";
+    var k1v = el("text", { x: 110, y: 270, "font-size": 22, "font-weight": 600 }, svg); k1v.textContent = r.k1.toFixed(3); k1v.style.fill = r.k1 < 0.95 ? css("--pos") : css("--ink");
+    var mt = el("text", { x: 400, y: 246, "font-size": 12 }, svg); mt.textContent = "Parallel vessels falsely merged";
+    el("rect", { x: 400, y: 254, width: 300, height: 18, fill: css("--rule"), opacity: 0.5, rx: 2 }, svg);
+    el("rect", { x: 400, y: 254, width: 300 * r.m / 100, height: 18, fill: r.m > 50 ? css("--pos") : css("--neg"), rx: 2 }, svg);
+    var mv = el("text", { x: 710, y: 269, "font-size": 16, "font-weight": 600 }, svg); mv.textContent = r.m + "%";
+    $("ablNote").textContent = r.note + " Values are from the paper's ablation table (CoW MRA, CoW CTA, airway and IntrA at k = 4).";
+  }
+
+  /* ---------- gap figure ---------- */
+  var gapSt = null;
+  function drawGap() {
+    var k = +$("kk").value; $("kkO").textContent = k;
+    if (!HAVE3D) return;
+    var cv = $("gapCv"); if (!gapSt) gapSt = mkStage(cv);
+    var W = Math.max(300, cv.parentNode.clientWidth), H = Math.round(W * 0.5); stageSize(gapSt, W, H); stageClear(gapSt);
+    var L = W - 50, s0 = H * 0.26, n = 32, N = 200, R = [], T = [], i;
+    for (i = 0; i <= N; i++) { var u = i / N; R.push(s0 * (1 + 0.22 * Math.sin(TAU * u * 2))); }
+    var grp = new THREE.Group();
+    grp.add(latheMesh(R, L, R.map(function () { return neutralBase(); }), {}));
+    grp.add(latheMesh(R.map(function (v) { return v + 1; }), L, null, { color: css("--ink"), opacity: 0.08 }));
+    var count = 0;
+    for (var j = 0; j < n; j += k) { var u2 = j / (n - 1); grp.add(ringMesh(s0 * (1 + 0.22 * Math.sin(TAU * u2 * 2)) + 3, -L / 2 + L * u2, 2.4, css("--ink"))); count++; }
+    grp.position.set(W / 2, H / 2, 0); grp.rotation.y = 0.5; gapSt.sc.add(grp); gapSt.r.render(gapSt.sc, gapSt.cam);
+    $("gapCap").textContent = count + " annotated slices out of " + n + ". Between the rings, the surface is a guess.";
+  }
+    $("kk").addEventListener("input", drawGap);
+
+  /* ---------- thin tube widget ---------- */
+  var tubeSt = null;
+  function drawTube() {
+    var r = +$("r1").value; $("r1O").textContent = r.toFixed(2);
+    var pen = 1 / (r * r);
+    $("b1").style.width = Math.min(100, pen / 8 * 100) + "%"; $("b1v").textContent = pen.toFixed(2) + "×";
+    $("b2").style.width = "1%";
+    if (!HAVE3D) return;
+    var cv = $("tubeCv"); if (!tubeSt) tubeSt = mkStage(cv);
+    var W = Math.max(300, cv.parentNode.clientWidth), H = Math.round(W * 0.42); stageSize(tubeSt, W, H); stageClear(tubeSt);
+    var L = W - 60, unit = H * 0.2, N = 40, Rr = [], i; for (i = 0; i <= N; i++) Rr.push(unit * r);
+    var grp = new THREE.Group();
+    grp.add(latheMesh(Rr, L, Rr.map(function () { return neutralBase(); }), {}));
+    var ghost = []; for (i = 0; i <= N; i++) ghost.push(unit);
+    grp.add(latheMesh(ghost, L, null, { color: css("--ink"), opacity: 0.1 }));
+    grp.add(ringMesh(unit * r + 2, -L / 2 + 20, 2, css("--pos")));
+    grp.position.set(W / 2, H / 2, 0); grp.rotation.y = 0.5; tubeSt.sc.add(grp); tubeSt.r.render(tubeSt.sc, tubeSt.cam);
+  }
+    $("r1").addEventListener("input", drawTube);
+
+  /* ---------- eigenvalue explorer ---------- */
+  var SHAPES = [
+    { id: "tube", name: "Tube", k: function (r) { return [1 / r, 0]; }, note: "Bends around, straight along. K = 0." },
+    { id: "ball", name: "Ball", k: function (r) { return [1 / r, 1 / r]; }, note: "Bends equally both ways. K is positive, yet the 3D determinant is still 0." },
+    { id: "sheet", name: "Sheet", k: function () { return [0, 0]; }, note: "No bending at all. K = 0, exactly like a tube. This is why a sheet slips past K alone." },
+    { id: "neck", name: "Neck", k: function (r) { return [1 / r, -0.3 / r]; }, note: "Bends in opposite directions. K is negative." }
+  ];
+  var shapeId = "tube";
+  var sb = $("shapeBtns");
+  SHAPES.forEach(function (s) {
+    var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = s.name; b.dataset.id = s.id;
+    b.addEventListener("click", function () { shapeId = s.id; drawEig(); }); sb.appendChild(b);
+  });
+  function drawEig() {
+    var r = +$("r2").value; $("r2O").textContent = r.toFixed(2);
+    var s = SHAPES.filter(function (x) { return x.id === shapeId; })[0], k = s.k(r);
+    Array.prototype.forEach.call(sb.children, function (b) { b.setAttribute("aria-pressed", b.dataset.id === shapeId ? "true" : "false"); });
+    var H = (k[0] + k[1]) / 2, K = k[0] * k[1];
+    var rows = [["Eigenvalue along the surface, λ₁ = κ₁", f2(k[0]), 0], ["Eigenvalue along the surface, λ₂ = κ₂", f2(k[1]), 0], ["Eigenvalue along the normal, λ₃", "0.00", 1],
+      ["det ∇²f", "0.00", 1], ["K = κ₁κ₂ (after projecting)", f2(K), 0], ["H = (κ₁+κ₂)/2", f2(H), 0]];
+    $("eigBody").innerHTML = rows.map(function (rw) { return "<tr" + (rw[2] ? ' class="hl"' : "") + "><td>" + rw[0] + "</td><td>" + rw[1] + "</td></tr>"; }).join("");
+    $("eigNote").textContent = s.note;
+  }
+  $("r2").addEventListener("input", drawEig);
+
+  /* ---------- arcs + score curve (shared t, r) ---------- */
+  var tval = 0, rval = 1;
+  function setT(t) { tval = t; $("tt").value = t; drawScore(); drawArcs(); }
+  function drawArcs() {
+    var svg = $("arcSvg"); svg.innerHTML = "";
+    var r = rval, t = tval, k1 = 1 / r, k2 = t / r;
+    function arc(cx0, label, k, col) {
+      el("line", { x1: cx0 - 90, x2: cx0 + 90, y1: 200, y2: 200, stroke: css("--rule"), "stroke-width": 1 }, svg);
+      var pts = [];
+      for (var i = -60; i <= 60; i++) {
+        var x = i * 1.5, y = Math.abs(k) < 1e-4 ? 0 : (1 - Math.sqrt(Math.max(0, 1 - Math.pow(k * x / 55, 2)))) / (k / 55) / 55 * 55 * Math.sign(k);
+        pts.push((cx0 + x) + "," + (200 - 90 * 0 - y * 1.0 - 60));
+      }
+      el("polyline", { points: pts.join(" "), fill: "none", stroke: col, "stroke-width": 3.5, "stroke-linecap": "round" }, svg);
+      var tx = el("text", { x: cx0, y: 255, "text-anchor": "middle", "font-size": 14 }, svg); tx.textContent = label;
+      var tv = el("text", { x: cx0, y: 276, "text-anchor": "middle", "font-size": 13, class: "mono" }, svg); tv.textContent = "κ = " + f2(k);
+    }
+    /* curvature drawn as parabola y = k x^2 / 2 scaled to px so it reads at any k */
+    function par(cx0, label, k, col) {
+      var pts = [], sc = 70;
+      for (var i = -60; i <= 60; i++) { var x = i / 60; var y = 0.5 * k * x * x * sc * 0.9; pts.push((cx0 + x * 80) + "," + (150 - y * 1 + 0)); }
+      el("polyline", { points: pts.join(" "), fill: "none", stroke: col, "stroke-width": 3.5, "stroke-linecap": "round" }, svg);
+      el("line", { x1: cx0 - 90, x2: cx0 + 90, y1: 150, y2: 150, stroke: css("--rule"), "stroke-width": 1, "stroke-dasharray": "3 4" }, svg);
+      el("circle", { cx: cx0, cy: 150, r: 4, fill: css("--ink") }, svg);
+      var tx = el("text", { x: cx0, y: 235, "text-anchor": "middle", "font-size": 14 }, svg); tx.textContent = label;
+      var tv = el("text", { x: cx0, y: 256, "text-anchor": "middle", "font-size": 13, class: "mono" }, svg); tv.textContent = "κ = " + f2(k);
+    }
+    el("rect", { x: 0, y: 0, width: 520, height: 300, fill: "none" }, svg);
+    par(130, "around the vessel", k1, css("--neg"));
+    par(390, "along the vessel", k2, css("--pos"));
+  }
+  function scoreXY(t, w, h, m) { return [m + (t + 0.4) / 1.45 * (w - 2 * m), h - m - (4 * t / Math.pow(1 + t, 2) + 3) / 4.1 * (h - 2 * m)]; }
+  function drawScore() {
+    var svg = $("scoreSvg"); svg.innerHTML = "";
+    var W = 520, H = 300, m = 38;
+    var s = sOf(1 / rval, tval / rval);
+    var X = function (t) { return m + (t + 0.4) / 1.45 * (W - 2 * m); }, Y = function (v) { return H - m - (v + 3) / 4.4 * (H - 2 * m); };
+    el("line", { x1: m, x2: W - m, y1: Y(0), y2: Y(0), stroke: css("--rule"), "stroke-width": 1.5 }, svg);
+    el("line", { x1: X(0), x2: X(0), y1: m - 10, y2: H - m + 6, stroke: css("--rule"), "stroke-width": 1.5 }, svg);
+    [0, 0.5, 1].forEach(function (t) { var tx = el("text", { x: X(t), y: H - m + 22, "text-anchor": "middle", "font-size": 12 }, svg); tx.textContent = t; });
+    [-2, -1, 1].forEach(function (v) { var tx = el("text", { x: X(0) - 8, y: Y(v) + 4, "text-anchor": "end", "font-size": 12 }, svg); tx.textContent = v; });
+    var lab = el("text", { x: W - m, y: Y(0) + 34, "text-anchor": "end", "font-size": 13 }, svg); lab.textContent = "t = κ₂ / κ₁";
+    var sl = el("text", { x: X(0) + 8, y: m - 16, "font-size": 13 }, svg); sl.textContent = "s";
+    var pts = []; for (var t = -0.33; t <= 1.0001; t += 0.01) pts.push(X(t) + "," + Y(4 * t / Math.pow(1 + t, 2)));
+    el("polyline", { points: pts.join(" "), fill: "none", stroke: css("--ink"), "stroke-width": 3 }, svg);
+    var col = s > 0.02 ? css("--pos") : s < -0.02 ? css("--neg") : css("--zero");
+    el("circle", { cx: X(tval), cy: Y(s), r: 8, fill: col, stroke: css("--bg"), "stroke-width": 2.5 }, svg);
+    $("ttO").textContent = tval.toFixed(2); $("r3O").textContent = rval.toFixed(2);
+    var k1 = 1 / rval, k2 = tval / rval, Hh = (k1 + k2) / 2, K = k1 * k2;
+    $("scoreRead").innerHTML = "<span>κ₁ <b>" + f2(k1) + "</b></span><span>κ₂ <b>" + f2(k2) + "</b></span><span>H <b>" + f2(Hh) + "</b></span><span>K <b>" + f2(K) + "</b></span><span>s <b>" + f2(s) + "</b></span>";
+  }
+  $("tt").addEventListener("input", function (e) { tval = +e.target.value; drawScore(); drawArcs(); });
+  $("r3").addEventListener("input", function (e) { rval = +e.target.value; drawScore(); drawArcs(); });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function (b) { b.addEventListener("click", function () { setT(+b.dataset.t); }); });
+
+  /* ---------- sheet bridge ---------- */
+  var sheetSt = null;
+  function drawSheet() {
+    var w = +$("web").value; $("webO").textContent = Math.round(w * 100) + "%";
+    $("sheetRead").innerHTML = "<span>score on the bridge <b>0.00</b></span><span>flatness cost on the bridge <b>" + (w > 0.02 ? "full" : "none") + "</b></span>";
+    if (!HAVE3D) return;
+    var cv = $("sheetCv"); if (!sheetSt) sheetSt = mkStage(cv);
+    var W = Math.max(300, cv.parentNode.clientWidth), H = Math.round(W * 0.5); stageSize(sheetSt, W, H); stageClear(sheetSt);
+    var L = W - 70, R0 = H * 0.11, N = 40, Rr = [], i; for (i = 0; i <= N; i++) Rr.push(R0);
+    var d = 2 * R0 + 12 + (H * 0.34) * (1 - w), grp = new THREE.Group();
+    [-1, 1].forEach(function (sg) { var m = latheMesh(Rr, L, Rr.map(function () { return neutralBase(); }), {}); m.position.y = sg * d / 2; grp.add(m); });
+    if (w > 0.02) {
+      var bh = d - 2 * R0 + 6, br = new THREE.Mesh(new THREE.BoxGeometry(L, bh, 5), new THREE.MeshStandardMaterial({ color: new THREE.Color(css("--pos")), roughness: 0.5, transparent: true, opacity: 0.92 }));
+      grp.add(br);
+    }
+    grp.position.set(W / 2, H / 2, 0); grp.rotation.y = 0.5; sheetSt.sc.add(grp); sheetSt.r.render(sheetSt.sc, sheetSt.cam);
+  }
+    $("web").addEventListener("input", drawSheet);
+
+  /* ---------- gate ---------- */
+  var probe = 1.3;
+  function drawGate() {
+    var sg = +$("sgG").value; $("sgGO").textContent = sg.toFixed(2);
+    var svg = $("gateSvg"); svg.innerHTML = "";
+    var W = 520, H = 330, ml = 40, mr = 20;
+    var X = function (z) { return ml + (z / 8) * (W - ml - mr); };
+    function gate(z) { var d = Math.abs(z - Math.round(z / 4) * 4); return 1 - Math.exp(-Math.pow(d / sg, 2)); }
+    var vTop = 40, vH = 64, pTop = 150, pBot = 270, Y = function (g) { return pBot - g * (pBot - pTop); };
+    var defs = el("defs", {}, svg), gr = el("linearGradient", { id: "gateGrad", x1: 0, x2: 1, y1: 0, y2: 0 }, defs), i;
+    for (i = 0; i <= 80; i++) el("stop", { offset: (i / 80), "stop-color": css("--neg"), "stop-opacity": (0.06 + 0.94 * gate(i / 10)).toFixed(3) }, gr);
+    var cap = el("text", { x: ml, y: 26, "font-size": 13 }, svg); cap.textContent = "Prior strength along the vessel";
+    var vess = el("rect", { x: X(0), y: vTop, width: X(8) - X(0), height: vH, rx: 10, fill: css("--vessel-lo"), opacity: 0.45 }, svg);
+    el("rect", { x: X(0), y: vTop, width: X(8) - X(0), height: vH, rx: 10, fill: "url(#gateGrad)" }, svg);
+    el("rect", { x: X(0), y: vTop, width: X(8) - X(0), height: vH, rx: 10, fill: "none", stroke: css("--ink"), "stroke-width": 1.2, opacity: 0.5 }, svg);
+    [0, 4, 8].forEach(function (zs) {
+      el("line", { x1: X(zs), x2: X(zs), y1: vTop - 8, y2: pBot, stroke: css("--ink"), "stroke-width": 2.5 }, svg);
+      var t = el("text", { x: X(zs), y: vTop + vH + 18, "text-anchor": zs === 0 ? "start" : zs === 8 ? "end" : "middle", "font-size": 12 }, svg); t.textContent = "slice";
+    });
+    /* plot: area + curve */
+    var pts = [], z; for (z = 0; z <= 8.0001; z += 0.05) pts.push(X(z) + "," + Y(gate(z)));
+    el("polygon", { points: X(0) + "," + Y(0) + " " + pts.join(" ") + " " + X(8) + "," + Y(0), fill: css("--neg"), opacity: 0.16 }, svg);
+    el("line", { x1: ml, x2: W - mr, y1: Y(0), y2: Y(0), stroke: css("--rule"), "stroke-width": 1.5 }, svg);
+    el("line", { x1: ml, x2: W - mr, y1: Y(1), y2: Y(1), stroke: css("--rule"), "stroke-width": 1, "stroke-dasharray": "3 4" }, svg);
+    [0, 0.5, 1].forEach(function (v) { var t = el("text", { x: ml - 8, y: Y(v) + 4, "text-anchor": "end", "font-size": 12 }, svg); t.textContent = v; });
+    el("polyline", { points: pts.join(" "), fill: "none", stroke: css("--neg"), "stroke-width": 3.5, "stroke-linejoin": "round" }, svg);
+    
+    /* σ and 2σ markers from the first slice */
+    [[1, "σ"], [2, "2σ"]].forEach(function (m) {
+      var zz = m[0] * sg; if (zz > 3.6) return;
+      el("line", { x1: X(zz), x2: X(zz), y1: pBot, y2: pBot + 6, stroke: css("--ink-2"), "stroke-width": 1.5 }, svg);
+      var t = el("text", { x: X(zz), y: pBot + 20, "text-anchor": "middle", "font-size": 12 }, svg); t.textContent = m[1];
+    });
+    var xl = el("text", { x: (ml + W - mr) / 2, y: H - 8, "text-anchor": "middle", "font-size": 13 }, svg); xl.textContent = "position along the vessel";
+    /* probe */
+    var gz = gate(probe), ds = Math.abs(probe - Math.round(probe / 4) * 4);
+    el("line", { x1: X(probe), x2: X(probe), y1: vTop - 8, y2: pBot, stroke: css("--ink"), "stroke-width": 1.5, "stroke-dasharray": "4 3" }, svg);
+    el("circle", { cx: X(probe), cy: vTop + vH / 2, r: 6, fill: css("--ink"), stroke: css("--bg"), "stroke-width": 2 }, svg);
+    el("circle", { cx: X(probe), cy: Y(gz), r: 7.5, fill: css("--pos"), stroke: css("--bg"), "stroke-width": 2.5 }, svg);
+    var hit = el("rect", { x: ml, y: vTop - 8, width: W - ml - mr, height: pBot - vTop + 8, fill: "transparent", style: "cursor:ew-resize", "pointer-events": "all" }, svg);
+    function move(ev) { var r = svg.getBoundingClientRect(); var px = (ev.clientX - r.left) / r.width * W; probe = Math.max(0, Math.min(8, (px - ml) / (W - ml - mr) * 8)); drawGate(); }
+    var down = false; hit.addEventListener("pointerdown", function (e) { down = true; hit.setPointerCapture(e.pointerId); move(e); });
+    hit.addEventListener("pointermove", function (e) { if (down) move(e); }); hit.addEventListener("pointerup", function () { down = false; });
+    $("gateRead").innerHTML = "<span>d<sub>obs</sub> <b>" + ds.toFixed(2) + "</b></span><span>g <b>" + gz.toFixed(2) + "</b></span><span>g(σ<sub>g</sub>) <b>0.63</b></span><span>g(2σ<sub>g</sub>) <b>0.98</b></span>";
+  }
+  $("sgG").addEventListener("input", drawGate);
+
+  function redrawAll() { drawLab(); drawAbl(); drawGap(); drawTube(); drawEig(); drawScore(); drawArcs(); drawSheet(); drawGate(); }
+  var go = function () { redrawAll(); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(go);
+  go();
+})();
+</script>
+</html>
