@@ -142,6 +142,7 @@ kramdown:
 # Includes & excludes
 include: ["_pages", "_scripts"]
 exclude:
+  - htp/ # HOLD: page is written but not published. Remove this line to publish /htp.
   - AGENTS.md
   - CLAUDE.md
   - bin/
