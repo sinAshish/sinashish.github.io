@@ -142,6 +142,7 @@ kramdown:
 # Includes & excludes
 include: ["_pages", "_scripts"]
 exclude:
+  - htp/ # HOLD: page is written but not published. Remove this line to publish /htp.
   - AGENTS.md
   - CLAUDE.md
   - bin/
@@ -203,7 +204,7 @@ sass:
 
 jekyll-minifier:
   compress_javascript: false # set to false since we are using terser as the js minifier
-  exclude: ["robots.txt", "assets/js/search/*.js"]
+  exclude: ["robots.txt", "assets/js/search/*.js", "htp/*"]
 
 # -----------------------------------------------------------------------------
 # Terser
